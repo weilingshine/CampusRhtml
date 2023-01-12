@@ -1,0 +1,376 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.clearBtn{ display: none; }
+/* Show it's not fixed to the top */
+
+/*基礎及共用設定開始*/
+*{margin:0;padding:0;}
+*:before,*:after{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;}
+a {
+	text-decoration:none;
+	transition:.5s all;
+
+	}
+a:hover{
+	text-decoration:none;
+	}
+ul {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+ul li {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+body {
+    position: relative;
+    font-family: "Noto Sans TC", "微軟正黑體", verdanaTimes, "arial";
+    font-weight: 300;
+    color: #222;
+    font-size: 16px;
+}
+.container {
+    max-width: 1170px;
+}
+.form-control:focus,.btn.focus, .btn:focus{
+	box-shadow: none;
+}
+ /*lightbox 跑版修正*/
+.ligthBoxFullBg {
+    position: fixed !important;
+    top: 0 !important;
+}
+/*chrome and safari hack*/
+ @media screen and (-webkit-min-device-pixel-ratio:0){ 
+    .myligthBox.noBg{
+        display: block !important;
+    }
+ }  
+ /*firefox hack*/
+ @-moz-document url-prefix(){
+    .myligthBox.noBg{
+        display: table-cell !important;
+    }
+}
+
+
+/*表頭*/
+/*.navbar{
+	background:#ffffff;
+	color:#282828;
+	padding:0;
+}
+.navbar a{
+	color:#000;
+	font-weight:400;
+}
+.navbar a:hover{
+	color:#fff;
+	font-weight:500;
+	background: #ec6d65;
+}
+.navbar a .nav-item{
+	color:#000;
+	font-weight:400;
+}
+a.nav-link{
+	color:#000;
+	font-weight:700;
+	padding:23px 0;
+}
+.navbar a.navbar-brand{
+	padding: 0;
+}
+.navbar a:hover.navbar-brand{
+   background: transparent;
+}
+.navbar-expand-md .navbar-collapse{
+  flex-grow: inherit;
+}
+.navbar-dark .navbar-toggler{
+	color:#fff;
+	border-color: rgba(255,255,255,1);
+}*/
+
+/*.share{
+	position: fixed;
+	right:20px;
+	bottom:20%;
+}
+.share .share_fb{
+	background: #3a559f;
+	width:50px;
+	height: 50px;
+	text-align: center;
+	margin-bottom:10px;
+	border-radius: 50%;
+	padding-top: 10px;
+}
+.share .share_line{
+	background: #00c200;
+	width:50px;
+	height: 50px;
+	text-align: center;
+	border-radius: 50%;
+	padding-top: 10px;
+}
+.share .bottom_link{
+	display: none;
+}*/
+/*BANNER*/
+.top_bn {
+	background:#f5a39f;
+	position:relative;
+	overflow:hidden;
+	width: 100%;
+	text-align: center;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.top_bn #main {
+	height: 100%;
+} 
+.top_bn .search_home{
+	position:absolute;
+	width:100%;
+	max-width: 400px;
+	top:0px;
+	bottom:0px;
+	background: rgba(255,255,255,0.8);
+	z-index: 9;
+}
+.top_bn .session_home{
+	max-width: 400px;
+	text-align: left;
+	padding-top:6em;
+}
+
+.list_bn {
+    background: #fac0be;
+    text-align: center;
+    padding-top: 10px;
+}
+/* 免費履歷健診 */
+.content_ct01{
+    margin: 0 auto;
+    text-align: center;
+}
+.breadcrumb {
+    padding: 1em 0px;
+    margin: 0em;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0px;
+    font-size: 1em;
+}
+.textstyle_reduction ol.breadcrumb li {
+    padding: 0 0px;
+}
+.breadcrumb > li {
+    display: inline-block;
+    color: #999;
+}
+.breadcrumb > li a {
+    color: #999;
+    font-weight: 400;
+}
+.breadcrumb > li.active a {
+    color: #2C9495;
+}
+.free-check{
+    margin: 0 auto;
+}
+.Free-check h3{
+    color: #2d9496;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 auto;
+}
+.Free-check .N-titleV{
+    font-weight: 450;
+    font-size: 1.5rem;
+} 
+.Free-check .Sub-check{
+    font-size: 1.25rem;
+    font-weight: 550;
+    color: #454545;
+}
+.Free-check .U-Sub-check{
+    background: #f4f4f4;
+    border-radius: 5px;
+    font-size: 1.125rem;
+}
+.Terra-Cotta{color: #ed7062;}
+.Terra-Cotta a{color: #ed7062;}
+.Active-info h3{
+    color: #2d9496;
+    font-weight: 450;
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 0 auto;
+}
+.Active-info h4 {
+    color: #2d9496;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: center;
+    margin: 0.6rem 0px 4px;
+}
+.Active-info  .Usub-title{
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #454545;
+}
+.Active-info .Usub-titleN{
+    border-radius: 5px;
+    font-size: 1.125rem;
+}
+
+.Sumit_box .Sumit_btn:hover{
+    background: #6ec6d1;
+    transition: 1s all;
+    color: #fff;
+}
+.Sumit_box .Sumit_btn{
+    background: #51b3c0;
+    border-radius: 30px;
+    padding: 14px 0px;
+    color: #fff;
+    font-size: 1.35rem;
+    width: 50%;
+    font-weight: 550;
+    margin: 0 auto;
+}
+
+.Sumit_box a{
+    text-decoration: none;
+}
+.Sumit_box a:hover{
+    text-decoration: none;
+}
+.content_bg5 {
+    margin: 0 auto;
+}
+.content_sumit4{
+    padding: 40px 10px;
+}
+.content_sumit5{
+    padding: 20px 0;
+    text-align: center;
+    margin: 0 auto;
+}
+/* 按鈕 */
+.content_bg5{
+	padding:50px 0;
+	text-align: center;
+}
+.content_bg5 .container{
+	width:100%;
+	max-width:780px;
+}
+.toolbox .btn {
+    background: #e55047;
+    border-radius: 10px;
+    color: #fff;
+    width: 300px;
+    height: 60px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 46px;
+    margin: 35px 0;
+    font-weight: 550;
+}
+.toolbox .btn:hover{
+	background:#ec6d65;
+	transition: 1s all;
+	color:#fff;
+}
+.toolbox .btn i{
+	padding-left: 5px;
+}
+.post-t {
+    position: relative;
+    bottom: 5px;
+}
+/* 活動須知 */
+.Step_N img{
+    border-radius: 10rem;
+    width: 100%;
+}
+/* footer */
+/*首頁footer*/
+/*.footer_home{
+	background: #ffe6e5 url(../images/footer_home_bg.png) repeat-x;
+}*/
+
+/*footer*/
+/*footer {
+	background-color:#ec6d65;
+	color:#fff;
+	padding:1%;
+	text-align: center;
+	font-weight: 400;
+	letter-spacing: 1px;
+	}
+footer img{
+	width:auto;
+}
+footer .footer_link{
+	padding:20px 0;
+}
+footer .footer_link a{
+	color:#fff;
+	font-size: 18px;
+}
+footer .footer_link{
+	border-bottom: 1px solid #ffafaa;
+}
+footer .footer_link ul li{
+	width:16.6666%;
+	float: left;
+}
+footer .copyright{
+	padding:15px 0;
+	font-size: 16px;
+}
+footer {
+    font-weight: 550;
+    color: #fff;
+}*/
+
+@media (max-width: 767px){
+button.navbar-toggler {
+    color: #ec6d65;
+}
+.Sumit_box .Sumit_btn{
+    background: #51b3c0;
+    border-radius: 30px;
+    padding: 14px 0px;
+    color: #fff;
+    font-size: 1.35rem;
+    width: 80%;
+    font-weight: 550;
+    margin: 0 auto;
+}
+.toolbox .btn {
+    background: #e55047;
+    border-radius: 10px;
+    color: #fff;
+    width: 300px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 42px;
+    margin: 26px 0px 0px;
+    font-weight: 550;
+}
+}

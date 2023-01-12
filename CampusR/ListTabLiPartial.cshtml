@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CampusR.Models.ViewModels.ListLiViewModel>
+
+@foreach (var school in Model)
+{
+    <li class="newsession_st02">
+        <a href="@Url.Action("School", "CampusR", new{ id = school.Id })" title="校園徵才">
+            <div class="container">
+                <div class="row flbox">
+                    <div class="col-3 col-md-2">
+                        @if (string.IsNullOrWhiteSpace(school.Month) && string.IsNullOrWhiteSpace(school.Day))
+                        {
+                            <div><i class="fa fa-minus" aria-hidden="true"></i></div>
+                        }
+                        else
+                        {
+                            <div class="time">
+                                <span class="month">@school.Month</span><span class="day">@school.Day</span>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-6 col-md-4 school">@school.Name</div>
+                    <div class="col-3 col-md-1 area">@school.Area</div>
+                    <div class="col-12 col-md-5 d-flex justify-content-end icon">
+                        @if (school.IsEarlybird)
+                        {
+                            <div class="session_icon_01"><span>早鳥禮物</span><i class="fa fa-gift" aria-hidden="true"></i></div>
+                        }
+                        @if (school.Is1111)
+                        {
+                            <div class="session_icon_02">1111參展</div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(school.Month) &&
+                             !string.IsNullOrWhiteSpace(school.Day))
+                        {
+                            <div class="session_icon_02">實體/線上校徵</div>
+                        }
+                        else
+                        {
+                            <div class="session_icon_02">線上校徵</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+}

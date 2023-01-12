@@ -1,0 +1,103 @@
+﻿@model CampusR.Models.ViewModels.ListTableViewModel
+
+<ul class="session_list">
+    @foreach (var session in Model.CampusList)
+    {
+        <li class="newsession_st02">
+            <a href="@Url.Action("School", "CampusR", new{ id = session.Id, searchText = ViewBag.SearchVendorText })" 
+               title="校園徵才">
+                <div class="container">
+                    <div class="row flbox">
+                        <div class="col-3 col-md-2">
+                            @if (string.IsNullOrWhiteSpace(session.Month) && string.IsNullOrWhiteSpace(session.Day))
+                            {
+                                <div class="time">
+                                    <span class="month">限定</span><span class="day">網路</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="time">
+                                    <span class="month">@session.Month</span><span class="day">@session.Day</span>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-6 col-md-4 school">@session.Name</div>
+                        <div class="col-3 col-md-1 area">@session.Area</div>
+                        <div class="col-12 col-md-5 d-flex justify-content-end icon">
+                            @if (session.IsEarlybird)
+                            {
+                                <div class="session_icon_01"><span>早鳥禮物</span><i class="fa fa-gift" aria-hidden="true"></i></div>
+                            }
+                            @if (session.Is1111)
+                            {
+                                <div class="session_icon_02">1111參展</div>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(session.Month) &&
+                                 !string.IsNullOrWhiteSpace(session.Day))
+                            {
+                                <div class="session_icon_02">實體/線上校徵</div>
+                            }
+                            else
+                            {
+                                <div class="session_icon_02">線上校徵</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    }
+</ul>
+
+@* 目前頁面 *@
+<input type="hidden" id="hidCurrentPage" value="@Model.PagingData.CurrentPage"/>
+@* 所有筆數 *@
+<input type="hidden" id="hidTotalRecord" value="@Model.PagingData.TotalRecord"/>
+
+@if (Model.PagingData.TotalPageCount > 1)
+{
+    <nav aria-label="Page navigation example" class="m-auto">
+        <ul class="pagination">
+            @if (Model.PagingData.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="javascript:;" 
+                       onclick="changePage(@(Model.PagingData.CurrentPage - 1));"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&laquo; 上一頁</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            }
+
+            <li class="page-item">
+                <select class="custom-select" id="selPage">
+                    @for (int i = 1; i <= Model.PagingData.TotalPageCount; i++)
+                    {
+                        if (i == Model.PagingData.CurrentPage)
+                        {
+                            <option selected value="@(i)">第@(i)/@(Model.PagingData.TotalPageCount)頁</option>
+                        }
+                        else
+                        {
+                            <option value="@(i)">第@(i)/@(Model.PagingData.TotalPageCount)頁</option>
+                        }
+                    }
+                </select>
+            </li>
+
+            @if (Model.PagingData.CurrentPage < Model.PagingData.TotalPageCount)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="javascript:;" 
+                       onclick="changePage(@(Model.PagingData.CurrentPage + 1));" 
+                       aria-label="Next">
+                        <span aria-hidden="true">下一頁&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

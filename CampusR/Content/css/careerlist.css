@@ -1,0 +1,311 @@
+html,
+body {
+  overflow: auto;
+  margin: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+[class*=uk-icon-] {
+  font-family: FontAwesome !important;
+}
+.toplinkzone {
+  background-color: #374357;
+  width: 100%;
+  height: 28px;
+  font-size: 13px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+  visibility: visible;
+  display: inline-block;
+  margin: 0px;
+}
+main .breadcrumb {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0.75rem 0rem!important;
+  margin-bottom: 1rem;
+  list-style: none;
+  border-radius: 0.25rem;
+  background: none;
+}
+.breadcrumb a{
+  color: #6968bc;
+}
+.school_list .breadcrumb{
+  background: #fbfbfb!important;
+}
+.school-menu li a.active {
+  color: #fff;
+  background: #4eb9ab;
+}
+.school-menu ul{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.school-menu li{
+  width: 25%;
+}
+.Btn_Button{
+  position: relative;
+  top: 2px;
+}
+.Btn_Button .fa-school{
+  font-size: 1.3rem;
+  letter-spacing: 0.3rem;
+  bottom: 2px;
+  position: relative;
+}
+.Btn_Button i{
+  font-size: 1.45rem;
+  letter-spacing: 0.3rem;
+  bottom: 2px;
+  position: relative;
+}
+.school-menu .pt-btn {
+  padding: 0.4rem 0;
+  font-size: 1.6rem;
+  color: #848484;
+  background: #fff;
+  display: block;
+  font-weight: bold;
+  position: relative;
+  border: 1px solid #cdcdcd;
+  box-shadow: 4px 6px 0px #cdcdcd;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  text-align: center;
+  word-break: keep-all;
+}
+.school-menu .pt-btn:hover {
+color: #fff;
+background: #4eb9ab;
+}
+main .Hettx button {
+  border: 0px;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  margin: 2px 8px;
+  padding: 0px;
+}
+.Sc-bottom ul {
+  display: flex;
+  justify-content: center;
+  top: 7px;
+  position: relative;
+}
+.school-menu li:nth-child(){
+  margin-right: 0.5rem;
+}
+.MX-1 li {
+  margin: 0 auto;
+}
+.MX-1 img {
+  border-radius: 30rem;
+  display: block;
+  margin: 0 auto;
+}
+.P-ge {
+  background: #fff;
+  border: 1px solid #8de2d6;
+  border-radius: 30px;
+  margin: 14px 0px;
+  box-shadow: 5px 5px 1px 0 #bdd8d6;
+  width: 90%;
+}
+.P-ge h3 {
+  letter-spacing: 1.5px;
+  color: #54d3c2;
+  font-size: 1.375rem;
+  -webkit-transition: .15s;
+  transition: .15s;
+  word-break: keep-all;
+  font-weight: normal;
+  padding: 5px;
+}
+section .menu-blockt .nav-pills, section .menu-blockt .nav-link.active, section .menu-blockt .nav-pills .show > .nav-link {
+  color: #094f4a;
+  background: none;
+  line-height: 1.2rem;
+  text-shadow: none;
+  font-size: 1.25rem;
+}
+.Hettx button:hover {
+  background: #fffbdc;
+  text-align: center;
+  transition: 0.3s;
+}
+.menu-blockt .nav-pills .nav-link.active {
+  background: #ec6d65;
+  border: none;
+  color: #fff;
+}
+.menu-blockt .nav-pills .nav-link:hover {
+  background: #ec6d65;
+  border: none;
+  color: #fff;
+}
+.menu-blockt li a {
+  color: #7f7f7f;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #e8e8e8;
+  border-radius: 0.25rem;
+  margin: 0.2rem 0em;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  padding: 1rem 0;
+}
+.school_list h1 {
+  text-align: left;
+  font-size: 1.4em;
+  color: #3DA7AA;
+  margin: 0em auto;
+  padding: 0em;
+}
+article h2{
+  font-size: 1.1rem;
+  color: #565656;
+  font-weight: 400;
+  line-height: 1.6;
+}
+footer .footer_link a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+section .Content_info{
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  margin: 3% 0;
+  box-shadow: 3px 3px 5px #d2d2d2;
+}
+.Content_info h2{
+    color: #ec6d65;
+    border: 1px solid #ec6d65;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    display: block;
+    border-radius: 2.25rem;
+    padding: 3px 0px;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.table thead th{
+    vertical-align: bottom;
+    border-bottom: 0px;
+}
+.Content_info .table th{
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #f1b9b6;
+  word-break: keep-all;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.Content_info .table td{
+  padding: 0.75rem;
+  vertical-align: top;
+  border-bottom: 1px solid #dee2e6;
+  padding-left: 0px;
+  padding-right: 3px;
+}
+.Content_info .table td a{
+  word-break: keep-all;
+}
+.Content_info .table thead tr:nth-of-type(1):hover{
+  background:none;
+}
+.Content_info .table tr:hover{
+  background: #f5f5f5;
+  transition: .5s all;
+}
+.menu-blockt i{
+  font-size: 1rem;
+  position: relative;
+  bottom: 1px;
+}
+
+
+@media (max-width: 539px){
+  .Hettx .pb-box img {
+      padding-left: 0px!important;
+      padding-right: 0px!important;
+      display: block;
+      margin: 0 auto;
+      top: 3px;
+      position: relative;
+  }
+  .Content_info h2{
+    width: 80%;
+    margin: 0 auto;
+}
+.Content_info .table th {
+    padding-right: 2px;
+}
+.table-responsive{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.Content_info .table td:nth-child(1){
+  width: 40%;
+}
+.Content_info .table td:nth-child(2){
+  width: 20%;
+}
+.Content_info .table td:nth-child(3){
+  width: 20%;
+}
+.Content_info .table td:nth-child(4){
+  width: 20%;
+}
+}
+@media screen and (max-width: 767px) {
+  .school-menu ul {
+    display: flex;
+    flex-direction: column;
+}
+  .school-menu li{
+    width: 100%;
+}
+}
+@media (max-width: 991px){
+  .Sc-bottom {
+    width: 100%;
+    margin-top: 15px;
+    background: #ffffff;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 979px) {
+  .school-menu ul {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+  }
+  .school-menu li {
+    width: 46%;
+    margin: 0 auto;
+}
+}

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CampusR.Models.ViewModels.LatestEarlybirdViewModel>
+
+@foreach (var school in Model)
+{
+    <div class="item">
+        <div class="prize">
+            <a href="@Url.Action("School", "CampusR", new { id = school.Id })">
+                <div class="time">
+                    <span class="month">@school.Month</span>
+                    <span class="day">@school.Day</span>
+                </div>
+                <div class="school">@school.Name</div>
+                <div class="location">
+                    <span>馬上參加<i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                </div>
+            </a>
+        </div>
+    </div>
+}

@@ -1,0 +1,209 @@
+﻿@using CampusR.Models
+@model CampusR.Models.ViewModels.BaseViewModel
+
+@section heads
+{
+    <!--SEO META區開始-->
+    <title>履歷健診｜@(GlobalVariables.currentYear)知名大學校園徵才－1111人力銀行</title>
+    <meta name="title" content="履歷健診｜@(GlobalVariables.currentYear)知名大學校園徵才－1111人力銀行" />
+    <meta name="keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才,就業博覽會,徵才博覽會,履歷健診" />
+    <meta name="Description" content="今年為了服務更多學生，我們在清華大學、中山大學、臺灣大學、陽明交大、成功大學，提供現場免費履歷健診服務！ 只要你在線上預約並攜帶1111人力銀行的履歷表，現場有專家免費為你履歷健診，先完善履歷後投遞工作，讓你面試機會多更多！">
+    <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+    <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+    <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="履歷健診｜@(GlobalVariables.currentYear)知名大學校園徵才－1111人力銀行" />
+    <meta property="og:title" content="履歷健診｜@(GlobalVariables.currentYear)知名大學校園徵才－1111人力銀行" />
+    <meta property="og:url" content="https://www.1111.com.tw/campusr/careermaster" />
+    <meta property="og:image" content="/campusR/Content/bannerimg/fb_banner2.jpg" />
+    <meta property="og:description" content="今年為了服務更多學生，我們在清華大學、中山大學、臺灣大學、陽明交大、成功大學，提供現場免費履歷健診服務！ 只要你在線上預約並攜帶1111人力銀行的履歷表，現場有專家免費為你履歷健診，先完善履歷後投遞工作，讓你面試機會多更多！" />
+    <meta name="twitter:title" content="履歷健診｜@(GlobalVariables.currentYear)知名大學校園徵才－1111人力銀行" />
+    <meta name="twitter:description" content="今年為了服務更多學生，我們在清華大學、中山大學、臺灣大學、陽明交大、成功大學，提供現場免費履歷健診服務！ 只要你在線上預約並攜帶1111人力銀行的履歷表，現場有專家免費為你履歷健診，先完善履歷後投遞工作，讓你面試機會多更多！" />
+    <meta name="twitter:keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才,就業博覽會,徵才博覽會,履歷健診" />
+    <meta name="twitter:site" content="履歷健診｜@(GlobalVariables.currentYear)知名大學校園徵才－1111人力銀行" />
+    <meta name="twitter:url" content="https://www.1111.com.tw/campusr/careermaster" />
+    <link rel="canonical" href="https://www.1111.com.tw/campusr/careermaster" />
+    <link rel="icon" href="https://www.1111.com.tw/favicon.ico">
+    <!--SEO META區結束-->
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700&amp;display=swap">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">-->
+    <link rel="stylesheet" href="~/Content/css/resume-clinic.css">
+}
+
+@section MenuList
+{
+    @Html.Partial("MenuListPartial", Model.MenuList)
+}
+
+@section FooterList
+{
+    @Html.Partial("FooterListPartial", Model.FooterList)
+}
+
+@section scripts
+{
+    <script>
+        (function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        })();
+    </script>
+}
+
+<!-- 版頭banner -->
+<div class="list_bn">
+    <div id="main" class="container">
+        <img class="d-none d-md-block m-auto img-fluid" src="~/Content/images/careermater/resume-clinic_bn.jpg">
+        <img class="d-block d-md-none m-auto img-fluid"
+             src="~/Content/images/careermater/resume-clinic_m_bn.jpg">
+    </div>
+</div>
+<!-- 免費履歷健診 -->
+<div class="content_ct01">
+    <div class="container">
+        <!-- 麵包屑 -->
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background: #fff;">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Index")">校徵專區</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a href="@Url.Action("List")">免費履歷健診</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <!-- 免費履歷健診  -->
+        <div class="row Free-check">
+
+            <h3>
+                <div class="N-titleV pt-4 pb-4">
+                    <img src="~/Content/images/careermater/diamond.png" class="post-t"> 不只得到1份好履歷，更得到開啟美好未來的1把鑰匙 <img src="~/Content/images/careermater/diamond.png" class="post-t">
+                </div>
+            </h3>
+            <!-- <div class="col-12 col-md-12 col-lg-12 p-3 Sub-check"></div> -->
+            <div class="col-12 col-md-12 col-lg-12 p-4 U-Sub-check">
+                <div id="" class="free-check ">
+                    <div class="Content-Box text-left">
+                        今年為了服務更多學生，我們在<span class="Terra-Cotta"><a href="https://www.1111.com.tw/campusr/school/57" target="_blank">清華大學(停辦)</a>、<a href="https://www.1111.com.tw/campusr/school/58" target="_blank">中山大學</a>、<a href="https://www.1111.com.tw/campusr/school/67" target="_blank">臺灣大學(停辦)</a>、<a href="https://www.1111.com.tw/campusr/school/73" target="_blank">陽明交大(交大校區)(停辦)</a>、<a href="https://www.1111.com.tw/campusr/school/74" target="_blank">成功大學(停辦)</a></span>，提供現場<span class="Grayscale">免費履歷健診服務！</span>
+                        只要你在線上預約並攜帶1111人力銀行的履歷表，現場有專家免費為你履歷健診，先完善履歷後投遞工作，讓你面試機會多更多！
+                    </div>
+                    <div class="Content-Box text-left">
+                        <br>
+                        <h5>⚠️公告⚠️</h5>
+                        <p>
+                            因應疫情學校紛紛取消校徵，我們的現場免費履歷健診也沒有了，嗚嗚...但別灰心，線上校徵24小時不打烊！準備兩項好康給你！<br>
+                            <a href="list">☛點我搜尋學校/廠商，找好工作</a>
+                            <br><a href="newmemberevent">☛面試必備專業穿搭！點我抽G2000套裝</a>
+                        </p>
+                    </div>
+                    <!--註冊完會員後自動跳回活動頁面-->
+                    <div class="mochi_btn" id="divStatus">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 服務須知-->
+        <div class="clearfix pb-5"></div>
+
+        <div class="row Active-info">
+
+            <h3>
+                <img src="~/Content/images/careermater/diamond.png" class="post-t"> 報名須知 <img src="~/Content/images/careermater/diamond.png" class="post-t">
+            </h3>
+            <!-- 報名前置作業 -->
+            <div class="col-12 col-md-12 col-lg-12 p-2 Usub-title">報名前置作業</div>
+            <div class="col-12 col-md-12 col-lg-12 p-2 Usub-titleN">
+                <div class="free-check col-lg-8 col-md-10">
+                    <div class="text-left pb-2">1.<a href="https://www.1111.com.tw/login/index?ReturnUrl=https%3A%2F%2Fwww.1111.com.tw%2Fcampusr%2Fcareermaster" target="_blank"> 需為 1111人力銀行會員</a>。</div>
+                    <div class="text-left pb-2">2.履歷欄位填寫完整，包含基本資料、求職條件、學歷、工作經歷與自傳 <a href="https://careermaster.1111.com.tw/careermaster/resume/Template" target="_blank">(點我看履歷範本)</a>。</div>
+                    <div class="text-left pb-2">3.履歷需上傳照片，自傳字數須超過400字。</div>
+                </div>
+            </div>
+            <!-- 報名辦法 -->
+            <div class="col-12 col-md-12 col-lg-12 pt-2 Usub-title">報名流程</div>
+            <!-- <div class="col-12 col-md-12 col-lg-12 p-2 Usub-titleN">
+                <div id="" class="free-check col-lg-7 col-md-10">
+                    <div class="text-left">完成報名資格→選擇報名場次→填寫報名問卷→等待通知訊息。</div>
+                </div>
+            </div> -->
+            <!-- 4步驟圖-->
+            <div class="clearfix"></div>
+            <div class="content_sumit4 pt-3 col-12">
+                <div class="container">
+                    <div class="hot_top4">
+                        <h2></h2>
+                        <div class="row">
+                            <div class="col-6 col-md-6 col-lg-3 Step_N">
+                                <img src="~/Content/images/careermater/step-001.png">
+                                <h4>1.完成報名資格</h4>
+
+                            </div>
+                            <div class="col-6 col-md-6 col-lg-3 Step_N">
+                                <a href="#a1"><img src="~/Content/images/careermater/step-002.png"></a>
+                                <h4><a href="#a1">2.填寫報名問卷 <i class="fas fa-arrow-down"></i></a></h4>
+
+
+                                </a>
+                            </div>
+                            <div class="col-6 col-md-6 col-lg-3 Step_N">
+                                <img src="~/Content/images/careermater/step-003.png">
+                                <h4>3.備妥相關資料</h4>
+
+                            </div>
+                            <div class="col-6 col-md-6 col-lg-3 Step_N">
+                                <img src="~/Content/images/careermater/step-004.png">
+                                <h4>4.等待通知訊息</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 我要報名 -->
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</div><a name="a1" id="a1"></a>
+<div class="content_sumit5" style="background: #fee9e8; width: 100%;">
+    <div class="container">
+        <div class="Sumit_box">
+            <!-- Google嵌入報名表 -->
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDwAIFvcyF7Cbo6Z1SKzjo9T8mx7riv9v896fOpBpmRq9wdw/viewform?embedded=true" width="100%" height="1320" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+            <!-- 原來表單 -->
+            <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDwAIFvcyF7Cbo6Z1SKzjo9T8mx7riv9v896fOpBpmRq9wdw/viewform?usp=sf_link"
+               target="_blank">
+                <div class="Sumit_btn">
+                    我要報名 <i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                </div>
+            </a> -->
+            <div class="clearfix"></div>
+            <!-- <div class="col-12 toolbox">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <a href="https://careermaster.1111.com.tw/careermaster/resume/JobArticleAll"
+                           target="_blank">
+                            <div class="btn hvr-icon-wobble-horizontal">
+                                <i class="fas fa-briefcase hvr-icon" aria-hidden="true"></i> 求職攻略
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <a href="https://careermaster.1111.com.tw/careermaster/resume/Template"
+                           target="_blank">
+                            <div class="btn hvr-icon-wobble-horizontal">
+                                <i class="fas fa-edit hvr-icon" aria-hidden="true"></i> 履歷範本
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

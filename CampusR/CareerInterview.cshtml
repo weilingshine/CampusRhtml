@@ -1,0 +1,219 @@
+﻿@using CampusR.Models
+@model CampusR.Models.ViewModels.BaseViewModel
+
+@*母版頁為 Views/Shared/_Layout.cshtml*@
+@*此頁專屬的 head 請放於此區塊，共用的 head 部分可參見 Views/Shared/_Layout.cshtml*@
+@*此區塊請依需求自行修改*@
+@section heads
+{
+    <!--SEO META區開始-->
+    @if (Model.TKDInfoList.Any())
+    {
+        var item = @Model.TKDInfoList.FirstOrDefault();
+        <title>@item.Title</title>
+        <meta name="title" content=@item.Title />
+        <meta name="keywords" content=@item.Keywords />
+        <meta name="Description" content=@item.Description>
+        <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+        <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+        <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_TW" />
+        <meta property="og:site_name" content=@item.Title />
+        <meta property="og:title" content=@item.Title />
+        <meta property="og:url" content="https://www.1111.com.tw/campusr/" />
+        if (!string.IsNullOrEmpty(item.fbImgUrl))
+        {
+            <meta property="og:image" content=@item.fbImgUrl />
+        }
+        else
+        {
+            <meta property="og:image" content="https://www.1111.com.tw/campusr/images/fb.jpg" />
+        }
+        <meta property="og:description" content=@item.Description/>
+        <meta name="twitter:title" content=@item.Title/>
+        <meta name="twitter:description" content=@item.Description/>
+        <meta name="twitter:keywords" content=@item.Keywords />
+        <meta name="twitter:site" content=@item.Title  />
+        <meta name="twitter:url" content="https://www.1111.com.tw/campusr/" />
+        <link rel="canonical" href="https://www.1111.com.tw/campusr/" />
+        <link rel="icon" href="https://www.1111.com.tw/favicon.ico">
+    }
+    <!--SEO META區結束-->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/freshmanwarmup.css">
+    <!-- 20210309 font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/careerinterview.css">
+
+    <!--SEO META區開始-->
+    @*<title>免費履歷健診｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行</title>
+        <meta name="title" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta name="keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才,就業博覽會,徵才博覽會,新鮮人,履歷健診,面試" />
+        <meta name="Description" content="初入職場不要怕，先花1秒找方向，在靠4張王牌「履歷健診、新鮮人職缺、面試經驗、面試影音」，讓你求職過程無往不利">
+        <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+        <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+        <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_TW" />
+        <meta property="og:site_name" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta property="og:title" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta property="og:url" content="https://www.1111.com.tw/campusr/" />
+        <meta property="og:image" content="https://www.1111.com.tw/campusr/images/fb.jpg" />
+        <meta property="og:description" content="初入職場不要怕，先花1秒找方向，在靠4張王牌「履歷健診、新鮮人職缺、面試經驗、面試影音」，讓你求職過程無往不利" />
+        <meta name="twitter:title" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta name="twitter:description" content="初入職場不要怕，先花1秒找方向，在靠4張王牌「履歷健診、新鮮人職缺、面試經驗、面試影音」，讓你求職過程無往不利" />
+        <meta name="twitter:keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才,就業博覽會,徵才博覽會,新鮮人,履歷健診,面試" />
+        <meta name="twitter:site" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta name="twitter:url" content="https://www.1111.com.tw/campusr/" />
+        <link rel="canonical" href="https://www.1111.com.tw/campusr/earlybirdevent" />
+        <link rel="icon" href="https://www.1111.com.tw/favicon.ico">*@
+    <!--SEO META區結束-->
+
+}
+
+@section MenuList
+{
+    @Html.Partial("MenuListPartial", Model.MenuList)
+}
+
+@section FooterList
+{
+    @Html.Partial("FooterListPartial", Model.FooterList)
+}
+
+@*專屬於此頁的 Body 的 Html 程式碼請放於此處*@
+<body>
+    <!-- 版頭banner -->
+    <div class="list_bn">
+        <div id="main" class="container">
+            @*<img class="d-none d-md-block m-auto img-fluid" src="Content/images/careerinterview/resume-careerinterview_bn.jpg">
+        <img class="d-block d-md-none m-auto img-fluid"
+             src="Content/images/careerinterview/resume-careerinterview_m_bn.jpg">*@
+            @if (Model.TKDInfoList.Any())
+            {
+                <img class="d-none d-md-block m-auto img-fluid" src=@Model.TKDInfoList.FirstOrDefault().bannerImgP>
+                <img class="d-block d-md-none m-auto img-fluid"
+                     src=@Model.TKDInfoList.FirstOrDefault().bannerImgM>
+            }
+        </div>
+    </div>
+
+    <!-- 麵包屑 -->
+    <div class="school_list" id="schoolList">
+        <div class="container ">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Index", "CampusR")">校徵專區</a>
+                    </li>
+                    <li class="breadcrumb-item active"><a href="#">免費履歷健診</a></li>
+                </ol>
+            </nav>
+        </div>
+        <!-- 免費履歷健診 -->
+        <div class="content_ct01">
+            <div class="container">
+
+                <!-- 免費履歷健診  -->
+                <div>
+                    <div class="Active-Free"> <h3 class="py-4">免費履歷健診 </h3> </div>
+
+                    <div class="row Free-Mg">
+                        <div class="G-1 col-12 col-md-4  no-gutters" style=""><img src="Content/images/resuem-new.png"></div>
+                        <div class="col-md-8 py-2 text-left free-check-text">
+                            2022年為服務更多學生，我們在
+                            <span class="Terra-Cotta">3/5國立臺灣大學、3/12國立陽明交通大學、3/13 國立成功大學、3/14國立中山大學、3/19國立清華大學</span>
+                            ，提供現場履歷健診服務！只要線上預約並攜帶1111人力銀行的履歷表，現場有專家免費為你履歷健診，讓你面試機會多更多！
+
+                            <article class="mt-2 py-4 row col-12 no-gutters py-2">
+                                <div class="col-12 col-md-12 col-lg-8 Btn_text">對了！去現場前，不妨先花3秒優先檢測你的履歷吧！</div>
+                                <div class="Mx_5 col-12 col-lg-4">
+                                    <div class="col-11 M_InterBtn py-2 mx-auto">
+                                        <a href="https://event.1111.com.tw/event21/resumecheck/index.asp">3秒檢測GO</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <!-- 服務須知-->
+                    <div class="clearfix pb-5"></div>
+                    <div class="row Active-info">
+                        <h3><img src="Content/images/careermater/diamond.png" class="post-t"> 活動流程 <img src="Content/images/careermater/diamond.png" class="post-t"></h3>
+                        <div class="col-12 col-md-12 col-lg-12 p-2 Usub-titleN">
+                        </div>
+                        <!-- 4步驟圖-->
+                        <div class="clearfix"></div>
+                        <div class="content_sumit4 pt-2 col-12">
+                            <div class="container">
+                                <div class="hot_top4">
+                                    <h2></h2>
+                                    <div class="row">
+                                        <div class="col-6 col-md-3 col-lg-3 Step_N pl-2 pr-2 pb-4">
+                                            <img src="Content/images/careermater/step-001.png">
+                                            <h4>1.選擇報名場次</h4>
+                                            <a href="https://www.1111.com.tw/search/job?d0=100300&amp;agent=campusr"
+                                               target="_blank">
+
+                                            </a>
+                                        </div>
+                                        <div class="col-6 col-md-3 col-lg-3 Step_N pl-2 pr-2 pb-4">
+                                            <img src="Content/images/careermater/step-002.png">
+                                            <h4>2.填寫報名問卷</h4>
+                                            <a href="https://www.1111.com.tw/search/job?d0=100205%2C100105%2C100304&amp;fs=1&amp;page=1&amp;agent=campusr"
+                                               target="_blank">
+
+                                            </a>
+                                        </div>
+                                        <div class="col-6 col-md-3 col-lg-3 Step_N pl-2 pr-2 pb-4">
+                                            <img src="Content/images/careermater/step-003.png">
+                                            <h4>3.備妥相關資料</h4>
+                                            <a href="https://www.1111.com.tw/search/job?d0=120400&amp;fs=1&amp;page=1&amp;agent=campusr"
+                                               target="_blank">
+
+                                            </a>
+                                        </div>
+                                        <div class="col-6 col-md-3 col-lg-3 Step_N pl-2 pr-2 pb-4">
+                                            <img src="Content/images/careermater/step-004.png">
+                                            <h4>4.等待通知訊息</h4>
+                                            <a href="https://www.1111.com.tw/search/job?d0=140200%2C140300%2C140400%2C140100%2C150100%2C150200&amp;fs=1&amp;page=1&amp;agent=campusr"
+                                               target="_blank">
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 我要報名 -->
+                        <div class="clearfix"></div>
+                        <div class="content_sumit5 MG-1 mb-4">
+                            <div class="container Active-sumit">
+                                <h3 class="py-4"><img src="Content/images/careermater/diamond.png" class="post-t"> 我要報名 <img src="Content/images/careermater/diamond.png" class="post-t"></h3>
+                                <span class="">把握機會報名，現場免費服務！</span>
+                                <div class="Sumit_box">
+                                    <!-- Google嵌入報名表 -->
+                                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDwAIFvcyF7Cbo6Z1SKzjo9T8mx7riv9v896fOpBpmRq9wdw/viewform?pli=1" width="100%" height="1320" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+
+
+
+@*專屬於此頁的 Javascript 程式碼請放於此區塊裡*@
+@section scripts
+{
+    <script>
+        (function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        })();
+    </script>
+}

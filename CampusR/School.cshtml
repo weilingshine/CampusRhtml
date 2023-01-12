@@ -1,0 +1,727 @@
+﻿@using CampusR.Models.JsonLd
+@using CampusR.Models
+@using Newtonsoft.Json
+@model CampusR.Models.ViewModels.SchoolViewModel
+
+@{
+    // Json+LD WebSite 部分
+    WebSite webSite = new WebSite()
+    {
+        Name = $"{Model.ActivityName}（{Model.PageTitle}）",
+        Keywords = Model.PageKeywords.Split(',')?.ToList(),
+        Description = Model.PageDescription,
+        AlternateName = $"{Model.ActivityName}（{Model.PageTitle}）",
+        Url = $"https://www.1111.com.tw/campusr/school/{Model.Id}"
+    };
+
+    // Json+LD Event 部分
+    Event jsonLdEvent = new Event()
+    {
+        StartDate = $"{Model.SchoolSignDate}T{Model.StartTime}",
+        EndDate = $"{Model.SchoolSignDate}T{Model.EndTime}",
+        EventAttendanceMode = "https://schema.org/OfflineEventAttendanceMode",
+        EventStatus = "https://schema.org/EventScheduled",
+        Name = Model.ActivityName,
+        Location = new EventLocation()
+        {
+            Name = Model.Area,
+            Address = new EventLocationAddress()
+            {
+                PostalCode = ""
+            }
+        },
+        Performer = new EventPerformer()
+        {
+            Url = "https://www.1111.com.tw/campusr",
+            Name = "1111人力銀行"
+        },
+        Image = new List<string>() { Model.FbImageUrl },
+        Description = Model.ActivityName,
+        Url = $"https://www.1111.com.tw/campusr/school/{Model.Id}",
+        Offers = new EventOffers()
+        {
+            Url = $"https://www.1111.com.tw/campusr/school/{Model.Id}",
+            PriceCurrency = "TWD",
+            Description = "免費",
+            Price = "0",
+            Availability = "http://schema.org/InStock",
+            ValidFrom = Model.SchoolSignDate
+        },
+        Organizer = new EventOrganizer()
+        {
+            Name = Model.ChName,
+            Url = "https://www.1111.com.tw/campusr"
+        }
+    };
+
+    // Json+LD BreadcrumbList 部分
+    BreadcrumbList breadcrumbList = new BreadcrumbList();
+    breadcrumbList.ItemListElement.Add(new BreadcrumItemlistElement()
+    {
+        Position = 1,
+        Name = "校徵專區",
+        Item = "https://www.1111.com.tw/campusr/"
+    });
+    breadcrumbList.ItemListElement.Add(new BreadcrumItemlistElement()
+    {
+        Position = 2,
+        Name = $"{ GlobalVariables.currentYear }校徵列表",
+        Item = "https://www.1111.com.tw/campusr/"
+    });
+    breadcrumbList.ItemListElement.Add(new BreadcrumItemlistElement()
+    {
+        Position = 3,
+        Name = Model.ActivityName
+    });
+}
+
+@{
+    int id = Model.Id;
+    string agent = Request.QueryString["agent"];
+    bool is57Special = id == 57 && !string.IsNullOrWhiteSpace(agent) && agent == "campusr_NTHU";
+}
+
+@section heads
+{
+    <!--SEO META區開始-->
+    <title>@Model.PageTitle</title>
+    <meta name="title" content="@Model.PageTitle" />
+    <meta name="keywords" content="@Model.PageKeywords" />
+    <meta name="Description" content="@Model.PageDescription">
+    <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+    <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+    <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="@Model.PageTitle" />
+    <meta property="og:title" content="@Model.PageTitle" />
+    <meta property="og:url" content="https://www.1111.com.tw/campusr/school/@(Model.Id)" />
+    <meta property="og:image" content="@Model.FbImageUrl" />
+    <meta property="og:description" content="@Model.PageDescription" />
+    <meta name="twitter:title" content="@Model.PageTitle" />
+    <meta name="twitter:description" content="@Model.PageDescription" />
+    <meta name="twitter:keywords" content="@Model.PageKeywords" />
+    <meta name="twitter:site" content="@Model.PageTitle" />
+    <meta name="twitter:url" content="https://www.1111.com.tw/campusr/school/@(Model.Id)" />
+    <link rel="canonical" href="https://www.1111.com.tw/campusr/school/@(Model.Id)" />
+    <link rel="icon" href="https://www.1111.com.tw/favicon.ico">
+    <!--SEO META區結束-->
+    <script type='application/ld+json'>
+		@Html.Raw(JsonConvert.SerializeObject(webSite))
+    </script>
+    <script type='application/ld+json'>
+		@Html.Raw(JsonConvert.SerializeObject(jsonLdEvent))
+    </script>
+    <script type="application/ld+json">
+        @Html.Raw(JsonConvert.SerializeObject(breadcrumbList))
+    </script>
+}
+
+@section MenuList
+{
+    @Html.Partial("MenuListPartial", Model.MenuList)
+}
+
+@section FooterList
+{
+    @Html.Partial("FooterListPartial", Model.FooterList)
+}
+
+@if (is57Special)
+{
+    <style>
+        .compy_sort {
+            display: none !important;
+        }
+
+        p.des-text {
+            display: none !important;
+        }
+    </style>
+}
+
+@* 自定義 CSS *@
+@if (!string.IsNullOrWhiteSpace(Model.Css))
+{
+    <style>
+        @Model.Css
+    </style>
+}
+
+<div class="company">
+    <!--內頁BANNER-->
+    <div class="top_bn" style="background: url(@Model.BannerImageUrl) no-repeat center;">
+        <div class="top_bn_title">
+            <h1>
+                @(Model.HtmlH1)<span>@(Model.HtmlH2)</span>
+            </h1>
+        </div>
+    </div>
+    <!--校徵場次搜尋Search-->
+    <div class="earlybird_school">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index", "CampusR")">校徵專區</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("List", "CampusR")">@GlobalVariables.currentYear 校徵列表</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@(Model.ChName)校園徵才活動</li>
+                        </ol>
+                    </nav>
+                </div>
+
+                @* 實體校徵區塊 *@
+                @if (Model.IsShowSchoolSignBlock)
+                {
+                    <div class="school">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3 school_date">
+                                    <div class="time">
+                                        <span class="month">@(Model.Month)</span>
+                                        <span class="day">@(Model.Day)</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 school_location">
+                                    <h2>
+                                        @Model.ActivityName
+                                        <a href="@Model.MapUrl" target="_blank" rel="noreferrer noopener">
+                                            <!--daddr=後面分別為X軸與Y軸-->
+                                            <button type="button" class="btn btn-primary">
+                                                導航<i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                    </h2>
+                                    @if (!string.IsNullOrWhiteSpace(Model.BoothNumber))
+                                    {
+                                        <span class="map">攤位：@(Model.BoothNumber)</span>
+                                    }
+                                    <span class="time">@(Model.StartTime)-@(Model.EndTime)</span>
+                                </div>
+                                <div class="col-md-3 school_btn">
+                                    <a href="#schoolJob">
+                                        <button type="button" class="btn btn-primary">
+                                            看參展廠商<i class="fa fa-bullhorn" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--早鳥活動拿好禮Early bird -->
+    @if (Model.IsEarlybird)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-12 earlybird">
+                    <h2 class="highlight">
+                        <span style="color: #ed5950;">早鳥</span>活動
+                    </h2>
+                    <div class="row earlybird_content">
+                        <div class="col-12 col-sm-6">
+                            <!--HTML編輯器區塊 2-->
+                            <div class="textstyle_reduction">
+                                @Html.Raw(Model.Html2)
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="earlybird_right">
+                                <p>
+                                    登入1111人力銀行會員，<br>
+                                    完成<b>手機與電子信箱雙認證，</b><br>
+                                    即可獲得3項好禮！
+                                </p>
+                                <div id="divStatus">
+                                    @switch (Model.UserStatus)
+                                    {
+                                        case 0:
+                                            <!--尚未登入-->
+                                            <div class="m-auto attest">
+                                                <!--h2>趕快登入完成早鳥活動</h2-->
+                                                <a href="/campusr/earlybirdevent" class="btn" target="_blank">
+                                                    活動辦法<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="https://www.1111.com.tw/Login/Index?ReturnUrl=@(Request.Url)?agent=campusr" class="btn">
+                                                    登入會員<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            break;
+                                        case 1:
+                                            <!--登入狀態未完成雙認證-->
+                                            <div class="m-auto attest">
+                                                <!--h2>你的雙認證還沒完成！</h2>
+                                                <p>快來點選按鈕完成你的雙認證</p-->
+                                                <a href="javascript:void(0)" class="btn" data-toggle="modal" data-target="#certification">
+                                                    未完成雙認證<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            break;
+                                        case 2:
+                                            <!--登入狀態未完成信箱認證-->
+                                            <div class="m-auto attest">
+                                                <!--h2>你的E-MAIL認證還沒完成！</h2>
+                                                <p>快來點選按鈕完成你的E-MAIL認證</p-->
+                                                <a href="javascript:void(0)" class="btn" data-toggle="modal" data-target="#certification">
+                                                    未完成信箱認證<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            break;
+                                        case 3:
+                                            <!--登入狀態未完成手機認證-->
+                                            <div class="m-auto attest">
+                                                <!--h2>你的手機認證還沒完成！</h2>
+                                                <p>快來點選按鈕完成你的手機認證</p-->
+                                                <a href="javascript:void(0)" class="btn" data-toggle="modal" data-target="#certification">
+                                                    未完成手機認證<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            break;
+                                        case 4:
+                                            <!--已完成雙認證-->
+                                            <div class="m-auto attest">
+                                                <!--h2>恭喜你有完成雙認證</h2>
+                                                <p>請點選下方按鈕登記早鳥活動<br>並於@(Model.Month)@(Model.Day)日當天到現場找到1111攤位(@(Model.BoothNumber))<br>告知會員姓名即可拿到早鳥好禮！</p-->
+                                                <a href="javascript:void(0)" class="btn" id="lnkLottery" data-toggle="modal">
+                                                    登記早鳥<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            break;
+                                        case 5:
+                                            <!--已登記過-->
+                                            <div class="m-auto attest">
+                                                <h2>你已登記過本場次早鳥活動</h2>
+                                                <p>
+                                                    請於@(Model.Month)@(Model.Day)日當天到現場時找到1111攤位(@(Model.BoothNumber))<br>
+                                                    告知會員姓名即可拿到早鳥好禮！
+                                                </p>
+                                            </div>
+                                            break;
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!--HTML編輯器區塊 1-->
+    <div class="container">
+        <div class="row">
+            <div class="textstyle_reduction">
+                @Html.Raw(Model.Html1)
+            </div>
+        </div>
+    </div>
+
+    <!--專題報導-->
+    <!--<div class="common" id="divSpecialReport">
+    </div>-->
+    <!--共用HTML-->
+    <div class="container">
+        <div class="row">
+            <div class="textstyle_reduction">
+                @Html.Raw(Model.CommonHtml)
+            </div>
+        </div>
+    </div>
+
+    <!--推薦企業Enterprise -->
+    <div class="enterprise">
+        <div class="container">
+            <div class="row col-12  text-center m-auto">
+                <div class="col-12 mb-2">
+
+                    <h2 class="highlight">
+                        <span>特選</span>企業
+                    </h2>
+                </div>
+                <div id="owl-demo-firm" class="owl-carousel">
+                    @Html.Partial("EnterprisePartial", Model.EnterpriseViewData)
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @* 校徵廠商列表 *@
+    @if (Model.IsShowVendorBlock)
+    {
+        <div class="school_job" id="schoolJob">
+            <div class="container">
+                <div class="row col-12  text-center m-auto">
+                    <div class="col-12 mb-2">
+                        <h2 class="highlight">
+                            <img src="~/Content/images/apply_title.png" alt="">
+                            <span>校園徵才</span>搶先應徵
+                        </h2>
+                    </div>
+                </div>
+
+                <!--職缺搜尋Search-->
+                <div class="schooljob_search">
+                    <div class="container">
+                        <div class="row my-2 hunt">
+                            <input class="form-control" type="text" id="txtVendor"
+                                   placeholder="輸入公司名稱" value="@ViewBag.SearchText">
+                            <button type="button" class="btn" id="btnSearchVendor">
+                                <span>搜尋</span><i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--職缺列表-->
+            <div class="bg03">
+                <div class="container serach_model">
+                    @* 紀錄搜尋條件(參展、推薦或顯示全部) *@
+                    <input type="hidden" id="hidVendorCategory" value="0" />
+                    <ul class="row col-12 col-md-8 offset-md-2 compy_sort">
+                        <li class="col-4 p-1 mb-3 mb-sm-3 text-center">
+                            <div class="compy_btn pointer" id="btnExhibitor">參展企業</div>
+                        </li>
+                        <li class="col-4 p-1 mb-3 mb-sm-3 text-center">
+                            <div class="compy_btn pointer" id="btnRecommended">推薦企業</div>
+                        </li>
+                        <li class="col-4 p-1 mb-3 mb-sm-3 text-center">
+                            <div class="compy_btn pointer active" id="btnShowAll">顯示全部</div>
+                        </li>
+                    </ul>
+                    <p class="des-text">
+                        <span class="icon_01">參展</span>表示：有參加該場次校園徵才之企業
+                        <span class="icon_02">推薦</span>表示：1111推薦之優質徵才企業
+                    </p>
+                    <div id="divCampusVendors">
+                        @Html.Partial("SchoolCampusVendorPartial", Model.CampusVendorListData)
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<!-- 彈跳視窗 -->
+<div class="modal fade" id="certification" tabindex="-1" role="dialog" aria-labelledby="certificationTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @* 判斷有登入且未雙認證完成才顯示，不然會被強制導頁 *@
+                @if (Model.UserStatus == 1 || Model.UserStatus == 2 || Model.UserStatus == 3)
+                {
+                    <iframe src="https://m.1111.com.tw/member-mobile-confirmed.asp"
+                            width="470" height="500" scrolling="yes"></iframe>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lottery" tabindex="-1" role="dialog" aria-labelledby="lotteryTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                恭喜你完成本場次早鳥活動登記<br>
+                請於@(Model.Month)@(Model.Day)日當天到現場時找到1111攤位(@(Model.BoothNumber))<br>
+                告知會員姓名即可拿到早鳥好禮！
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--彈跳結束-->
+
+<input type="hidden" id="sId" value="@Model.Id" />
+
+@section scripts
+{
+    <script>
+        function changePage(page) {
+            //$('html, body').animate({ scrollTop: $('#chgpage' + page).offset().top }, 800);
+            getCampusVendors(page, false);
+        };
+
+        @* 選擇頁數 *@
+        function selChange() {
+            //location.href = '#';
+            //$('#divCampusVendors').html('');
+            var toPage = $('#selPage').val();
+            getCampusVendors(toPage, false);
+        }
+
+        @* 取得校徵廠商資料並放到網頁上 *@
+        function getCampusVendors(toPage, append) {
+            var id = $('#sId').val();
+            var searchText = $('#txtVendor').val();
+            var type = $('#hidVendorCategory').val();
+            $.ajax({
+                url: '@Url.Action("GetCampusVendorsAjax")',
+                type: "post",
+                data: {
+                    id: id,
+                    searchText: searchText,
+                    type: type,
+                    toPage: toPage
+                },
+                dataType: "html",
+                success: function(data) {
+                    if (data !== null && data !== '') {
+                        if (append) {
+                            $('#divCampusVendors').append(data);
+                            $('#selPage').bind('change', selChange);
+                        } else {
+                            $('#divCampusVendors').html(data);
+                            $('#selPage').bind('change', selChange);
+                        }
+                        document.getElementById('schoolJob').scrollIntoView();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr);
+                }
+            });
+        }
+
+        //$(window).on("scroll", function () {
+        //    if (($(window).scrollTop() || document.documentElement.scrollTop) + $(window).height() > $(document).height() - 600) {
+        //        if ($('[id^=hidMore]').length > 0) {
+        //            var morePage = parseInt($('#hidMore').val());
+        //            $('#hidMore').remove();
+        //            getCampusVendors(morePage, true);
+        //        }
+        //    }
+        //});
+
+        @* 搜尋文字框按 enter 鍵觸發搜尋按紐 *@
+        $('#txtVendor').keypress(function(e) {
+            var code = e.keyCode ? e.keyCode : e.which;
+            console.log(code);
+            if (code === 13) {
+                $('#btnSearchVendor').click();
+            }
+        });
+
+        @* 搜尋按鈕 *@
+        $('#btnSearchVendor').click(function() {
+            getCampusVendors(1, false);
+        });
+
+        @* 選擇頁數 *@
+        $('#selPage').change(function() {
+            selChange();
+        });
+
+        @* 參展企業按鈕 *@
+        $('#btnExhibitor').click(function() {
+            $('.pointer').removeClass('active');
+            $(this).addClass('active');
+            $('#hidVendorCategory').val('1');
+            getCampusVendors(1, false);
+        });
+
+        @* 推薦企業按鈕 *@
+        $('#btnRecommended').click(function() {
+            $('.pointer').removeClass('active');
+            $(this).addClass('active');
+            $('#hidVendorCategory').val('2');
+            getCampusVendors(1, false);
+        });
+
+        @* 顯示全部按鈕 *@
+        $('#btnShowAll').click(function() {
+            $('.pointer').removeClass('active');
+            $(this).addClass('active');
+            $('#hidVendorCategory').val('0');
+            getCampusVendors(1, false);
+        });
+
+        @* 登記早鳥活動 *@
+        $('#lnkLottery').click(function () {
+            var id = $('#sId').val();
+            $.ajax({
+                url: '@Url.Action("SignUpEarlybirdAjax")',
+                type: "post",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function(data) {
+                    if (data !== null && data !== '') {
+                        if (data.isOk) {
+                            $('#lottery').modal('show');
+                            $('#divStatus').html('<div class="m-auto attest"><h2>你已登記過本場次早鳥活動</h2><p>請於@(Model.Month)@(Model.Day)日當天到現場時找到1111攤位(@(Model.BoothNumber))<br>告知會員姓名即可拿到早鳥好禮！</p></div>');
+                        } else {
+                            alert(data.errMsg);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr);
+                }
+            });
+        });
+
+        @* 認證跳窗關閉時觸發 *@
+        $('#certification').on('hidden.bs.modal',
+            function () {
+                location.reload();
+            });
+
+        (function() {
+            var hrefArr = window.location.href.split('/');
+            var qArr = hrefArr[hrefArr.length - 1].split('?');
+            if (qArr.length > 1 && qArr[0] === '57' && qArr[1] === 'agent=campusr_NTHU') {
+                $('.pointer').removeClass('active');
+                $('#btnExhibitor').addClass('active');
+                $('#hidVendorCategory').val('1');
+                getCampusVendors(1, false);
+            }
+        })();
+
+        (function() {
+            $.ajax({
+                url: '@Url.Action("GetSpecialReportAjax")',
+                type: "post",
+                data: {},
+                dataType: "html",
+                success: function(data) {
+                    if (data !== null && data !== '') {
+                        $('#divSpecialReport').html(data);
+                        $("#owl-demo-news").owlCarousel({
+
+                            autoPlay: 5000, //Set AutoPlay to 3 seconds
+
+                            items : 3,
+                            itemsDesktop : [1199,3],
+                            itemsDesktopSmall : [979,2],
+                            itemsTablet: [768,2],
+                            itemsMobile : [480,1]
+
+                        });
+                        $("#owl-demo-news2").owlCarousel({
+
+                            autoPlay: 5000, //Set AutoPlay to 3 seconds
+
+                            items : 3,
+                            itemsDesktop : [1199,3],
+                            itemsDesktopSmall : [979,2],
+                            itemsTablet: [768,2],
+                            itemsMobile : [480,1]
+
+                        });
+
+                        $("#owl-demo-news3").owlCarousel({
+
+                            autoPlay: 5000, //Set AutoPlay to 3 seconds
+
+                            items : 3,
+                            itemsDesktop : [1199,3],
+                            itemsDesktopSmall : [979,2],
+                            itemsTablet: [768,2],
+                            itemsMobile : [480,1]
+
+                        });
+
+                        $("#owl-demo-news4").owlCarousel({
+
+                            autoPlay: 5000, //Set AutoPlay to 3 seconds
+
+                            items : 3,
+                            itemsDesktop : [1199,3],
+                            itemsDesktopSmall : [979,2],
+                            itemsTablet: [768,2],
+                            itemsMobile : [480,1]
+
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr);
+                }
+            });
+        })();
+
+        (function() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        })();
+
+        @* 為推薦廠商加上 agent *@
+        (function() {
+            var agent = getCookie('agent');
+            if (agent === '' || agent === null)
+                agent = 'campusr';
+
+            var url = '';
+            var urls = $('.enterpriseUrl');
+            for (var i = 0; i < urls.length; i++) {
+                url = urls.eq(i).attr('href');
+                urls.eq(i).attr('href', url + '?agent=' + agent);
+            }
+
+            urls = $('.enterpriseUrlPosition');
+            for (var j = 0; j < urls.length; j++) {
+                url = urls.eq(j).attr('href');
+                urls.eq(j).attr('href', url + '?agent=' + agent + '#recruitment-company-point');
+            }
+
+            var qs = window.location.search;
+            if (qs !== '') {
+                document.getElementById('schoolJob').scrollIntoView();
+            }
+        })();
+
+        $(function() {
+            $("#owl-demo-firm").owlCarousel({
+
+                autoPlay: 5000, //Set AutoPlay to 3 seconds
+
+                items : 4,
+                itemsDesktop : [1199,4],
+                itemsDesktopSmall : [979,4],
+                itemsTablet: [768,2],
+                itemsMobile : [480,2]
+
+            });
+
+            $("#owl-earlybird").owlCarousel({
+
+                autoPlay: 5000, //Set AutoPlay to 3 seconds
+
+                items: 3,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 2],
+                itemsTablet: [768, 2],
+                itemsMobile: [480, 1]
+
+            });
+
+        });
+
+    </script>
+}

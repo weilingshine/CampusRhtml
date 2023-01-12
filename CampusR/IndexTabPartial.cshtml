@@ -1,0 +1,46 @@
+﻿@model CampusR.Models.ViewModels.CampusListViewModel
+
+@* 北區 *@
+<div class="tab-pane fade show active" id="north_tab" role="tabpanel" aria-labelledby="north-tab">
+    <ul class="session_list">
+        @Html.Partial("IndexTabLiPartial", Model.NorthList)
+    </ul>
+    <div class="list_more">
+        <a href="@Url.Action("List", "CampusR", new { area = "1" })">
+            查看更多場次<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+@* 中區 *@
+<div class="tab-pane fade" id="central_tab" role="tabpanel" aria-labelledby="central-tab">
+    <ul class="session_list">
+        @Html.Partial("IndexTabLiPartial", Model.CentralList)
+    </ul>
+    <div class="list_more">
+        <a href="@Url.Action("List", "CampusR", new { area = "2" })">
+            查看更多場次<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+@* 南區 *@
+<div class="tab-pane fade" id="south_tab" role="tabpanel" aria-labelledby="south-tab">
+    <ul class="session_list">
+        @Html.Partial("IndexTabLiPartial", Model.SouthList)
+    </ul>
+    <div class="list_more">
+        <a href="@Url.Action("List", "CampusR", new { area = "3" })">
+            查看更多場次<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+@* 東區/離島 *@
+<div class="tab-pane fade" id="other_tab" role="tabpanel" aria-labelledby="other-tab">
+    <ul class="session_list">
+        @Html.Partial("IndexTabLiPartial", Model.OtherList)
+    </ul>
+    <div class="list_more">
+        <a href="@Url.Action("List", "CampusR", new { area = "4" })">
+            查看更多場次<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>

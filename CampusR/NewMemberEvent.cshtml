@@ -1,0 +1,510 @@
+﻿@using CampusR.Models
+@model CampusR.Models.ViewModels.NewMemberEventViewModel
+
+@section heads
+{
+    <link href="~/Content/css/newmemberevent.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index,follow" />
+    <!--SEO META區開始-->
+    @if (Model.TKDInfoList.Any())
+    {
+        var item = @Model.TKDInfoList.FirstOrDefault();
+        <title>@item.Title</title>
+        <meta name="title" content=@item.Title />
+        <meta name="keywords" content=@item.Keywords />
+        <meta name="Description" content=@item.Description>
+        <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+        <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+        <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_TW" />
+        <meta property="og:site_name" content=@item.Title />
+        <meta property="og:title" content=@item.Title />
+        <meta property="og:url" content="https://www.1111.com.tw/campusr/" />
+        if (!string.IsNullOrEmpty(item.fbImgUrl))
+        {
+            <meta property="og:image" content=@item.fbImgUrl />
+        }
+        else
+        {
+            <meta property="og:image" content="https://www.1111.com.tw/campusr/content/images/newmember/fb_banner.jpg" />
+        }
+        <meta property="og:description" content=@item.Description />
+        <meta name="twitter:title" content=@item.Title />
+        <meta name="twitter:description" content=@item.Description />
+        <meta name="twitter:keywords" content=@item.Keywords />
+        <meta name="twitter:site" content=@item.Title />
+        <meta name="twitter:url" content="https://www.1111.com.tw/campusr/" />
+        <link rel="canonical" href="https://www.1111.com.tw/campusr/" />
+        <link rel="icon" href="https://www.1111.com.tw/favicon.ico">
+    }
+    <!--SEO META區結束-->
+    @*
+        <title>@(GlobalVariables.currentYear)大學校園徵才好友招募令－1111人力銀行</title>
+        <meta name="title" content="@(GlobalVariables.currentYear)大學校園徵才好友招募令－1111人力銀行" />
+        <meta name="keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才" />
+        <meta name="Description" content="@(GlobalVariables.currentYear)年1111校園徵才專區好友招募活動登場！透過1111校園徵才專區登入會員並完成雙認證，即可參加抽獎！">
+        <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+        <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+        <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_TW" />
+        <meta property="og:site_name" content="@(GlobalVariables.currentYear)大學校園徵才好友招募令－1111人力銀行" />
+        <meta property="og:title" content="@(GlobalVariables.currentYear)大學校園徵才好友招募令－1111人力銀行" />
+        <meta property="og:url" content="https://www.1111.com.tw/campusr/" />
+        <meta property="og:image" content="https://www.1111.com.tw/campusr/content/images/newmember/fb_banner.jpg" />
+        <meta property="og:description" content="@(GlobalVariables.currentYear)年1111校園徵才專區好友招募活動登場！透過1111校園徵才專區登入會員並完成雙認證，即可參加抽獎！" />
+        <meta name="twitter:title" content="@(GlobalVariables.currentYear)大學校園徵才好友招募令－1111人力銀行" />
+        <meta name="twitter:description" content="@(GlobalVariables.currentYear)年1111校園徵才專區好友招募活動登場！透過1111校園徵才專區登入會員並完成雙認證，即可參加抽獎！" />
+        <meta name="twitter:keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才" />
+        <meta name="twitter:site" content="@(GlobalVariables.currentYear)大學校園徵才好友招募令－1111人力銀行" />
+        <meta name="twitter:url" content="https://www.1111.com.tw/campusr/" />
+        <link rel="canonical" href="https://www.1111.com.tw/campusr/" />
+        <link rel="icon" href="https://www.1111.com.tw/favicon.ico">*@
+
+
+}
+
+@section MenuList
+{
+    @Html.Partial("MenuListPartial", Model.MenuList)
+}
+
+@section FooterList
+{
+    @Html.Partial("FooterListPartial", Model.FooterList)
+}
+<!--靜態模組banner 未使用先hidden-->
+@if (Model.TKDInfoList.Any())
+{
+    <img class="w-100 d-none d-md-block" src=@Model.TKDInfoList.FirstOrDefault().bannerImgP alt="bn" hidden>
+    <img class="w-100 d-md-none" src=@Model.TKDInfoList.FirstOrDefault().bannerImgM alt="bn" hidden>
+}
+<!--首頁BANNER-->
+<div class="top_bn">
+    <img src="~/Content/images/newmember/top_bn_slogan.svg" class="bn_slogan animated infinite bounceIn"
+         style="animation-duration: 3s;animation-iteration-count:1;">
+    <img src="~/Content/images/newmember/top_left.svg" class="bn_left animated infinite bounceInLeft"
+         style="animation-duration: 5s;animation-iteration-count:1;">
+    <img src="~/Content/images/newmember/top_right.svg" class="bn_right animated infinite bounceInRight"
+         style="animation-duration: 5s;animation-iteration-count:1;">
+</div>
+<a name="tojoin" id="tojoin"></a>
+<div class="content_bg3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-5">
+                <img src="~/Content/images/newmember/join_us.png">
+            </div>
+            <div class="col-12 col-md-12 col-lg-7">
+                <div id="mochi" class="mochi">
+                    <h3>成為職涯麻吉</h3>
+                    <p>
+                        透過聯合校徵專區，登入1111人力銀行會員，並完成會員雙認證(手機與電子信箱認證)，即可獲得乙次抽獎機會！
+
+                    </p>
+                    <!--註冊完會員後自動跳回活動頁面-->
+                    <div class="mochi_btn" id="divStatus">
+                        @switch (Model.UserStatus)
+                        {
+                            case 0:
+                                <!--未登入狀態-->
+                                <div id="member">
+                                    <a href="https://www.1111.com.tw/login/index?ReturnUrl=@(Request.Url)?agent=campusr_newmember" class="btn">
+                                        登入會員<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                break;
+                            case 1:
+                                <!--登入狀態未完成雙認證-->
+                                <div id="double">
+                                    <a href="javascript:void(0)"
+                                       class="btn" data-toggle="modal" data-target="#certification">
+                                        未完成雙認證<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                break;
+                            case 2:
+                                <!--登入狀態未完成信箱認證-->
+                                <div id="email">
+                                    <a href="javascript:void(0)" class="btn"
+                                       data-toggle="modal" data-target="#certification">
+                                        未完成信箱認證<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                break;
+                            case 3:
+                                <!--登入狀態未完成手機認證-->
+                                <div id="mobile">
+                                    <a href="javascript:void(0)" class="btn"
+                                       data-toggle="modal" data-target="#certification">
+                                        未完成手機認證<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                break;
+                            case 4:
+                                <!--登入狀態條件已完成符合資格-->
+                                <div id="prizecheck">
+                                    <a href="javascript:void(0)" class="btn" id="lnkLottery"
+                                       data-toggle="modal">
+                                        我要抽獎<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                break;
+                            case 5:
+                                <!--登入狀態條件已參加活動-->
+                                <div id="prizecheck">
+                                    <div class="btn over">已參加</div>
+                                </div>
+                                break;
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content_bg2 newmeberevent">
+    <div class="container">
+        <div class="give">
+            <h2><span>好康贈品</span></h2>
+            <div class="row">
+                <div id="owl-newmemberevent" class="owl-carousel">
+                    @foreach (var good in Model.GoodGiveaway)
+                    {
+                        <div class="item">
+                            <div class="col-12 mt-4">
+                                <div class="item">
+                                    <a href="@good.Url" target="_blank">
+                                        <img src="@good.ImageUrl">
+                                        @good.Title
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="top_4" class="content_bg4">
+    <div class="container">
+        <div class="hot_top4">
+            <h2><span>熱門TOP4職務</span></h2>
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-3 top1">
+                    <img src="~/Content/images/newmember/top1.png">
+                    <h3>最佳左右手</h3>
+                    <a href="https://www.1111.com.tw/search/job?d0=100300&agent=campusr" target="_blank">
+                        <div class="hottop_btn hvr-rectangle-out hvr-icon-wobble-horizontal">
+                            搶先應徵<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 top2">
+                    <img src="~/Content/images/newmember/top2.png">
+                    <h3>文書一把罩</h3>
+                    <a href="https://www.1111.com.tw/search/job?d0=100205%2C100105%2C100304&fs=1&page=1&agent=campusr"
+                       target="_blank">
+                        <div class="hottop_btn hvr-rectangle-out hvr-icon-wobble-horizontal">
+                            搶先應徵<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 top3">
+                    <img src="~/Content/images/newmember/top3.png">
+                    <h3>熱情服務業</h3>
+                    <a href="https://www.1111.com.tw/search/job?d0=120400&fs=1&page=1&agent=campusr" target="_blank">
+                        <div class="hottop_btn hvr-rectangle-out hvr-icon-wobble-horizontal">
+                            搶先應徵<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 top4">
+                    <img src="~/Content/images/newmember/top4.png">
+                    <h3>萬能工程師</h3>
+                    <a href="https://www.1111.com.tw/search/job?d0=140200%2C140300%2C140400%2C140100%2C150100%2C150200&fs=1&page=1&agent=campusr"
+                       target="_blank">
+                        <div class="hottop_btn hvr-rectangle-out hvr-icon-wobble-horizontal">
+                            搶先應徵<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content_bg5">
+    <div class="container">
+        <div id="toolbox" class="col-12 toolbox">
+            <h2><span>會員專屬工具箱</span></h2>
+            <div><img src="~/Content/images/newmember/box.png"></div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <a href="https://www.1111tc.com.tw/freshman/famous.php?page=1&agent=campusr_findmajor" target="_blank">
+                        <div class="btn hvr-icon-wobble-horizontal">
+                            科系找工作<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a href="https://www.1111tc.com.tw/freshman/birthcode_index.php?agent=campusr_birthcode" target="_blank">
+                        <div class="btn hvr-icon-wobble-horizontal">
+                            用生日找工作<i class="fa fa-arrow-circle-right hvr-icon" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--活動辦法-->
+<div class="content_bg6">
+    <div class="container">
+        <div class="row">
+            <div class="note">
+                <h3>活動說明</h3>
+                <ol>
+                    <li>活動時間：2021/4/1(四)~2021/5/31(一)</li>
+                    <li>抽獎資格：(1)必須為 1111 人力銀行的會員;(2)完成會員雙認證(手機、E-mail)</li>
+                    <li>
+                        抽獎時間：<br>● 4月好禮將於2021/5/3(一)統一抽出，名額如下：G2000經典商務套裝1名、G2000經典商務襯衫1名、【Ruijia露奇亞】四韻日記生活手札10名、義大遊樂世界入園券2張5名。
+                        <br>● 5月好禮將於2021/6/1(二)統一抽出，名額如下：G2000經典商務套裝1名、G2000經典商務襯衫1名、【Ruijia露奇亞】四韻日記生活手札10名、義大遊樂世界入園券2張5名、MyMusic 365天無限暢聽儲值序號卡1名。
+                    </li>
+                    <li>贈品寄送時間：贈品統一於2021/6/1(二)開始分批寄送，若沒收到獎項請於6/30(三)前來信反應<a href="mailto:mikoquq@staff.1111.com.tw">mikoquq@staff.1111.com.tw</a>，逾時將無法配合補寄贈品。</li>
+                    <li>全球華人股份有限公司員工不得參加本活動。</li>
+                    <li>
+                        依中華民國稅法規定，獎項金額若超過(含)新台幣1,000元，獎項所得將列入個人年度綜合所得稅申報，故得獎人需提供身份證影本且依規定填寫並繳交相關收據方可領獎。以上稅法規定若不願意配合，則視為自動棄權不具得獎資格。此外，中獎價值累計超過NT$1,001而未滿20歲之得獎者，視同父母或監護人中獎，由父母或監護人代為領獎，並請附上得獎者及其代領人關係證明影本。
+                    </li>
+                    <li>
+                        提供聯繫資訊(E-MAIL)不完整或錯誤導致無法通知中獎人，視同放棄得獎資格，獎項將不另行補發，個人資料務必請填寫正確，並完成手機、E-MAIL雙認證，會員雙認證同一手機、E-MAIL僅能認證一次，若經查證帳號供第三人使用者，或資料與本人不符者，則視同放棄得獎與領獎之權利。
+                    </li>
+                    <li>本活動獎項之樣式以實際贈送商品為準，得獎人不得要求兌換現金；若非贈送商品之瑕疵，得獎人不得要求辦理退貨。</li>
+                    <li>針對上述活動若有任何疑問，請洽07-9581111#7259 行銷部王小姐，活動辦法以網站公告為準，1111人力銀行保有修改、調整、終止與解釋活動辦法之權力。</li>
+                </ol>
+                <a name="winners" id="winners"></a>
+                <h3>得獎名單</h3>
+                <br>
+                <h4>一、4月好禮得獎名單</h4>
+                <br>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">獎項</th>
+                            <th scope="col" colspan="3">G2000經典商務套裝，1名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">履編/得獎者</th>
+                            <td>51213992 高O瑄</td>
+                            <td>&emsp;</td>
+                            <td>&emsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">獎項</th>
+                            <th scope="col" colspan="3">G2000經典商務襯衫，1名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">履編/得獎者</th>
+                            <td>51451146 林O羽</td>
+                            <td>&emsp;</td>
+                            <td>&emsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">獎項</th>
+                            <th scope="col" colspan="3">義大遊樂世界入園券2張，5名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" rowspan="2">履編/得獎者</th>
+                            <td>50457549 簡O蓮</td>
+                            <td>32553543 張O進</td>
+                            <td>46519180 郭O汝</td>
+                        </tr>
+                        <tr>
+                            <td>52109741 張O瑄</td>
+                            <td>52399830 張O</td>
+                            <td>&emsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">獎項</th>
+                            <th scope="col" colspan="3">Ruijia露奇亞四韻日記生活手札，10名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" rowspan="4">履編/得獎者</th>
+                            <td>53168998 張O恩</td>
+                            <td>45577875 侯O蓁</td>
+                            <td>27356326 福O翔</td>
+                        </tr>
+                        <tr>
+                            <td>51480014 戴O芸</td>
+                            <td>52126281 劉O琳</td>
+                            <td>47981653 謝O錡</td>
+                        </tr>
+                        <tr>
+                            <td>53708910 蔡O儒</td>
+                            <td>51049653 曾O凱</td>
+                            <td>51788946 黃O倫</td>
+                        </tr>
+                        <tr>
+                            <td>51334426 胡O蓉</td>
+                            <td>&emsp;</td>
+                            <td>&emsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h4>二、五月好禮將於2021/6/1(二)抽出，敬請期待</h4>
+                <br>
+
+
+            </div>
+            <div class="sponsor">
+                <h3>贊助廠商</h3>
+                <div class="row m-0">
+                    <div class="col-6 col-md-6 col-lg-3"><a href="https://www.1111.com.tw/157121/" target=_blank title="G2000"><img src="~/Content/images/newmember/logo_01.png" alt="G2000"></a></div>
+                    <div class="col-6 col-md-6 col-lg-3"><a href="https://www.ruijiabeauty.com/product/seasonforcollagen/" target=_blank title="Ruijia露奇亞"><img src="~/Content/images/newmember/logo_02.png" alt="Ruijia露奇亞"></a></div>
+                    <div class="col-6 col-md-6 col-lg-3"><a href="http://www.edathemepark.com.tw/Website/index.aspx" target=_blank title="義大遊樂世界"><img src="~/Content/images/newmember/logo_03.png" alt="義大遊樂世界"></a></div>
+                    <div class="col-6 col-md-6 col-lg-3"><a href="https://www.mymusic.net.tw/payment/index" target=_blank title="MyMusic"><img src="~/Content/images/newmember/logo_04.png" alt="MyMusic"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="share_new">
+
+    <div class="bottom_link">
+        <a href="/campusr/freshmanwarmup"><div class="career_btn">新鮮人必看</div></a>
+        <a href="/campusr/list"><div class="session_btn">線上場次</div></a>
+      @*<a href="/campusr/newmemberevent"><div class="G2000_btn">抽G2000</div></a>*@
+        <a href="https://event.1111.com.tw/event22/22campus/index.asp"><div class="G2000_btn">新鮮人就博會</div></a>
+    </div>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.1111.com.tw%2Fcampusr%2Fnewmemberevent&amp;src=sdkpreparse"
+       class="fb-xfbml-parse-ignore" rel="noreferrer noopener">
+        <div class="share_fb">
+            <img src="~/Content/images/facebook.png" alt="">
+        </div>
+    </a>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v10.0"
+            nonce="QlrU7AGN"></script>
+    <a href="https://social-plugins.line.me/lineit/share?url=https://www.1111.com.tw/campusr/newmemberevent" target="_blank" rel="noreferrer noopener">
+        <div class="share_line">
+            <img src="~/Content/images/line.png">
+        </div>
+    </a>
+
+</div>
+
+
+<!-- 彈跳視窗 -->
+<div class="modal fade" id="certification" tabindex="-1" role="dialog" aria-labelledby="certificationTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @* 判斷有登入且未雙認證完成才顯示，不然會被強制導頁 *@
+                @if (Model.UserStatus == 1 || Model.UserStatus == 2 || Model.UserStatus == 3)
+                {
+                    <iframe src="https://m.1111.com.tw/member-mobile-confirmed.asp" width="470" height="500" scrolling="yes"></iframe>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lottery" tabindex="-1" role="dialog" aria-labelledby="lotteryTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                你已參加活動抽獎，獎項將於5/3(一)、6/1(二)抽出，敬請期待！
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--彈跳結束-->
+
+@section scripts
+{
+    <script>
+        (function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        })();
+
+        @* 參加我要抽獎活動 *@
+        $('#lnkLottery').click(function() {
+            $.ajax({
+                url: '@Url.Action("SignUpActivityAjax")',
+                type: "post",
+                data: {},
+                dataType: "json",
+                success: function(data) {
+                    if (data !== null && data !== '') {
+                        if (data.isOk) {
+                            $('#lottery').modal('show');
+                            $('#divStatus').html('<div id="prizecheck"><div class="btn over">已參加</div></div>');
+                        } else {
+                            alert(data.errMsg);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr);
+                }
+            });
+        });
+
+        @* 你已參加活動跳窗關閉時觸發 *@
+        $('#certification').on('hidden.bs.modal',
+            function() {
+                location.reload();
+            });
+    </script>
+}

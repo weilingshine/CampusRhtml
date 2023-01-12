@@ -1,0 +1,27 @@
+﻿@model CampusR.Models.ViewModels.HtmlViewModel
+
+<!--HTML編輯器-->
+<div class="container">
+    <div class="row">
+        <div class="textstyle_reduction">
+            @Html.Raw(Model.HtmlText)
+        </div>
+        @if (!string.IsNullOrWhiteSpace(Model.CssText))
+        {
+            <style>
+                @Model.CssText
+            </style>
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    @if (!string.IsNullOrWhiteSpace(Model.JsText))
+    {
+        <script>
+            @Model.JsText
+        </script>
+    }
+}
+

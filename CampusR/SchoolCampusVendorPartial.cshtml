@@ -1,0 +1,142 @@
+﻿@model CampusR.Models.ViewModels.CampusVendorListViewModel
+
+<div class="row">
+
+    @* 上一頁或下一頁定位的錨點 *@
+    @*<a href="javacript:;" id="chgpage@(Model.PagingData.CurrentPage)"></a>*@
+
+    @if (Model.CampusVendors != null && Model.CampusVendors.Count > 0)
+    {
+        int count = 0;
+
+        foreach (var vendor in Model.CampusVendors)
+        {
+            count++;
+
+            <div class="col-lg-6">
+                <div class="compy_list index">
+                    <div class="box1">
+                        <a href="@vendor.Url" @if(vendor.VendorCategory != "2") {@Html.Raw("target=\"_blank\"")} 
+                           class="imgbox enterpriseUrl" title="@vendor.Name" rel="noreferrer noopener">
+                            <img src="@vendor.LogoUrl" alt="@vendor.Name">
+                        </a>
+                        <div class="namebox">
+                            <div class="title">
+                                <a href="@vendor.Url" @if(vendor.VendorCategory != "2") {@Html.Raw("target=\"_blank\"")} 
+                                   title="@vendor.Name" rel="noreferrer noopener" class="enterpriseUrl">
+                                    <h4>
+                                        @if (vendor.VendorCategory == "1" || vendor.VendorCategory == "2")
+                                        {
+                                            <span class="icon_01">參展</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="icon_02">推薦</span>
+                                        }
+                                        @vendor.Name
+                                    </h4>
+                                    <p>@(vendor.Area) | @(vendor.Category)</p>
+                                </a>
+                            </div>
+                            <div class="spbox">
+                                @foreach (var feature in vendor.Features)
+                                {
+                                    <span title="@feature">@feature</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box2">
+                        @foreach (var job in vendor.Jobs)
+                        {
+                            <span>
+                                <a href="@job.Url" @if(vendor.VendorCategory != "2") {@Html.Raw("target=\"_blank\"")} 
+                                   title="@job.Name" rel="noreferrer noopener" class="enterpriseUrl">
+                                    @job.Name
+                                </a>
+                            </span>
+                        }
+                        @if (vendor.VendorCategory == "1" || vendor.VendorCategory == "3")
+                        {
+                            <span class="more">
+                                <a href="@vendor.Url" target="_blank" 
+                                   rel="noreferrer noopener" class="enterpriseUrlPosition">
+                                    看更多<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            @* C 版廣告 (插在第六筆後面) *@
+            if (count == 6 || (Model.CampusVendors.Count < 6 && count == Model.CampusVendors.Count))
+            {
+                <div class="style02 list-ad">
+                    <a href="@Model.CAdvertisingData.Url" title="@Model.CAdvertisingData.Title" 
+                       target="_blank" rel="noreferrer noopener">
+                        <img src="@Model.CAdvertisingData.ImagePcUrl"
+                             class="d-none d-sm-block m-auto img-fluid"
+                             alt="@Model.CAdvertisingData.Title">
+                        <img src="@Model.CAdvertisingData.ImageMobileUrl"
+                             class="d-block d-sm-none m-auto img-fluid"
+                             alt="@Model.CAdvertisingData.Title">
+                    </a>
+                </div>
+            }
+        }
+
+        @* 分頁 *@
+        if (Model.PagingData.TotalPageCount > 1)
+        {
+            <nav aria-label="Page navigation example" class="col-12 m-auto">
+                <ul class="pagination">
+                    @if (Model.PagingData.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:;"
+                               onclick="changePage(@(Model.PagingData.CurrentPage - 1));"
+                               aria-label="Previous">
+                                <span aria-hidden="true">&laquo; 上一頁</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    }
+
+                    <li class="page-item">
+                        <select class="custom-select" id="selPage">
+                            @for (int i = 1; i <= Model.PagingData.TotalPageCount; i++)
+                            {
+                                if (i == Model.PagingData.CurrentPage)
+                                {
+                                    <option selected value="@(i)">第@(i)/@(Model.PagingData.TotalPageCount)頁</option>
+                                }
+                                else
+                                {
+                                    <option value="@(i)">第@(i)/@(Model.PagingData.TotalPageCount)頁</option>
+                                }
+                            }
+                        </select>
+                    </li>
+                    @if (Model.PagingData.CurrentPage < Model.PagingData.TotalPageCount)
+                    {
+                        <input type="hidden" id="hidMore" value="@(Model.PagingData.CurrentPage + 1)" />
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:;"
+                               onclick="changePage(@(Model.PagingData.CurrentPage + 1));"
+                               aria-label="Next">
+                                <span aria-hidden="true">下一頁&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        }
+    }
+    else
+    {
+        <img src="@Url.Content("~/Content/images/NoAnnounced.jpg")" class="mx-auto"/>
+    }
+
+</div>

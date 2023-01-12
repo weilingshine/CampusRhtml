@@ -1,0 +1,12 @@
+﻿@model IEnumerable<CampusR.Models.ViewModels.AdvertisingViewModel>
+
+@foreach (var advertising in Model)
+{
+    <div class="item">
+        <a href="@Url.Content(advertising.Url)" class="nav-link" ad_id="0" 
+           title="@advertising.Title" target="_blank" rel="noreferrer noopener">
+            <img src="@advertising.ImageUrl"
+                 alt="@advertising.Title" class="img-responsive">
+        </a>
+    </div>
+}

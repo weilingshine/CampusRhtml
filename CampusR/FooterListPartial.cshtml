@@ -1,0 +1,12 @@
+﻿@model IEnumerable<CampusR.Models.ViewModels.MenuFooterViewModel>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@item.Url" target="_blank" rel="noreferrer noopener">
+                @item.Name
+            </a>
+        </li>
+    }
+</ul>

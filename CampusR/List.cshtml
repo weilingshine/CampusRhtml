@@ -1,0 +1,425 @@
+﻿@using System.Web.UI.WebControls
+@using CampusR.Models.JsonLd
+@using CampusR.Models
+@using Newtonsoft.Json
+@model CampusR.Models.ViewModels.ListViewModel
+
+@{
+    string url = Request.QueryString["area"] == null
+        ? "https://www.1111.com.tw/campusr/list"
+        : $"https://www.1111.com.tw/campusr/list?area={Request.QueryString["area"].ToString()}";
+
+    // Json+LD WebSite 部分
+    WebSite webSite = new WebSite()
+    {
+        Name = $"{Model.PageTitle}",
+        Keywords = Model.PageKeywords.Split(',')?.ToList(),
+        Description = Model.PageDescription,
+        AlternateName = $"{Model.PageTitle}",
+        Url = url
+    };
+
+    // Json+LD BreadcrumbList 部分
+    BreadcrumbList breadcrumbList = new BreadcrumbList();
+    breadcrumbList.ItemListElement.Add(new BreadcrumItemlistElement()
+    {
+        Position = 1,
+        Name = "校徵專區",
+        Item = "https://www.1111.com.tw/campusr/"
+    });
+    breadcrumbList.ItemListElement.Add(new BreadcrumItemlistElement()
+    {
+        Position = 2,
+        Name = $"{GlobalVariables.currentYear}校徵列表"
+    });
+
+    // Json+LD Event 部分
+    List<Event> listEvent = new List<Event>();
+    foreach (var item in Model.LatestThreeCampusList)
+    {
+        listEvent.Add(new Event()
+        {
+            StartDate = $"{item.SchoolSignDate}T{item.StartTime}",
+            EndDate = $"{item.SchoolSignDate}T{item.EndTime}",
+            EventAttendanceMode = "https://schema.org/OfflineEventAttendanceMode",
+            EventStatus = "https://schema.org/EventScheduled",
+            Name = item.ActivityName,
+            Location = new EventLocation()
+            {
+                Name = item.Area,
+                Address = new EventLocationAddress()
+                {
+                    PostalCode = ""
+                }
+            },
+            Performer = new EventPerformer()
+            {
+                Url = "https://www.1111.com.tw/campusr",
+                Name = "1111人力銀行"
+            },
+            Image = new List<string>() { Model.FbImageUrl },
+            Description = item.ActivityName,
+            Url = $"https://www.1111.com.tw/campusr/school/{item.Id}",
+            Offers = new EventOffers()
+            {
+                Url = $"https://www.1111.com.tw/campusr/school/{item.Id}",
+                PriceCurrency = "TWD",
+                Description = "免費",
+                Price = "0",
+                Availability = "http://schema.org/InStock",
+                ValidFrom = item.SchoolSignDate
+            },
+            Organizer = new EventOrganizer()
+            {
+                Name = item.Name,
+                Url = "https://www.1111.com.tw/campusr"
+            }
+        });
+    }
+}
+
+@section heads
+{
+    <!--SEO META區開始-->
+    <title>@Model.PageTitle</title>
+    <meta name="title" content="@Model.PageTitle" />
+    <meta name="keywords" content="@Model.PageKeywords" />
+    <meta name="Description" content="@Model.PageDescription">
+    <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+    <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+    <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="@Model.PageTitle" />
+    <meta property="og:title" content="@Model.PageTitle" />
+    <meta property="og:url" content="@url" />
+    <meta property="og:image" content="@Model.FbImageUrl" />
+    <meta property="og:description" content="@Model.PageDescription" />
+    <meta name="twitter:title" content="@Model.PageTitle" />
+    <meta name="twitter:description" content="@Model.PageDescription" />
+    <meta name="twitter:keywords" content="@Model.PageKeywords" />
+    <meta name="twitter:site" content="@Model.PageTitle" />
+    <meta name="twitter:url" content="@url" />
+    <link rel="canonical" href="@url" />
+    <link rel="icon" href="https://www.1111.com.tw/favicon.ico">
+    <!--SEO META區結束-->
+    <script type='application/ld+json'>
+		@Html.Raw(JsonConvert.SerializeObject(webSite))
+    </script>
+    <script type='application/ld+json'>
+		@Html.Raw(JsonConvert.SerializeObject(listEvent))
+    </script>
+    <script type="application/ld+json">
+        @Html.Raw(JsonConvert.SerializeObject(breadcrumbList))
+    </script>
+}
+
+@section MenuList
+{
+    @Html.Partial("MenuListPartial", Model.MenuList)
+}
+
+@section FooterList
+{
+    @Html.Partial("FooterListPartial", Model.FooterList)
+}
+
+<!--列表BANNER-->
+<!--div class="list_bn">
+    <div id="main" class="container">
+        <img class="d-none d-md-block m-auto img-fluid" src="@Model.BannerImagePcUrl">
+        <img class="d-block d-md-none m-auto img-fluid" src="@Model.BannerImageMobileUrl">
+    </div>
+</div-->
+<!-- 版頭banner -->
+<div class="list_bn">
+    <div id="main" class="container">
+        <img class="d-none d-md-block m-auto img-fluid" src="~/Content/images/list/resume-list_bn.jpg">
+        <img class="d-block d-md-none m-auto img-fluid"
+             src="~/Content/images/list/resume-list_m_bn.jpg">
+    </div>
+</div>
+
+<!--校徵場次Activity-->
+<div class="school_list" id="schoolList">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action("Index", "CampusR")">校徵專區</a>
+                        </li>
+                        <li class="breadcrumb-item active"><a href="#">校徵場次列表</a></li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-12"><h1 class="list_h1">校園徵才場次列表</h1></div>
+            <div class="col-12 activity">
+
+                <div class="col-12 search_home">
+                    <div class="input-group">
+                        <div class="input-group-prepend search_title">
+                            活動場次搜尋
+                        </div>
+                        <select class="selectpicker" data-style="btn-info"
+                                data-max-options="5" data-live-search="true"
+                                id="selArea">
+                            <option value="">選擇全部地區</option>
+                            <option value="1">北部地區</option>
+                            <option value="2">中部地區</option>
+                            <option value="3">南部地區</option>
+                            <option value="4">東部/離島</option>
+                        </select>
+                        <div class="session-group">
+                            <input class="form-control search_title_form"
+                                   name="ks" id="ks" type="text" placeholder="輸入學校名稱查詢場次"
+                                   value="@ViewBag.SearchText">
+                            <div class="input-group-append">
+                                <button type="button" class="btn search_btn" id="btnSearch">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="session-group">
+                            <input class="form-control search_title_form"
+                                   name="ks" id="ksVendor" type="text" placeholder="輸入企業名稱查詢場次"
+                                   value="@ViewBag.SearchVendorText">
+                            <div class="input-group-append">
+                                <button type="button" class="btn search_btn" id="btnSearchVendor">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="remind_text"><span>小提醒：</span>學校名稱或企業名稱請擇一搜尋喔！<p>
+                        <img src="/campusR/Content/images/no-vendor.svg" class="yes-ven">
+                        <h2 id="showText"></h2>
+                    <p class="research"><a href="/campusr/list/">或點我重新搜尋</a></p>
+                </div>
+
+                <div class="newsession_st01 d-none d-md-block">
+                    <div class="container">
+                        <div class="row flbox">
+                            <div class="col-md-2 time_title" id="dateSort">
+                                校徵日期<i class="fa fa-caret-down" aria-hidden="true" id="dateI"></i>
+                                <!--當日期排序由小到大時(由近到遠)，顯示<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        當日期排序由大到小時，顯示<i class="fa fa-caret-up" aria-hidden="true"></i>-->
+                            </div>
+                            <div class="col-md-4 school_title">學校</div>
+                            <div class="col-md-1 map_title" id="areaSort">
+                                縣市<i class="fa fa-caret-down" aria-hidden="true" id="areaI"></i>
+                                <!--當縣市排序由小到大時(筆畫由少到多)，顯示<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        當縣市排序由大到小時，顯示<i class="fa fa-caret-up" aria-hidden="true"></i>-->
+                            </div>
+                            <div class="col-md-5 icon_title">活動訊息</div>
+                        </div>
+                    </div>
+                </div>
+
+                <select class="col-12 d-block d-md-none selectpicker" id="selSort"
+                        data-style="btn-info" data-max-options="3" data-live-search="true">
+                    <option value="">選擇排序方式</option>
+                    <!--<option value="0">日期</option>
+                        <option value="1">地點</option>-->
+                    <option value="4">校徵日期↑</option>
+                    <option value="3">校徵日期↓</option>
+                    <option value="2">所在縣市↑</option>
+                    <option value="1">所在縣市↓</option>
+                </select>
+
+                <div class="tab-content session_table" id="tableContent">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*
+    目前排序
+    1. 地區少到多
+    2. 地區多到少
+    3. 日期近到遠
+    4. 日期遠到近
+*@
+<input type="hidden" id="hidSort" value="3" />
+<input type="hidden" id="hidArea" value="@ViewBag.Area" />
+
+@section scripts
+{
+    <script>
+        function changePage(page) {
+            searchAndSort(page);
+            document.getElementById('schoolList').scrollIntoView();
+        };
+
+        function selChange() {
+            var toPage = $('#selPage').val();
+            searchAndSort(toPage);
+            document.getElementById('schoolList').scrollIntoView();
+        };
+
+        @* 搜尋學校名稱文字框按 enter 鍵觸發搜尋按紐 *@
+        $('#ks').keypress(function(e) {
+            var code = e.keyCode ? e.keyCode : e.which;
+            if (code === 13) {
+                $('#btnSearch').click();
+            }
+        });
+
+        @* 搜尋廠商名稱文字框按 enter 鍵觸發搜尋按紐 *@
+        $('#ksVendor').keypress(function(e) {
+            var code = e.keyCode ? e.keyCode : e.which;
+            if (code === 13) {
+                $('#btnSearchVendor').click();
+            }
+        });
+
+        @* 選擇搜尋地區下拉選單 *@
+        $('#selArea').change(function() {
+            searchAndSort('1');
+        });
+
+        @* 搜尋學校名稱按鈕 *@
+        $('#btnSearch').click(function() {
+            $('#ksVendor').val('');
+            searchAndSort('1');
+        });
+
+        @* 搜尋廠商按鈕 *@
+        $('#btnSearchVendor').click(function() {
+            $('#ks').val('');
+            searchAndSort('1');
+        });
+
+        @* 日期排序 *@
+        $('#dateSort').click(function() {
+            var currentPage = $('#hidCurrentPage').val();
+            var iTag = $('#dateI');
+            if (iTag.hasClass('fa-caret-down')) {
+                iTag.removeClass('fa-caret-down');
+                iTag.addClass('fa-caret-up');
+                $('#hidSort').val('4');
+            } else {
+                iTag.removeClass('fa-caret-up');
+                iTag.addClass('fa-caret-down');
+                $('#hidSort').val('3');
+            }
+            searchAndSort(currentPage);
+        });
+
+        @* 地點排序 *@
+        $('#areaSort').click(function() {
+            var currentPage = $('#hidCurrentPage').val();
+            var iTag = $('#areaI');
+            if (iTag.hasClass('fa-caret-down')) {
+                iTag.removeClass('fa-caret-down');
+                iTag.addClass('fa-caret-up');
+                $('#hidSort').val('2');
+            } else {
+                iTag.removeClass('fa-caret-up');
+                iTag.addClass('fa-caret-down');
+                $('#hidSort').val('1');
+            }
+            searchAndSort(currentPage);
+        });
+
+        @* 選擇日期或地點排序 *@
+        $('#selSort').change(function() {
+            var currentPage = $('#hidCurrentPage').val();
+            $('#hidSort').val($(this).val());
+            searchAndSort(currentPage);
+        });
+
+        @* 選擇頁數 *@
+        $('#selPage').change(function() {
+            selChange();
+        });
+
+        @* ajax 搜尋並排序 *@
+        function searchAndSort(toPage) {
+            var searchArea = $('#selArea').val();
+            var searchText = $('#ks').val();
+            var searchVendorText = $('#ksVendor').val();
+            var sort = $('#hidSort').val();
+            $.ajax({
+                url: '@Url.Action("GetListViewDataAjax")',
+                type: "post",
+                data: {
+                    toPage: toPage,
+                    area: searchArea,
+                    searchText: searchText,
+                    searchVendorText: searchVendorText,
+                    sort: sort
+                },
+                dataType: "html",
+                success: function(data) {
+                    if (data !== null && data !== '') {
+                        $('#tableContent').html(data);
+                    } else {
+                        $('#tableContent').html('');
+                    }
+                    $('#selPage').bind('change', selChange);
+
+                    var totalRecord = $('#hidTotalRecord').val();
+                    var area = $('#selArea').find('option:selected').text();
+
+                    if (searchArea !== '' && searchText !== '') {
+                        $('#showText').text('你目前搜尋的是：' + area + ' + ' + searchText + '，共計 ' + totalRecord + ' 間學校');
+                    }
+                    else if (searchArea !== '') {
+                        $('#showText').text('你目前搜尋的是：' + area + '，共計 ' + totalRecord + ' 間學校');
+                    }
+                    else if (searchText !== '') {
+                        $('#showText').text('你目前搜尋的是：' + searchText + '，共計 ' + totalRecord + ' 間學校');
+                    } else {
+                        $('#showText').text('你目前搜尋的是：共計 ' + totalRecord + ' 間學校');
+                    }
+
+					//原本的搜尋碼備份
+                    //if (searchVendorText !== '') {
+                    //    $('#showText').text('你目前搜尋的企業是：' + searchVendorText + '，共計參展 ' + totalRecord + ' 間學校');
+					//}
+
+					//查不到企業時可以顯示關鍵字搜尋鈕導主網
+					if (searchVendorText !== '' &&   totalRecord != 0 ) {
+                        $('#showText').text('你目前搜尋的企業是：' + searchVendorText + '，共計參展 ' + totalRecord + ' 間學校');
+                    } else if (searchVendorText !== '' &&  totalRecord == 0 ) {
+						var mainsearchlink = 'https://www.1111.com.tw/search/job?ks=';
+						$('#showText').html('<span class="sp01">「</span>你目前搜尋的企業：<span class="sp02">' + searchVendorText + '</span>，共計 ' + totalRecord + ' 間學校，沒關係！還有很多與' + searchVendorText + '相關工作機會<span class="sp01">，</span><a href="' + mainsearchlink + searchVendorText +'&agent=campusr" target="_blank">點我前往<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a><span class="sp01">」</span>');
+						document.querySelector('.yes-ven').classList.add('no-ven');
+						document.querySelector('#showText').classList.add('no-ven');
+						document.querySelector('.newsession_st01').classList.add('no-ven');
+						document.querySelector('#selSort').classList.add('no-ven');
+						$('.research').show();
+					}
+
+					//當搜尋比數不等於0時移除相關樣式
+					if (totalRecord != 0 ) {
+						document.querySelector('.yes-ven').classList.remove('no-ven');
+						document.querySelector('#showText').classList.remove('no-ven');
+						document.querySelector('.newsession_st01').classList.remove('no-ven');
+						document.querySelector('#selSort').classList.remove('no-ven');
+						$('.research').hide();
+					}
+
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("myDiv").style.display = "block";
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr);
+                }
+            });
+        }
+
+        $(function () {
+            (function () {
+                $('#selArea').val($('#hidArea').val());
+                searchAndSort('1');
+            })();
+        });
+
+    </script>
+}

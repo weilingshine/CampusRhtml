@@ -1,0 +1,26 @@
+﻿@model CampusR.Models.ViewModels.CampusListViewModel
+
+@* 北區 *@
+<div class="tab-pane fade show active" id="north_tab" role="tabpanel" aria-labelledby="north-tab">
+    <ul class="session_list">
+        @Html.Partial("ListTabLiPartial", Model.NorthList)
+    </ul>
+</div>
+@* 中區 *@
+<div class="tab-pane fade" id="central_tab" role="tabpanel" aria-labelledby="central-tab">
+    <ul class="session_list">
+        @Html.Partial("ListTabLiPartial", Model.CentralList)
+    </ul>
+</div>
+@* 南區 *@
+<div class="tab-pane fade" id="south_tab" role="tabpanel" aria-labelledby="south-tab">
+    <ul class="session_list">
+        @Html.Partial("ListTabLiPartial", Model.SouthList)
+    </ul>
+</div>
+@* 東區/離島 *@
+<div class="tab-pane fade" id="other_tab" role="tabpanel" aria-labelledby="other-tab">
+    <ul class="session_list">
+        @Html.Partial("ListTabLiPartial", Model.OtherList)
+    </ul>
+</div>

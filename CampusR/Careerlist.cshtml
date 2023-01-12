@@ -1,0 +1,968 @@
+﻿@model CampusR.Models.ViewModels.BaseViewModel
+
+@*母版頁為 Views/Shared/_Layout.cshtml*@
+@*此頁專屬的 head 請放於此區塊，共用的 head 部分可參見 Views/Shared/_Layout.cshtml*@
+@*此區塊請依需求自行修改*@
+@section heads
+{
+    <!--SEO META區開始-->
+    @if (Model.TKDInfoList.Any())
+    {
+        var item = @Model.TKDInfoList.FirstOrDefault();
+        <title>@item.Title</title>
+        <meta name="title" content=@item.Title />
+        <meta name="keywords" content=@item.Keywords />
+        <meta name="Description" content=@item.Description>
+        <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+        <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+        <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_TW" />
+        <meta property="og:site_name" content=@item.Title />
+        <meta property="og:title" content=@item.Title />
+        <meta property="og:url" content="https://www.1111.com.tw/careerlist/" />
+        if (!string.IsNullOrEmpty(item.fbImgUrl))
+        {
+            <meta property="og:image" content=@item.fbImgUrl />
+        }
+        else
+        {
+            <meta property="og:image" content="https://www.1111.com.tw/campusr/images/fb.jpg" />
+        }
+        <meta property="og:description" content=@item.Description />
+        <meta name="twitter:title" content=@item.Title />
+        <meta name="twitter:description" content=@item.Description />
+        <meta name="twitter:keywords" content=@item.Keywords />
+        <meta name="twitter:site" content=@item.Title />
+        <meta name="twitter:url" content="https://www.1111.com.tw/careerlist/" />
+        <link rel="canonical" href="https://www.1111.com.tw/campusr/careerlist" />
+        <link rel="icon" href="https://www.1111.com.tw/favicon.ico">
+    }
+    <!--SEO META區結束-->
+    <!--<title>2022大學校園徵才活動場次｜年度最大就業博覽會－1111人力銀行</title>
+    <meta name="title" content="2022大學校園徵才活動場次｜年度最大就業博覽會－1111人力銀行" />
+    <meta name="keywords" content="2022校園徵才、校園徵才、就業博覽會" />
+    <meta name="Description" content="2022全台大學校園徵才X就業博覽會開跑了！收錄最完整的活動場次及參展企業，超夯熱門職缺、國營事業和優質福利的幸福企業任你選，還有線上徵才讓你求職零距離。">
+    <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+    <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+    <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="2022大學校園徵才活動場次｜年度最大就業博覽會－1111人力銀行" />
+    <meta property="og:title" content="2022大學校園徵才活動場次｜年度最大就業博覽會－1111人力銀行" />
+    <meta property="og:url" content="https://www.1111.com.tw/careerlist/" />
+    <meta property="og:image" content="https://www.1111.com.tw/campusr/images/fb.jpg" />
+    <meta property="og:description" content="2022全台大學校園徵才X就業博覽會開跑了！收錄最完整的活動場次及參展企業，超夯熱門職缺、國營事業和優質福利的幸福企業任你選，還有線上徵才讓你求職零距離。" />
+    <meta name="twitter:title" content="2022大學校園徵才活動場次｜年度最大就業博覽會－1111人力銀行" />
+    <meta name="twitter:description" content="2022全台大學校園徵才X就業博覽會開跑了！收錄最完整的活動場次及參展企業，超夯熱門職缺、國營事業和優質福利的幸福企業任你選，還有線上徵才讓你求職零距離。" />
+    <meta name="twitter:keywords" content="2022校園徵才、校園徵才、就業博覽會" />
+    <meta name="twitter:site" content="2022大學校園徵才活動場次｜年度最大就業博覽會－1111人力銀行" />
+    <meta name="twitter:url" content="https://www.1111.com.tw/careerlist/" />
+    <link rel="canonical" href="https://www.1111.com.tw/campusr/careerlist" />
+    <link rel="icon" href="https://www.1111.com.tw/favicon.ico">-->
+    <!-- bootstrap4.6 -->
+    <!-- 20210309 font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/careerlist.css">
+
+}
+
+@section MenuList
+{
+    @Html.Partial("MenuListPartial", Model.MenuList)
+}
+
+@section FooterList
+{
+    @Html.Partial("FooterListPartial", Model.FooterList)
+}
+
+@*專屬於此頁的 Body 的 Html 程式碼請放於此處*@
+
+<!-- 版頭banner -->
+<div class="list_bn">
+    <div id="main" class="container">
+        @*<img class="d-none d-md-block m-auto img-fluid" src="~/Content/images/careerlist/resume-show_bn.jpg">
+        <img class="d-block d-md-none m-auto img-fluid"
+             src="~/Content/images/careerlist/resume-show_m_bn.jpg">*@
+        @if (Model.TKDInfoList.Any())
+        {
+            <img class="w-100 d-none d-md-block" src=@Model.TKDInfoList.FirstOrDefault().bannerImgP alt="bn">
+            <img class="w-100 d-md-none" src=@Model.TKDInfoList.FirstOrDefault().bannerImgM alt="bn">
+        }
+    </div>
+</div>
+
+<!-- 麵包屑 -->
+<div class="school_list" id="schoolList">
+    <div class="container ">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Index", "CampusR")">校徵專區</a>
+                </li>
+                <li class="breadcrumb-item active"><a href="#">廠商報名列表</a></li>
+            </ol>
+        </nav>
+    </div>
+    <!-- 內容敘述 -->
+    <section class="container container-xl ">
+        <h1 class="py-3 text-center">廠商報名列表</h1>
+        <article>
+            <h2>
+                校園徵才博覽會或校園座談會為全台各大專院校自行舉辦，可點選想報名前往學校報名頁面了解更多資訊，另因各校攤位名額有限，建議廠商可盡快前往報名，博覽會活動資訊及報名訊息還請以各校公告為主，或向各院校就業服導相關單位洽詢。
+            </h2>
+        </article>
+
+    </section>
+    <!-- 備審面試 BN -->
+    <!-- 文章列表區 -->
+    <!-- 次選單單元切換 -->
+    <section class="container mx-auto mb-2 mb-md-4">
+        <article class="row menu-blockt no-gutters">
+            <!--  -->
+            <div class="col-lg-12 col-md-12 pt-md-2 pb-md-2 no-gutters">
+                <ul class="nav nav-pills text-center no-gutters" id="pills-tab" role="tablist">
+                    <li class="nav-item col-6 col-md-6 col-lg-3 py-0" role="presentation">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fas fa-chevron-circle-down"></i> 北部</a>
+                    </li>
+                    <li class="nav-item col-6 col-md-6 col-lg-3 py-0" role="presentation">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fas fa-chevron-circle-down"></i> 中部</a>
+                    </li>
+                    <li class="nav-item col-6 col-md-6 col-lg-3 py-0" role="presentation">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fas fa-chevron-circle-down"></i> 南部</a>
+                    </li>
+                    <li class="nav-item  col-6 col-md-6 col-lg-3 py-0" role="presentation">
+                        <a class="nav-link" id="pills-inn-tab" data-toggle="pill" href="#pills-inn" role="tab" aria-controls="pills-inn" aria-selected="false"><i class="fas fa-chevron-circle-down"></i> 東部離島</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!--  -->
+        </article>
+    </section>
+    <!--  -->
+    <section class="container">
+        <!-- 內容物  -->
+        <div class="row tab-content chose-item no-gutters Content_info" id="pills-tabContent">
+            <!-- 1 -->
+            <div class="tab-pane active col-lg-12 col-md-12 mx-auto" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <!-- 標題 -->
+                <!--div class="container py-5 text-center M-title"><h2>北部</h2></div-->
+                <!-- 北部table容器 -->
+                <div class="container col-12 table-responsive MX-1 pb-5">
+                      <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-4">學校名稱</th>
+                                    <th scope="col" class="col-3">報名日期</th>
+                                    <th scope="col" class="col-3">活動舉行日期</th>
+                                    <th scope="col" class="col-2">廠商報名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>東吳大學</td>
+                                    <td>11/14-2/6</td>
+                                    <td>2/20-5/26</td>
+                                    <td><a href="https://web-ch.scu.edu.tw/career/web_page/13317" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺灣大學</td>
+                                    <td>10/26-10/28</td>
+                                    <td>3/4</td>
+                                    <td><a href="https://career.ntu.edu.tw/student/vision/2023" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>元智大學</td>
+                                    <td>11/7-12/16</td>
+                                    <td>3/6-3/31</td>
+                                    <td><a href="http://myfuture.yzu.edu.tw/listschact.aspx?id=5" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立陽明交通大學(交大校區)</td>
+                                    <td>11/23-12/2</td>
+                                    <td>3/11</td>
+                                    <td><a href="https://openhouse.osa.nycu.edu.tw/news/2324/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>淡江大學</td>
+                                    <td>詳見學校官網</td>
+                                    <td>3/15</td>
+                                    <td><a href="http://spirit.tku.edu.tw/tku/service_news_detail.jsp?sectionId=4&newsId=21598" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立清華大學</td>
+                                    <td>11/17-11/30</td>
+                                    <td>3/18</td>
+                                    <td><a href="https://careernthu.conf.asia/?lang=cht" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺灣師範大學</td>
+                                    <td>即日起-11/30</td>
+                                    <td>3/22</td>
+                                    <td><a href="https://careercenter.ntnu.edu.tw/expo-detail.php?sid=6104" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺北大學</td>
+                                    <td>11/1-1/13</td>
+                                    <td>3/22</td>
+                                    <td><a href="https://career.ntpu.edu.tw/cht/index.php?code=list&ids=7" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺北科技大學</td>
+                                    <td>10/17-11/4</td>
+                                    <td>3/23</td>
+                                    <td><a href="https://rnd.ntut.edu.tw/p/412-1042-14166.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立政治大學</td>
+                                    <td>11/1-11/29、12/1-12/13</td>
+                                    <td>3/24</td>
+                                    <td><a href="https://cd.nccu.edu.tw/career_month#career-month-about" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>臺北醫學大學</td>
+                                    <td>11/21-12/20</td>
+                                    <td>3/24-3/25</td>
+                                    <td><a href="https://osa.tmu.edu.tw/front/Information_Technology/Information_Technology01/news.php?ID=dG11X29zYSZJbmZvcm1hdGlvbl9UZWNobm9sb2d5MDE=&Sn=2850" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立中央大學</td>
+                                    <td>10/26-10/28</td>
+                                    <td>3/26</td>
+                                    <td><a href="https://campustalent.careercenter.ncu.edu.tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>實踐大學</td>
+                                    <td>1/16-額滿止</td>
+                                    <td>3/27-3/30、4/24-4/27</td>
+                                    <td><a href="https://career.usc.edu.tw/p/412-1064-332.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺灣科技大學</td>
+                                    <td>10/26-11/2</td>
+                                    <td>3/31</td>
+                                    <td><a href="https://career.ntust.edu.tw/#/news/1288" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中原大學</td>
+                                    <td>11/1-12/15</td>
+                                    <td>4/22</td>
+                                    <td><a href="https://ocd.cycu.edu.tw/%E4%B8%AD%E5%8E%9F%E5%A4%A7%E5%AD%B82023%E6%A0%A1%E5%9C%92%E5%BE%B5%E6%89%8D%E6%9A%A8%E5%AF%A6%E7%BF%92%E5%B0%B1%E6%A5%AD%E5%8D%9A%E8%A6%BD%E6%9C%83%E5%A0%B1%E5%90%8D%E8%B3%87%E8%A8%8A/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>銘傳大學(台北校區)</td>
+                                    <td>11/16-3/17</td>
+                                    <td>5/3</td>
+                                    <td><a href="https://eform.mcu.edu.tw/node/3156" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>銘傳大學(桃園校區)</td>
+                                    <td>11/16-3/17</td>
+                                    <td>5/4</td>
+                                    <td><a href="https://eform.mcu.edu.tw/node/1977" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺灣海洋大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://academic.ntou.edu.tw/p/405-1005-19563,c1249.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>明新科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://webc1.must.edu.tw/jtmust069/index.php/2017-02-22-01-45-30" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺北商業大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://get.ntub.edu.tw/JobWanted/ListView" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>元培醫事科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://career.ypu.edu.tw/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>開南大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://sa.knu.edu.tw/p/412-1005-2748.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>長庚大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://studentaffairs.cgu.edu.tw/p/412-1012-9994.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>馬偕醫護管理專科學校</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://web.mkc.edu.tw/Site/otdil?Sn=ycJtN5HXVX%2f%2btln9K25XYaSGQBCKW%2fu5&%E5%BE%B5%E6%89%8D%E6%B4%BB%E5%8B%95%E6%8B%9B%E5%95%86%E8%AA%AA%E6%98%8E" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>世新大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://osa.web.shu.edu.tw/%e7%94%9f%e6%b6%af%e7%b5%84%e9%a6%96%e9%a0%81/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>長庚科技大學(林口校本部)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://otc.cgust.edu.tw/p/404-1010-29778.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中國科技大學(台北校區)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://sites.google.com/view/career2cute" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立陽明交通大學(陽明校區)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://job.sa.nycu.edu.tw/files/11-1206-17.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中華大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://sa.chu.edu.tw/p/412-1050-1004.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>明志科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ord.mcut.edu.tw/p/403-1010-441-1.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>景文科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://rd.just.edu.tw/bin/home.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立聯合大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://careercuidance.nuu.edu.tw/p/412-1039-908.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>經國管理暨健康學院</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rd.cku.edu.tw/files/11-1004-730.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>東南科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rd.tnu.edu.tw/zh_tw/page2" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>致理科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://tc100.chihlee.edu.tw/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>龍華科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://www.lhu.edu.tw/other/jobshow/index.htm" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>敏實科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://osa.mitust.edu.tw/p/403-1005-82-1.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>仁德醫護管理專科學校</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://research.jente.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>健行科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://otc.uch.edu.tw/zh_tw/3/8" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺北護理健康大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://career-osa.ntunhs.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>華夏科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://sa.hwh.edu.tw/bin/home.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中國文化大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://career.pccu.edu.tw/p/412-1045-15410.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中華科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://career.cust.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>宏國德霖科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rd.hdut.edu.tw/p/412-1007-606.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>南亞技術學院</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://web.nanya.edu.tw/rdof/tcec/recruit.asp" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>育達科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://yducareer.ydu.edu.tw/Alumnus/SubMenu_display.aspx?DllType=Index&AMID=100&AMCLASS=101" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>康寧大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://sa.ukn.edu.tw/files/11-1009-4151.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>真理大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://jpo.au.edu.tw/index.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>新生醫護管理專科學校</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rnd.web.hsc.edu.tw/files/11-1004-60.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>亞東科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://cd.aeust.edu.tw/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>台北海洋科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://admc.tumt.edu.tw/p/412-1021-4145.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺灣藝術大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://osa.ntua.edu.tw/folder_6" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>輔仁大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://cdpo.dsa.fju.edu.tw/Welcome/news" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>大同大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://b0506.ttu.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <!--  -->
+            </div>
+            <!-- 2 -->
+            <div class="tab-pane fade col-lg-12 col-md-12 mx-auto" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <!-- 標題 -->
+                <!--div class="container py-5 text-center M-title"><h2>中部</h2></div-->
+                <!--  -->
+                <!-- 中部table容器 -->
+                <div class="container col-12 table-responsive MX-1 pb-5">
+                    <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-4">學校名稱</th>
+                                    <th scope="col" class="col-3">報名日期</th>
+                                    <th scope="col" class="col-3">活動舉行日期</th>
+                                    <th scope="col" class="col-2">廠商報名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>逢甲大學</td>
+                                    <td>11/23-1/10</td>
+                                    <td>3/7-3/8</td>
+                                    <td><a href="https://www.fcu.edu.tw/event/?id=AEBF8777B1E24B83A54B00710D4A6595" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立中興大學</td>
+                                    <td>11/23-2/3</td>
+                                    <td>4/22</td>
+                                    <td><a href="https://www.osa.nchu.edu.tw/osa/cdc/career/2023/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>僑光科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://w3.ocu.edu.tw/career/development/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>明道大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ord.mdu.edu.tw/zh_tw/ADIS" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>靜宜大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://dcd.pu.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立雲林科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://expo.yuntech.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>弘光科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://cesotc.hk.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>東海大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://cdc.thu.edu.tw/career/web/news/list.php?cid=4" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>朝陽科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ascd.cyut.edu.tw/p/412-1064-4616.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>修平科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://student.hust.edu.tw/development" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>嶺東科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ltu1462.video.ltu.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>大葉大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://sa.dyu.edu.tw/cdc4300/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立勤益科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ord.ncut.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>南開科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://nkrnd.nkut.edu.tw/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺中科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://csc.nutc.edu.tw/files/11-1034-6367.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>環球科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://web.twu.edu.tw/~ordi/index.php?fillID=13" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>建國科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://sdc.ctu.edu.tw/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>亞洲大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://cdgs.asia.edu.tw/zh_tw/EmploymentInfo/CampusTalent/EXPOnews" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺中教育大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://tecs2020.ntcu.edu.tw/front/team3/news.php?ID=bnRjdV90ZWNzJnRlYW0z" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺灣體育運動大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://student.ntus.edu.tw/index.php?code=list&ids=1398" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立虎尾科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://sec.nfu.edu.tw/bin/home.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中臺科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rd.ctust.edu.tw/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <!--  -->
+                <!--  -->
+            </div>
+            <div class="tab-pane fade col-lg-12 col-md-12 mx-auto" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <!-- 3 -->
+                <!-- 標題 -->
+                <!--div class="container py-5 text-center M-title"><h2>南部</h2></div-->
+                <!-- 南部table容器 -->
+                <div class="container col-12 table-responsive MX-1 pb-5">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-4">學校名稱</th>
+                                    <th scope="col" class="col-3">報名日期</th>
+                                    <th scope="col" class="col-3">活動舉行日期</th>
+                                    <th scope="col" class="col-2">廠商報名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>國立中山大學</td>
+                                    <td>11/1-額滿止</td>
+                                    <td>3/11</td>
+                                    <td><a href="https://ag-osa.nsysu.edu.tw/p/406-1087-294493,r5196.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立成功大學</td>
+                                    <td>12/5-12/7(室內)、12/8-12/12(戶外)</td>
+                                    <td>3/12</td>
+                                    <td><a href="http://jobfair.osa.ncku.edu.tw/gradjobs/jsp/NewsAction.do" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立中正大學</td>
+                                    <td>11/22-12/31</td>
+                                    <td>3/16</td>
+                                    <td><a href="https://gc.ccu.edu.tw/p/406-1040-28618,r11.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>正修科技大學</td>
+                                    <td>11/17-2/1</td>
+                                    <td>3/29</td>
+                                    <td><a href="http://alumnicareer.csu.edu.tw/chinese/News_detail.aspx?n=1&p=43608" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>南臺科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://aric.stust.edu.tw/tc/node/group_304" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺南護理專科學校</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rd.ntin.edu.tw/Front/1000/1400/News.aspx?id=kKH0lW6tjlk=" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>崇仁醫護管理專科學校</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://140.130.190.242/technical.php?id=2262" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中華醫事科技大學<一般企業></td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://coop.hwai.edu.tw/p/403-1016-180-1.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>長庚科技大學(嘉義分部)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://otc.cgust.edu.tw/p/404-1010-29778.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>中華醫事科技大學<醫療院所></td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://coop.hwai.edu.tw/p/403-1016-180-1.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>輔英科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ca.fy.edu.tw/app/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立高雄科技大學(旗津校區)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ascdc.nkust.edu.tw/p/412-1022-5313.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>長榮大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://dweb.cjcu.edu.tw/career" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立高雄科技大學(建工校區)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ascdc.nkust.edu.tw/p/412-1022-5313.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>吳鳳科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rdo.wfu.edu.tw/career/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>崑山科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://web.ksu.edu.tw/DARDCDC/bulletin/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>義守大學(醫學院區)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://www.isu.edu.tw/2018/showpage_v01.php?dept_mno=645&dept_id=2&page_id=27508" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>台灣首府大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://job.tsu.edu.tw/bin/home.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>敏惠醫護管理專科學校</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://c016.mhchcm.edu.tw/p/412-1016-113.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立高雄科技大學(楠梓校區)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ascdc.nkust.edu.tw/p/412-1022-5313.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>文藻外語大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://d009.wzu.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立屏東大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://career.nptu.edu.tw/p/412-1094-12149.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>美和科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://career.meiho.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立臺南大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://www2.nutn.edu.tw/gac500/default.asp" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>遠東科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://www.feu.edu.tw/adms/osa/web/cc/index.asp" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>義守大學(校本部)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://www.isu.edu.tw/2018/showpage_v01.php?dept_mno=645&dept_id=2&page_id=27508" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立嘉義大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://www.ncyu.edu.tw/careercenter/" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立高雄科技大學(第一校區)</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://ascdc.nkust.edu.tw/p/412-1022-5313.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>大仁科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://a11.tajen.edu.tw/p/412-1011-5516.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立屏東科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="http://careerservice.npust.edu.tw/Exhibition.aspx" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>南華大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://iaccd3.nhu.edu.tw/Web/Index" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>國立高雄餐旅大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://rd.nkuht.edu.tw/p/412-1009-3441.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>台南應用科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://cds-rd.tut.edu.tw/index.php" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>樹人醫護管理專科學校</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://www.szmc.edu.tw/DeptTc/crshtml/crsinfo.html" target="_blank">學校網址</a></td>
+                                </tr>
+                                <tr>
+                                    <td>樹德科技大學</td>
+                                    <td>尚未公告</td>
+                                    <td>尚未公告</td>
+                                    <td><a href="https://career.sao.stu.edu.tw/" target="_blank">學校網址</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <!--  -->
+                <!--  -->
+            </div>
+             <div class="tab-pane fade col-lg-12 col-md-12 mx-auto" id="pills-inn" role="tabpanel" aria-labelledby="pills-inn-tab">
+                <!-- 4 -->
+                <!-- 標題 -->
+                <!--div class="container py-5 text-center M-title"><h2>東部離島</h2></div-->
+                <!-- 東部table容器 -->
+                <div class="container col-12 table-responsive MX-1 pb-5">
+                    <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="col-4">學校名稱</th>
+                                        <th scope="col" class="col-3">報名日期</th>
+                                        <th scope="col" class="col-3">活動舉行日期</th>
+                                        <th scope="col" class="col-2">廠商報名</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>慈濟大學</td>
+                                        <td>即日起-3/10</td>
+                                        <td>3/29</td>
+                                        <td><a href="https://career.tcu.edu.tw/?page_id=144" target="_blank">學校網址</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>國立東華大學</td>
+                                        <td>10/27-2/7</td>
+                                        <td>4/21</td>
+                                        <td><a href="https://rb005.ndhu.edu.tw/p/406-1005-201289,r357.php" target="_blank">學校網址</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>慈濟科技大學<基金會、管理餐飲></td>
+                                        <td>尚未公告</td>
+                                        <td>尚未公告</td>
+                                        <td><a href="https://tad.tcust.edu.tw/p/412-1002-1727.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>慈濟科技大學<醫療志業體></td>
+                                        <td>尚未公告</td>
+                                        <td>尚未公告</td>
+                                        <td><a href="https://tad.tcust.edu.tw/p/412-1002-1727.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>國立宜蘭大學</td>
+                                        <td>尚未公告</td>
+                                        <td>尚未公告</td>
+                                        <td><a href="https://niuosa.niu.edu.tw/files/11-1004-2455.php?Lang=zh-tw" target="_blank">學校網址</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>國立金門大學</td>
+                                        <td>尚未公告</td>
+                                        <td>尚未公告</td>
+                                        <td><a href="https://www.nqu.edu.tw/ecase/index.php?code=list&ids=3057" target="_blank">學校網址</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>國立臺東專科學校</td>
+                                        <td>尚未公告</td>
+                                        <td>尚未公告</td>
+                                        <td><a href="https://ord.ntc.edu.tw/app/index.php" target="_blank">學校網址</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>國立臺東大學</td>
+                                        <td>尚未公告</td>
+                                        <td>尚未公告</td>
+                                        <td><a href="https://career1260.wixsite.com/career1260" target="_blank">學校網址</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                </div>
+                <!--  -->
+                <!--  -->
+            </div>
+        </div>
+        <!-- 內容物  -->
+    </section>
+    <!--  -->
+</div>
+
+
+
+
+@*專屬於此頁的 Javascript 程式碼請放於此區塊裡*@
+@section scripts
+{
+    <script>
+        (function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        })();
+    </script>
+}

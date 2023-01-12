@@ -1,0 +1,23 @@
+﻿@model CampusR.Models.ViewModels.SpecialReportViewModel
+
+<div class="container">
+    <div class="row col-12  text-center m-auto">
+        <div class="col-12 mb-2">
+            <h2 class="highlight"><span>幸福企業</span>專題報導</h2>
+        </div>
+
+        <div class="tab-content">
+            <div id="menu1" class="tab-pane active">
+                <div id="owl-demo-news" class="owl-carousel">
+                    @Html.Partial("SchoolSpecialReportItemPartial", Model.Happiness)
+                </div>
+                <div class="news_more">
+                    <a target="_blank" href="https://happiness.1111.com.tw/search-article.asp"
+                       rel="noreferrer noopener">
+                        看更多
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

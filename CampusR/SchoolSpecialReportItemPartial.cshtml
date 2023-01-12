@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CampusR.Models.ViewModels.SpecialReportItemViewModel>
+
+@foreach (var report in Model)
+{
+    <div class="item">
+        <a href="@report.Url" target="_blank" rel="noreferrer noopener" title="@report.Title">
+            <div class="box1">
+                <div class="news_photo">
+                    <img src="@report.ImageUrl" alt="@report.Title">
+                    <div class="news_text">@report.Title</div>
+                </div>
+            </div>
+        </a>
+    </div>
+}

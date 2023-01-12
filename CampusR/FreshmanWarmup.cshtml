@@ -1,0 +1,346 @@
+﻿@using CampusR.Models
+@model CampusR.Models.ViewModels.BaseViewModel
+
+@section heads
+{
+    <!--SEO META區開始-->
+    @if (Model.TKDInfoList.Any())
+    {
+        var item = @Model.TKDInfoList.FirstOrDefault();
+        <title>@item.Title</title>
+        <meta name="title" content=@item.Title />
+        <meta name="keywords" content=@item.Keywords />
+        <meta name="Description" content=@item.Description>
+        <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+        <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+        <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_TW" />
+        <meta property="og:site_name" content=@item.Title />
+        <meta property="og:title" content=@item.Title />
+        <meta property="og:url" content="https://www.1111.com.tw/campusr/" />
+        if (!string.IsNullOrEmpty(item.fbImgUrl))
+        {
+            <meta property="og:image" content=@item.fbImgUrl />
+        }
+        else
+        {
+            <meta property="og:image" content="https://www.1111.com.tw/campusr/images/fb.jpg" />
+        }
+        <meta property="og:description" content=@item.Description />
+        <meta name="twitter:title" content=@item.Title />
+        <meta name="twitter:description" content=@item.Description />
+        <meta name="twitter:keywords" content=@item.Keywords />
+        <meta name="twitter:site" content=@item.Title />
+        <meta name="twitter:url" content="https://www.1111.com.tw/campusr/" />
+        <link rel="canonical" href="https://www.1111.com.tw/campusr/" />
+        <link rel="icon" href="https://www.1111.com.tw/favicon.ico">
+
+    }
+    <!--SEO META區結束-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/freshmanwarmup.css">
+
+    @*<title>新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行</title>
+        <meta name="title" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta name="keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才,就業博覽會,徵才博覽會,新鮮人,履歷健診,面試" />
+        <meta name="Description" content="初入職場不要怕，先花1秒找方向，在靠4張王牌「履歷健診、新鮮人職缺、面試經驗、面試影音」，讓你求職過程無往不利">
+        <meta name="company" content="1111人力銀行 | 全球華人股份有限公司 | www.1111.com.tw ">
+        <meta name="copyright" content="1111人力銀行 | 全球華人股份有限公司版權所有© 1111 Job Bank All Rights Reserved. ">
+        <meta name="author" content="1111人力銀行 | 全球華人股份有限公司">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh_TW" />
+        <meta property="og:site_name" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta property="og:title" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta property="og:url" content="https://www.1111.com.tw/campusr/" />
+        <meta property="og:image" content="https://www.1111.com.tw/campusr/images/fb.jpg" />
+        <meta property="og:description" content="初入職場不要怕，先花1秒找方向，在靠4張王牌「履歷健診、新鮮人職缺、面試經驗、面試影音」，讓你求職過程無往不利" />
+        <meta name="twitter:title" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta name="twitter:description" content="初入職場不要怕，先花1秒找方向，在靠4張王牌「履歷健診、新鮮人職缺、面試經驗、面試影音」，讓你求職過程無往不利" />
+        <meta name="twitter:keywords" content="@(GlobalVariables.currentYear)校園徵才,校園徵才,就業博覽會,徵才博覽會,新鮮人,履歷健診,面試" />
+        <meta name="twitter:site" content="新鮮人必勝秘笈｜@(GlobalVariables.currentYear)知名大學校園徵才｜年度最大就業博覽會－1111人力銀行" />
+        <meta name="twitter:url" content="https://www.1111.com.tw/campusr/" />
+        <link rel="canonical" href="https://www.1111.com.tw/campusr/earlybirdevent" />
+        <link rel="icon" href="https://www.1111.com.tw/favicon.ico">*@
+
+}
+@section MenuList
+    {
+    @Html.Partial("MenuListPartial", Model.MenuList)
+}
+
+@section FooterList
+{
+    @Html.Partial("FooterListPartial", Model.FooterList)
+}
+<!--靜態模組banner 未使用先註解-->
+@*@if (Model.TKDInfoList.Any())
+{
+    <img class="w-100 d-none d-md-block" src=@Model.TKDInfoList.FirstOrDefault().bannerImgP alt="bn" style="display: none">
+    <img class="w-100 d-md-none" src=@Model.TKDInfoList.FirstOrDefault().bannerImgM alt="bn" style="display: none">
+}*@
+<header class="freshman-header text-center">
+    <div class="hearder-main">
+        <h1 class="mb-0">
+            <span class="for-you d-block mb-2 animated fadeInUp" style="animation-delay: 1s;">致即將畢業的你</span>
+            <span class="for-test d-block animated fadeInUp" style="animation-delay: 1.2s;">- 初入職場不要怕，先花<span class="font-number">1</span>秒找方向 -</span>
+        </h1>
+        <a class="birthcode-block animated zoomIn" href="https://www.1111tc.com.tw/freshman/birthcode_index.php?agent=campusr_birthcode" style="animation-duration: 1s;" target="_blank" title="生日密碼搶先測！">
+            <img class="birthcode-bg img-fluid" src="~/Content/images/freshmanwarmup/birthcode.gif" alt="生日密碼搶先測！">
+            <img class="birthcode-title img-fluid animated" src="~/Content/images/freshmanwarmup/birthcode_title.png" style="animation-duration: 1s;" alt="生日密碼搶先測！">
+        </a>
+        <span class="text-remind d-block mt-0 mt-md-1 animated">
+            <i class="fas fa-graduation-cap"></i>新鮮人無懼！<br class="d-md-none">第<span class="font-number">1</span>份工作靠四張王牌達標！<i class="fas fa-thumbs-up"></i>
+        </span>
+    </div>
+    <div class="handcard-block">
+        <div class="d-flex justify-content-between">
+            <a class="handcard_resume" href="https://careermaster.1111.com.tw/careermaster/resume/Home?agent=campusr_freshmanwarmup_card_resume" target="_blank">
+                <img class="img-fluid" src="~/Content/images/freshmanwarmup/handcard_resume.png" alt="履歷健診">
+            </a>
+            <a class="handcard_freshman" href="https://www.1111.com.tw/freshman/?agent=campusr_freshmanwarmup_card_freshmanjob" target="_blank">
+                <img class="img-fluid" src="~/Content/images/freshmanwarmup/handcard_freshman.png" alt="新鮮人職缺">
+            </a>
+            <a class="handcard_discuss" href="https://www.1111.com.tw/1000w/fanshome/discuss.asp?gkind=&cat=fans&act=search&kind=5&q=%E6%96%B0%E9%AE%AE%E4%BA%BA&agent=campusr_freshmanwarmup_card_interview" target="_blank">
+                <img class="img-fluid" src="~/Content/images/freshmanwarmup/handcard_discuss.png" alt="面試經驗">
+            </a>
+            <a class="handcard_video" href="https://www.1111.com.tw/news/job-news.php?type=4&class=8&sub=125&agent=campusr_freshmanwarmup_card_freshmanvideo" target="_blank">
+                <img class="img-fluid" src="~/Content/images/freshmanwarmup/handcard_video.png" alt="面試影音">
+            </a>
+        </div>
+    </div>
+    <!-- 滑鼠 -->
+    <div class="mouse-block">
+        <a class="mouse-scroll" href="#type-resume">
+            <span class="mouse-scroll-line">
+                <span></span>
+            </span>
+        </a>
+    </div>
+</header>
+<main>
+    <div id="type-resume" class="container">
+        <div class="row">
+            <!-- 麵包屑 -->
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" style="background: #fff;">
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action("Index")">校徵專區</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a href="#">新鮮人必勝秘笈</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <article class="card-block type-resume col-9 mx-auto p-0">
+                <section class="type-icon">
+                    <img class="d-none d-lg-block" src="~/Content/images/freshmanwarmup/type_icon01.png" alt="履歷健診">
+                    <img class="d-lg-none" src="~/Content/images/freshmanwarmup/type_icon01_M.png" alt="履歷健診">
+                </section>
+                <section class="type-img">
+                    <img class="img-fluid" src="~/Content/images/freshmanwarmup/resume_img.jpg" alt="">
+                </section>
+                <section class="type-content text-center p-4 p-sm-5 p-lg-4 p-xl-5">
+                    <h2>履歷健診</h2>
+                    <p class="m-0">特邀數10位資深的人力資源主管，提供求職履歷上的建議。服務人數超過數千位，每位滿意度都高達9成以上，拿著完美履歷，在眾人當中出奇制勝！</p>
+                    <a class="btn-more mt-4" href="https://careermaster.1111.com.tw/careermaster/resume/Home?agent=campusr_freshmanwarmup_resume" target="_blank">了解更多</a>
+                </section>
+            </article>
+        </div>
+    </div>
+    <div class="bg-gray">
+        <div class="container">
+            <div class="row">
+                <article class="card-block type-freshman col-9 mx-auto p-0">
+                    <section class="type-icon">
+                        <img class="d-none d-lg-block" src="~/Content/images/freshmanwarmup/type_icon02.png" alt="新鮮人職缺">
+                        <img class="d-lg-none" src="~/Content/images/freshmanwarmup/type_icon02_M.png" alt="新鮮人職缺">
+                    </section>
+                    <section class="type-img">
+                        <img class="img-fluid" src="~/Content/images/freshmanwarmup/freshman_img.jpg" alt="">
+                    </section>
+                    <section class="type-content text-center p-4 p-sm-5 p-lg-4 p-xl-5">
+                        <h2>新鮮人職缺</h2>
+                        <p class="m-0">無論是利用畢業的科系搜尋、還是找千大企業、周休二日...等數10萬筆工作職缺強力推薦，讓你快速找到人生第一份最理想的工作。</p>
+                        <a class="btn-more mt-4" href="https://www.1111.com.tw/freshman/?agent=campusr_freshmanwarmup_freshmanjob" target="_blank">了解更多</a>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <article class="card-block type-discuss col-9 mx-auto p-0">
+                <section class="type-icon">
+                    <img class="d-none d-lg-block" src="~/Content/images/freshmanwarmup/type_icon03.png" alt="面試經驗">
+                    <img class="d-lg-none" src="~/Content/images/freshmanwarmup/type_icon03_M.png" alt="面試經驗">
+                </section>
+                <section class="type-img">
+                    <img class="img-fluid" src="~/Content/images/freshmanwarmup/discuss_img.jpg" alt="">
+                </section>
+                <section class="type-content text-center p-4 p-sm-5 p-lg-4 p-xl-5">
+                    <h2>面試經驗</h2>
+                    <p class="m-0">面試找工作前想知道有什麼必勝秘笈？「面試經驗談」專區蒐羅近萬筆的職場前輩「面試經驗」心得、「工作甘苦」經驗以及「應徵技巧」文章，超多內容無私分享！</p>
+                    <a class="btn-more mt-4" href="https://www.1111.com.tw/1000w/fanshome/discuss.asp?gkind=&cat=fans&act=search&kind=5&q=%E6%96%B0%E9%AE%AE%E4%BA%BA&agent=campusr_freshmanwarmup_interview" target="_blank">了解更多</a>
+                </section>
+            </article>
+        </div>
+    </div>
+    <div class="bg-pink">
+        <div class="container">
+            <div class="row">
+                <article class="card-block type-video col-9 mx-auto p-0">
+                    <section class="type-icon">
+                        <img class="d-none d-lg-block" src="~/Content/images/freshmanwarmup/type_icon04.png" alt="新鮮人影音">
+                        <img class="d-lg-none" src="~/Content/images/freshmanwarmup/type_icon04_M.png" alt="新鮮人影音">
+                    </section>
+                    <section class="type-content text-center p-4 p-sm-5 p-lg-4 p-xl-5">
+                        <h2>面試影音</h2>
+                        <p class="text-center m-0">聘請數十位職場專家前輩以動態影音剖析職場型態與趨勢，並分析未來就業概況與新鮮人職場議題，讓新鮮人順利進入職場舞台發光發熱！</p>
+                        <!-- 影片列表 -->
+                        <div class="video-block">
+                            <ul class="video-list my-4">
+                                <li>
+                                    <div class="video-preview">
+                                        <a href="https://www.youtube.com/embed/UtW4TU1nnK8" target="_blank">
+                                            <img src="https://img.youtube.com/vi/UtW4TU1nnK8/hqdefault.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="video-title">
+                                            <a href="https://www.youtube.com/embed/UtW4TU1nnK8" target="_blank">
+                                                從『魯蛇loser』走向『溫拿winner』！｜線上職涯講座｜1111
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="video-preview">
+                                        <a href="https://www.youtube.com/embed/KRaS_Dr1hFo" target="_blank">
+                                            <img src="https://img.youtube.com/vi/KRaS_Dr1hFo/hqdefault.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="video-title">
+                                            <a href="https://www.youtube.com/embed/KRaS_Dr1hFo" target="_blank">
+                                                給我機會，你就知道我真的很會！｜線上職涯講座｜1111
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="video-preview">
+                                        <a href="https://www.youtube.com/embed/VqaBcsiJu6Q" target="_blank">
+                                            <img src="https://img.youtube.com/vi/VqaBcsiJu6Q/hqdefault.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="video-title">
+                                            <a href="https://www.youtube.com/embed/VqaBcsiJu6Q" target="_blank">
+                                                求職該如何準備 工作與生活怎樣兼顧 人資專家來解答｜面試1定贏｜1111
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="video-preview">
+                                        <a href="https://www.youtube.com/embed/EuwUJ5Tbl3o" target="_blank">
+                                            <img src="https://img.youtube.com/vi/EuwUJ5Tbl3o/hqdefault.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="video-title">
+                                            <a href="https://www.youtube.com/embed/EuwUJ5Tbl3o" target="_blank">
+                                                面試後提作品但無回應? 上班前兩天突然說不用去? 網友問題職涯專家解答｜面試1定贏｜1111
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="arrow-block d-sm-none">
+                                <a class="btn-left-arrow" href="javascript: void(0);">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                                <a class="btn-right-arrow" href="javascript: void(0);">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <a class="btn-more mt-0 mt-sm-4" href="https://www.1111.com.tw/news/job-news.php?type=4&class=8&sub=125&agent=campusr_freshmanwarmup_freshmanvideo" target="_blank">了解更多</a>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section scripts
+{
+    <script>
+        (function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        })();
+
+        // 滑鼠錨點滾動
+        $('.mouse-scroll').click(function () {
+            var hrefLink = $(this).attr('href');
+            $('html,body').animate({
+                scrollTop: $(hrefLink).offset().top
+            }, 600);
+        });
+
+        // 卡牌換圖
+        $('.handcard-block img').hover(function () {
+            var $imgSrc = $(this).parents().attr('class');
+            $(this).attr('src', '/campusr/Content/images/freshmanwarmup/' + $imgSrc + '_hover.png');
+        }, function () {
+            var $imgSrc = $(this).parents().attr('class');
+            $(this).attr('src', '/campusr/Content/images/freshmanwarmup/' + $imgSrc + '.png');
+        });
+
+        // 面試影音手機版按鈕切換
+        var num = -25;
+        var count = 0;
+        var width = $(window).width();
+
+        $('.fa-chevron-right').click(function () {
+            count++;
+            $('.video-list').css({
+                transform: 'translateX(' + (count * num) + '%)'
+            });
+
+            if (count == 4) {
+                $('.video-list').css({
+                    transform: 'translateX(0)'
+                });
+                count = 0;
+            }
+        });
+
+        $('.fa-chevron-left').click(function () {
+            count--;
+            $('.video-list').css({
+                transform: 'translateX(' + (count * num) + '%)'
+            });
+
+            if (count == -1) {
+                $('.video-list').css({
+                    transform: 'translateX(-75%)'
+                });
+                count = 3;
+            }
+        });
+
+        $(window).resize(function () {
+            if (width > 576) {
+                $('.video-list').css({
+                    transform: 'translateX(0)'
+                });
+            }
+        });
+    </script>
+}

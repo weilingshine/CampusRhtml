@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CampusR.Models.ViewModels.EnterpriseViewModel>
+
+@foreach (var enterprise in Model)
+{
+    <div class="item">
+        <div class="col-12 mt-4">
+            <div class="item enterprise_logo">
+                <a href="@enterprise.Url" target="_blank" title="@enterprise.Name" rel="noreferrer noopener" class="enterpriseUrl">
+                    <div class="box1">
+                        <div class="enterprise_logoicon">
+                            <img src="@enterprise.LogoUrl" alt="@enterprise.Name">
+                        </div>
+                    </div>
+                    <h4>@enterprise.Name</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,554 @@
+svg.defs-only {
+  width: 0;
+  height: 0;
+  border: none;
+  display: block;
+  margin: 0;
+  padding-right: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.svg-container {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.mapBIG-content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.mapBIG-content text {
+  font-size: 0 !important;
+}
+
+.mapArea {
+  fill: url(#Gradient1);
+}
+
+.mapHover:hover .mapArea {
+  fill: url(#Gradient2);
+}
+
+.stop1 {
+  stop-color: #C3EB8F;
+}
+
+.stop2 {
+  stop-color: #B2E374;
+}
+
+.stop3 {
+  stop-color: #A6D468;
+}
+
+.stop4 {
+  stop-color: #85B548;
+}
+
+.mapArea.PEH {
+  fill: url(#map-PEH);
+}
+
+.mapHover.PEH:hover .mapArea.PEH {
+  fill: url(#map-PEH-H);
+}
+
+.PEH01 {
+  stop-color: #cc6964;
+}
+
+.PEH02 {
+  stop-color: #bf4c46;
+}
+
+.PEH-H-01 {
+  stop-color: #bf4c46;
+}
+
+.PEH-H-02 {
+  stop-color: #cb5141;
+}
+
+.mapArea.KNH {
+  fill: url(#map-KNH);
+}
+
+.mapHover.KNH:hover .mapArea.KNH {
+  fill: url(#map-KNH-H);
+}
+
+.KNH01 {
+  stop-color: #e2bab5;
+}
+
+.KNH02 {
+  stop-color: #d8867d;
+}
+
+.KNH-H-01 {
+  stop-color: #d8867d;
+}
+
+.KNH-H-02 {
+  stop-color: #af4539;
+}
+
+.mapArea.PIF {
+  fill: url(#map-PIF);
+}
+
+.mapHover.PIF:hover .mapArea.PIF {
+  fill: url(#map-PIF-H);
+}
+
+.PIF01 {
+  stop-color: #f5ab84;
+}
+
+.PIF02 {
+  stop-color: #ed8f5e;
+}
+
+.PIF-H-01 {
+  stop-color: #ed8f5e;
+}
+
+.PIF-H-02 {
+  stop-color: #ea7437;
+}
+
+.mapArea.TTT {
+  fill: url(#map-TTT);
+}
+
+.mapHover.TTT:hover .mapArea.TTT {
+  fill: url(#map-TTT-H);
+}
+
+.TTT01 {
+  stop-color: #c8bce4;
+}
+
+.TTT02 {
+  stop-color: #a89ebe;
+}
+
+.TTT-H-01 {
+  stop-color: #a89ebe;
+}
+
+.TTT-H-02 {
+  stop-color: #8e7cb5;
+}
+
+.mapArea.KHH {
+  fill: url(#map-KHH);
+}
+
+.mapHover.KHH:hover .mapArea.KHH {
+  fill: url(#map-KHH-H);
+}
+
+.KHH01 {
+  stop-color: #f6b892;
+}
+
+.KHH02 {
+  stop-color: #efa679;
+}
+
+.KHH-H-01 {
+  stop-color: #efa679;
+}
+
+.KHH-H-02 {
+  stop-color: #e2864e;
+}
+
+.mapArea.TNN {
+  fill: url(#map-TNN);
+}
+
+.mapHover.TNN:hover .mapArea.TNN {
+  fill: url(#map-TNN-H);
+}
+
+.TNN01 {
+  stop-color: #f7aeca;
+}
+
+.TNN02 {
+  stop-color: #e48dae;
+}
+
+.TNN-H-01 {
+  stop-color: #e48dae;
+}
+
+.TNN-H-02 {
+  stop-color: #cc5683;
+}
+
+.mapArea.CHY {
+  fill: url(#map-CHY);
+}
+
+.mapHover.CHY:hover .mapArea.CHY {
+  fill: url(#map-CHY-H);
+}
+
+.CHY01 {
+  stop-color: #ffd0e0;
+}
+
+.CHY02 {
+  stop-color: #efabc2;
+}
+
+.CHY-H-01 {
+  stop-color: #efabc2;
+}
+
+.CHY-H-02 {
+  stop-color: #e37ea0;
+}
+
+.mapArea.CYI {
+  fill: url(#map-CYI);
+}
+
+.mapHover.CYI:hover .mapArea.CYI {
+  fill: url(#map-CYI-H);
+}
+
+.CYI01 {
+  stop-color: #ffabcb;
+}
+
+.CYI02 {
+  stop-color: #de79a0;
+}
+
+.CYI-H-01 {
+  stop-color: #de79a0;
+}
+
+.CYI-H-02 {
+  stop-color: #cc4b7d;
+}
+
+.mapArea.HUN {
+  fill: url(#map-HUN);
+}
+
+.mapHover.HUN:hover .mapArea.HUN {
+  fill: url(#map-HUN-H);
+}
+
+.HUN01 {
+  stop-color: #e2dbf1;
+}
+
+.HUN02 {
+  stop-color: #c5bcdb;
+}
+
+.HUN-H-01 {
+  stop-color: #c5bcdb;
+}
+
+.HUN-H-02 {
+  stop-color: #9c89c9;
+}
+
+.mapArea.NTC {
+  fill: url(#map-NTC);
+}
+
+.mapHover.NTC:hover .mapArea.NTC {
+  fill: url(#map-NTC-H);
+}
+
+.NTC01 {
+  stop-color: #ffe8ad;
+}
+
+.NTC02 {
+  stop-color: #f7d478;
+}
+
+.NTC-H-01 {
+  stop-color: #f7d478;
+}
+
+.NTC-H-02 {
+  stop-color: #eabb40;
+}
+
+.mapArea.YUN {
+  fill: url(#map-YUN);
+}
+
+.mapHover.YUN:hover .mapArea.YUN {
+  fill: url(#map-YUN-H);
+}
+
+.YUN01 {
+  stop-color: #ffeaf1;
+}
+
+.YUN02 {
+  stop-color: #f6c7d6;
+}
+
+.YUN-H-01 {
+  stop-color: #f6c7d6;
+}
+
+.YUN-H-02 {
+  stop-color: #eb98b3;
+}
+
+.mapArea.CHW {
+  fill: url(#map-CHW);
+}
+
+.mapHover.CHW:hover .mapArea.CHW {
+  fill: url(#map-CHW-H);
+}
+
+.CHW01 {
+  stop-color: #ffeab8;
+}
+
+.CHW02 {
+  stop-color: #fcdf9a;
+}
+
+.CHW-H-01 {
+  stop-color: #fcdf9a;
+}
+
+.CHW-H-02 {
+  stop-color: #eec563;
+}
+
+.mapArea.TXG {
+  fill: url(#map-TXG);
+}
+
+.mapHover.TXG:hover .mapArea.TXG {
+  fill: url(#map-TXG-H);
+}
+
+.TXG01 {
+  stop-color: #fff5e0;
+}
+
+.TXG02 {
+  stop-color: #fee9bb;
+}
+
+.TXG-H-01 {
+  stop-color: #fee9bb;
+}
+
+.TXG-H-02 {
+  stop-color: #f0cd82;
+}
+
+.mapArea.ZMI {
+  fill: url(#map-ZMI);
+}
+
+.mapHover.ZMI:hover .mapArea.ZMI {
+  fill: url(#map-ZMI-H);
+}
+
+.ZMI01 {
+  stop-color: #b8c87d;
+}
+
+.ZMI02 {
+  stop-color: #97a953;
+}
+
+.ZMI-H-01 {
+  stop-color: #97a953;
+}
+
+.ZMI-H-02 {
+  stop-color: #829733;
+}
+
+.mapArea.ILA {
+  fill: url(#map-ILA);
+}
+
+.mapHover.ILA:hover .mapArea.ILA {
+  fill: url(#map-ILA-H);
+}
+
+.ILA01 {
+  stop-color: #3a9fce;
+}
+
+.ILA02 {
+  stop-color: #3497c6;
+}
+
+.ILA-H-01 {
+  stop-color: #3497c6;
+}
+
+.ILA-H-02 {
+  stop-color: #0b6f9e;
+}
+
+.mapArea.HSC {
+  fill: url(#map-HSC);
+}
+
+.mapHover.HSC:hover .mapArea.HSC {
+  fill: url(#map-HSC-H);
+}
+
+.HSC01 {
+  stop-color: #c5d89d;
+}
+
+.HSC02 {
+  stop-color: #a7bd7a;
+}
+
+.HSC-H-01 {
+  stop-color: #a7bd7a;
+}
+
+.HSC-H-02 {
+  stop-color: #91af54;
+}
+
+.mapArea.HSH {
+  fill: url(#map-HSH);
+}
+
+.mapHover.HSH:hover .mapArea.HSH {
+  fill: url(#map-HSH-H);
+}
+
+.HSH01 {
+  stop-color: #d3e792;
+}
+
+.HSH02 {
+  stop-color: #bdd766;
+}
+
+.HSH-H-01 {
+  stop-color: #bdd766;
+}
+
+.HSH-H-02 {
+  stop-color: #a0be3d;
+}
+
+.mapArea.TYN {
+  fill: url(#map-TYN);
+}
+
+.mapHover.TYN:hover .mapArea.TYN {
+  fill: url(#map-TYN-H);
+}
+
+.TYN01 {
+  stop-color: #ddefc5;
+}
+
+.TYN02 {
+  stop-color: #bedb97;
+}
+
+.TYN-H-01 {
+  stop-color: #bedb97;
+}
+
+.TYN-H-02 {
+  stop-color: #9ec864;
+}
+
+.mapArea.NTPC {
+  fill: url(#map-NTPC);
+}
+
+.mapHover.NTPC:hover .mapArea.NTPC {
+  fill: url(#map-NTPC-H);
+}
+
+.NTPC01 {
+  stop-color: #7ab8da;
+}
+
+.NTPC02 {
+  stop-color: #54a0ca;
+}
+
+.NTPC-H-01 {
+  stop-color: #54a0ca;
+}
+
+.NTPC-H-02 {
+  stop-color: #308ec1;
+}
+
+.mapArea.TPE {
+  fill: url(#map-TPE);
+}
+
+.mapHover.TPE:hover .mapArea.TPE {
+  fill: url(#map-TPE-H);
+}
+
+.TPE01 {
+  stop-color: #b2d4e9;
+}
+
+.TPE02 {
+  stop-color: #82b6d6;
+}
+
+.TPE-H-01 {
+  stop-color: #82b6d6;
+}
+
+.TPE-H-02 {
+  stop-color: #579cc6;
+}
+
+.mapArea.KEL {
+  fill: url(#map-KEL);
+}
+
+.mapHover.KEL:hover .mapArea.KEL {
+  fill: url(#map-KEL-H);
+}
+
+.KEL01 {
+  stop-color: #d8e9f5;
+}
+
+.KEL02 {
+  stop-color: #aecfe5;
+}
+
+.KEL-H-01 {
+  stop-color: #aecfe5;
+}
+
+.KEL-H-02 {
+  stop-color: #78b0d5;
+}
+/*# sourceMappingURL=taiwan_map.css.map */
