@@ -2,13 +2,13 @@
 
 //廣告輪播圖
 $(function () {
-    //  $("#owl-carousel").owlCarousel({
-    //  navigation : true,
-    //  slideSpeed : 300,
-    //  paginationSpeed : 600,
-    //  singleItem : true,
-    //autoPlay: true
-    //  });
+     $("#owl-carousel").owlCarousel({
+     navigation : true,
+     slideSpeed : 300,
+     paginationSpeed : 600,
+     singleItem : true,
+    autoPlay: true
+     });
 
     $("#owl-demo-earlybird").owlCarousel({
 
@@ -22,17 +22,17 @@ $(function () {
 
     });
 
-    //$("#owl-demo-firm").owlCarousel({
+    $("#owl-demo-firm").owlCarousel({
 
-    //  autoPlay: 5000, //Set AutoPlay to 3 seconds
+     autoPlay: 5000, //Set AutoPlay to 3 seconds
 
-    //  items : 4,
-    //  itemsDesktop : [1199,4],
-    //  itemsDesktopSmall : [979,4],
-    //  itemsTablet: [768,2],
-    //  itemsMobile : [480,2]
+     items : 4,
+     itemsDesktop : [1199,4],
+     itemsDesktopSmall : [979,4],
+     itemsTablet: [768,2],
+     itemsMobile : [480,2]
 
-    //});
+    });
 
     $("#owl-demo-video").owlCarousel({
 
