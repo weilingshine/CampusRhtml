@@ -102,15 +102,30 @@
     }
 
 .tab-map {
+    width: 100%;
     color: #555;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    border-bottom: 3px solid #ec6d65
 }
-
+.tab-map .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #000;
+    text-align: center;
+    font-size: 1.2em;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    padding: 14px 0;
+    margin-bottom: -3px;
+    font-weight: 400;
+}
+@media (max-width: 920px) {
+    .tab-map .nav-link span {
+        display: block;
+    }
+}
 @media (max-width: 576px) {
     .tab-map {
         -ms-flex-wrap: wrap;
@@ -119,12 +134,12 @@
 }
 
 .tab-map li {
-    width: 15.38462%;
-    background: #e4e4e4;
-    padding: 5px;
+    background: transparent;
     text-align: center;
     -webkit-transition: .3s;
     transition: .3s;
+    flex: 0 0 20%;
+    border: 1px solid transparent;
 }
 
 @media (max-width: 576px) {
@@ -141,12 +156,15 @@
 }
 
 .tab-map li.active {
-    background: #ffd667;
+    color: #ffffff;
+    background-color: #ec6d65;
+    /* border-color: #dee2e6 #dee2e6 #fff; */
 }
 
 .tab-map li:hover {
-    background: #ffd667;
+    background: #ec6d65;
     cursor: pointer;
+    color: #ffffff;
 }
 
 .mapBIG-content .svg-container:not(.active) {
