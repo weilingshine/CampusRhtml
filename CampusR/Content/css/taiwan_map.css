@@ -11,8 +11,16 @@ svg.defs-only {
 
 .svg-container {
   margin: 0 auto;
+  width: 80%;
   position: relative;
 }
+
+@media (max-width:575px) {
+  .svg-container {
+    width: 100%;
+  }
+}
+
 
 .mapBIG-content {
   display: flex;
@@ -28,11 +36,11 @@ svg.defs-only {
   border-top: none;
   box-shadow: 2px 2px 5px #e4e4e4;
 }
-@media (max-width:1199px) {
+/* @media (max-width:1199px) {
   .mapBIG-content {
     height: 700px;
   }
-}
+} */
 @media (max-width:575px) {
   .mapBIG-content {
     height: unset;
@@ -51,76 +59,25 @@ svg.defs-only {
   width: 100%;
 }
 /* 北北基宜 */
-.mapTaiwan .svg-container:nth-child(1) {
+/* .mapTaiwan .svg-container:nth-child(1) {
   width: 42%;
-}
-@media (max-width:1199px) {
-  .mapTaiwan .svg-container:nth-child(1) {
-    width: 50%;
-  }
-}
-@media (max-width:575px) {
-  .mapTaiwan .svg-container:nth-child(1) {
-    width: 60%;
-  }
-}
+} */
 /* 桃竹苗 */
-.mapTaiwan .svg-container:nth-child(2) {
+/* .mapTaiwan .svg-container:nth-child(2) {
   width: 47%;
-}
-@media (max-width:1199px) {
-  .mapTaiwan .svg-container:nth-child(2) {
-    width: 55%;
-  }
-}
-@media (max-width:575px) {
-  .mapTaiwan .svg-container:nth-child(2) {
-    width: 70%;
-  }
-}
+} */
 /* 中彰投雲 */
-.mapTaiwan .svg-container:nth-child(3) {
+/* .mapTaiwan .svg-container:nth-child(3) {
   width: 70%;
-}
-@media (max-width:1199px) {
-  .mapTaiwan .svg-container:nth-child(3) {
-    width: 78%;
-  }
-}
-@media (max-width:575px) {
-  .mapTaiwan .svg-container:nth-child(3) {
-    width: 100%;
-  }
-}
+} */
 /* 嘉南高屏 */
-.mapTaiwan .svg-container:nth-child(4) {
+/* .mapTaiwan .svg-container:nth-child(4) {
   width: 39%;
-}
-@media (max-width:1199px) {
-  .mapTaiwan .svg-container:nth-child(4) {
-    width: 56%;
-  }
-}
-@media (max-width:575px) {
-  .mapTaiwan .svg-container:nth-child(4) {
-    width: 70%;
-  }
-}
+} */
 /* 花東離島 */
-.mapTaiwan .svg-container:nth-child(5) {
+/* .mapTaiwan .svg-container:nth-child(5) {
   width: 47%;
-}
-@media (max-width:1199px) {
-  .mapTaiwan .svg-container:nth-child(5) {
-    width: 90%;
-  }
-}
-@media (max-width:575px) {
-  .mapTaiwan .svg-container:nth-child(5) {
-    width: 80%;
-  }
-}
-
+} */
 .mapBIG-content text {
   font-size: 0 !important;
 }

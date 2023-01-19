@@ -77,7 +77,6 @@ iframe{min-height:350px;}
 @media (max-width: 450px) {
 iframe{min-height:300px;}
 }
-
 /*表頭*/
 .navbar {
 	background: #ffffff;
@@ -278,7 +277,6 @@ iframe{min-height:300px;}
   #gotop img {
 	width: 100%;
   }
-
 /*BANNER*/
 .top_bn {
 	background:#f5a39f;
@@ -388,7 +386,6 @@ iframe{min-height:300px;}
   .session h2 {
 	display: inline-block;
   }
-
 .earlybird h2,.enterprise h2,.sponsor h2{
 	display:inline-block;
 }
@@ -462,9 +459,15 @@ iframe{min-height:300px;}
 .session .newsession_st02{
 	vertical-align: middle;
 	border-bottom:1px solid #eee;
-	padding:8px 0;
+	padding:21px 0;
 	color:#333;
 	font-weight:400;
+}
+@media (max-width:1199px) {
+	.session .newsession_st02 {
+		padding:10px 0;
+
+	}
 }
 .session .newsession_st02 a{
 	color:#333;
@@ -554,8 +557,16 @@ iframe{min-height:300px;}
 .session .list_more{
 	text-align: right;
 	color:#231815;
-	padding:10px 20px 10px 0;
+	padding:21px 20px 10px 0;
 }
+@media (max-width:1199px) {
+	.session .list_more {
+		padding:10px 20px 10px 0;
+
+	}
+	
+}
+
 .session .list_more a{
 	color:#231815;
 }
@@ -975,14 +986,6 @@ iframe{min-height:300px;}
 }
 .school_list .newsession_st02 .school,.school_list .newsession_st02 .area{
 	margin:auto;
-}
-.school_list .newsession_st02 .school {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-
 }
 .school_list .session_list .listtitle{
 	background:#fff;
@@ -2099,35 +2102,35 @@ a.nextPageLink:hover,a.prevPageLink:hover{color:#019c91}
 
 /*TAB切換視覺*/
 .nav-tabs {
-	border-bottom: 3px solid #ec6d65;
-  }
-.nav-tabs .nav-link {
-	color: #000;
-	text-align: center;
-	font-size: 1.2em;
-	border-top-left-radius: 0.5rem;
-	border-top-right-radius: 0.5rem;
-	padding: 14px 0;
-	font-weight: 400;
+  border-bottom: 3px solid #ec6d65;
 }
-  @media (max-width: 767px) {
-	.nav-tabs .nav-link {
-	  font-size: 1em;
-	}
+.nav-tabs .nav-link {
+  color: #000;
+  text-align: center;
+  font-size: 1.2em;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding: 14px 0;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .nav-tabs .nav-link {
+    font-size: 1em;
   }
-  .nav-tabs .nav-link:hover {
-	background: #ec6d65;
-	border: none;
-  }
-  .nav-tabs .nav-link.activ {
-	background: #ec6d65;
-	border: none;
-	color: #fff;
-  }
-  .nav-tabs .nav-item {
-	margin-bottom: -3px;
-	padding: 0;
-  }
+}
+.nav-tabs .nav-link:hover {
+  background: #ec6d65;
+  border: none;
+}
+.nav-tabs .nav-link.activ {
+  background: #ec6d65;
+  border: none;
+  color: #fff;
+}
+.nav-tabs .nav-item {
+  margin-bottom: -3px;
+  padding: 0;
+}
 /*新聞影音文章*/
 .video,.news{
 	margin-top:5%;
@@ -2787,16 +2790,42 @@ select{
 #owl-earlybird.owl-theme .owl-controls .owl-page.active span,#owl-earlybird.owl-theme .owl-controls.clickable .owl-page:hover span{
 	background: #ec6d65;
 }
-
-.map_list .session_list {
-	margin-top: 58px;
+.map_list {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+	-webkit-box-pack: end;
+		-ms-flex-pack: end;
+			justify-content: flex-end;
+	padding-top: 78px;
+  }
+  @media (max-width: 1199px) {
+	.map_list {
+	  padding-top: 50px;
+	}
+  }
+  @media (max-width: 767px) {
+	.map_list {
+	  padding-top: 10px;
+	}
+  }
+  @media (max-width: 575px) {
+	.map_list {
+	  padding-top: 0;
+	}
+  }
+  .map_list .session_list {
+	width: 100%;
+	background: #ffffff;
   }
   @media (max-width: 767px) {
 	.map_list .session_list {
 	  margin-top: 40px;
 	}
-}
-.map_list .session_list .newsession_st02 .school {
+  }
+  .map_list .session_list .newsession_st02 .school {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -2884,4 +2913,8 @@ select{
 	right: 0%;
 	bottom: inherit;
 	text-align: right;
+  }
+  
+  .color_pink {
+	color: #ed5950;
   }

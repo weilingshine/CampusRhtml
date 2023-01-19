@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--CSS區開始-->
+    <link href="/CampusR/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/CampusR/Content/css/component.css" rel="stylesheet">
+    <link href="/CampusR/Content/css/owl.carousel.css" rel="stylesheet">
+    <link href="/CampusR/Content/css/sweetalert.css" rel="stylesheet">
+    <link href="/CampusR/Content/css/hover.css" rel="stylesheet">
+    <link href="/CampusR/Content/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/CampusR/Content/css/index.css">
+    <!--CSS區結束-->
+    <!-- 20210309 font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <!-- 學校找地圖 -->
+    <link rel="stylesheet" href="/CampusR/Content/css/in">
+    <link rel="stylesheet" href="/CampusR/Content/css/universitySearch-area.css">
+    <link rel="stylesheet" href="/CampusR/Content/css/taiwan_map.css">
+</head>
+
+<body>
+    
+    <!--校徵場次Activity-->
+<div class="session">
+    <div class="container">
+        <div class="row">
+            <!--地圖找學校-->
+             <!--地圖-->
+        <div class="container">
+
+            <div class="row" style="justify-content: center;">
+                <!-- 地圖 -->
+                @*<section class="main-content col-12 search_area (Model.UniversityPopularArea.HaveData ? "col-lg-8":"col-lg-12") ">*@
+                <section class="main-content col-12 search_area col-lg-12">
+                    <div class="row">
+                        <!-- 標題 -->
+                        <section class="search-title col-12 mb-3">
+                            <h2>地圖找學校</h2>
+                            <hr>
+                        </section>
+                        <!-- 地圖頁籤 -->
+                        <section class="tab-map-block col-12 mb-3">
+                            <ul class="tab-map">
+                                <li data-area-id="mapSVG2" class="active">北北基宜</li> 
+                                <li data-area-id="mapSVG3">桃竹苗</li>
+                                <li data-area-id="mapSVG4">中彰投雲 </li>
+                                <li data-area-id="mapSVG5">嘉南高屏</li>
+                                <li data-area-id="mapSVG6">花東離島</li>
+                            </ul>
+                        </section>
+                        <!-- 地圖 -->
+                        <div class="mapBIG-content mb-4 mb-lg-5">
+                            <svg class="defs-only" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <!-- 預設 -->
+                                    <radialGradient id="Gradient1">
+                                        <stop class="stop1" offset="0%"></stop>
+                                        <stop class="stop2" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="Gradient2">
+                                        <stop class="stop3" offset="0%"></stop>
+                                        <stop class="stop4" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 澎湖 PEH -->
+                                    <radialGradient id="map-PEH">
+                                        <stop class="PEH01" offset="0%"></stop>
+                                        <stop class="PEH02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-PEH-H">
+                                        <stop class="PEH-H-01" offset="0%"></stop>
+                                        <stop class="PEH-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 金門 KNH -->
+                                    <radialGradient id="map-KNH">
+                                        <stop class="KNH01" offset="0%"></stop>
+                                        <stop class="KNH02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-KNH-H">
+                                        <stop class="KNH-H-01" offset="0%"></stop>
+                                        <stop class="KNH-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 屏東 PIF -->
+                                    <radialGradient id="map-PIF">
+                                        <stop class="PIF01" offset="0%"></stop>
+                                        <stop class="PIF02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-PIF-H">
+                                        <stop class="PIF-H-01" offset="0%"></stop>
+                                        <stop class="PIF-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 台東 TTT -->
+                                    <radialGradient id="map-TTT">
+                                        <stop class="TTT01" offset="0%"></stop>
+                                        <stop class="TTT02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-TTT-H">
+                                        <stop class="TTT-H-01" offset="0%"></stop>
+                                        <stop class="TTT-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 高雄 KHH -->
+                                    <radialGradient id="map-KHH">
+                                        <stop class="KHH01" offset="0%"></stop>
+                                        <stop class="KHH02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-KHH-H">
+                                        <stop class="KHH-H-01" offset="0%"></stop>
+                                        <stop class="KHH-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 台南 TNN -->
+                                    <radialGradient id="map-TNN">
+                                        <stop class="TNN01" offset="0%"></stop>
+                                        <stop class="TNN02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-TNN-H">
+                                        <stop class="TNN-H-01" offset="0%"></stop>
+                                        <stop class="TNN-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 嘉義縣 CHY -->
+                                    <radialGradient id="map-CHY">
+                                        <stop class="CHY01" offset="0%"></stop>
+                                        <stop class="CHY02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-CHY-H">
+                                        <stop class="CHY-H-01" offset="0%"></stop>
+                                        <stop class="CHY-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 嘉義市 CYI -->
+                                    <radialGradient id="map-CYI">
+                                        <stop class="CYI01" offset="0%"></stop>
+                                        <stop class="CYI02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-CYI-H">
+                                        <stop class="CYI-H-01" offset="0%"></stop>
+                                        <stop class="CYI-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 花蓮 HUN -->
+                                    <radialGradient id="map-HUN">
+                                        <stop class="HUN01" offset="0%"></stop>
+                                        <stop class="HUN02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-HUN-H">
+                                        <stop class="HUN-H-01" offset="0%"></stop>
+                                        <stop class="HUN-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 南投 NTC -->
+                                    <radialGradient id="map-NTC">
+                                        <stop class="NTC01" offset="0%"></stop>
+                                        <stop class="NTC02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-NTC-H">
+                                        <stop class="NTC-H-01" offset="0%"></stop>
+                                        <stop class="NTC-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 雲林 YUN -->
+                                    <radialGradient id="map-YUN">
+                                        <stop class="YUN01" offset="0%"></stop>
+                                        <stop class="YUN02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-YUN-H">
+                                        <stop class="YUN-H-01" offset="0%"></stop>
+                                        <stop class="YUN-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 彰化 CHW -->
+                                    <radialGradient id="map-CHW">
+                                        <stop class="CHW01" offset="0%"></stop>
+                                        <stop class="CHW02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-CHW-H">
+                                        <stop class="CHW-H-01" offset="0%"></stop>
+                                        <stop class="CHW-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 台中 TXG -->
+                                    <radialGradient id="map-TXG">
+                                        <stop class="TXG01" offset="0%"></stop>
+                                        <stop class="TXG02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-TXG-H">
+                                        <stop class="TXG-H-01" offset="0%"></stop>
+                                        <stop class="TXG-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 苗栗 ZMI -->
+                                    <radialGradient id="map-ZMI">
+                                        <stop class="ZMI01" offset="0%"></stop>
+                                        <stop class="ZMI02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-ZMI-H">
+                                        <stop class="ZMI-H-01" offset="0%"></stop>
+                                        <stop class="ZMI-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 宜蘭 ILA -->
+                                    <radialGradient id="map-ILA">
+                                        <stop class="ILA01" offset="0%"></stop>
+                                        <stop class="ILA02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-ILA-H">
+                                        <stop class="ILA-H-01" offset="0%"></stop>
+                                        <stop class="ILA-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 新竹市 HSC -->
+                                    <radialGradient id="map-HSC">
+                                        <stop class="HSC01" offset="0%"></stop>
+                                        <stop class="HSC02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-HSC-H">
+                                        <stop class="HSC-H-01" offset="0%"></stop>
+                                        <stop class="HSC-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 新竹縣 HSH -->
+                                    <radialGradient id="map-HSH">
+                                        <stop class="HSH01" offset="0%"></stop>
+                                        <stop class="HSH02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-HSH-H">
+                                        <stop class="HSH-H-01" offset="0%"></stop>
+                                        <stop class="HSH-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 桃園 TYN -->
+                                    <radialGradient id="map-TYN">
+                                        <stop class="TYN01" offset="0%"></stop>
+                                        <stop class="TYN02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-TYN-H">
+                                        <stop class="TYN-H-01" offset="0%"></stop>
+                                        <stop class="TYN-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 新北 NTPC -->
+                                    <radialGradient id="map-NTPC">
+                                        <stop class="NTPC01" offset="0%"></stop>
+                                        <stop class="NTPC02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-NTPC-H">
+                                        <stop class="NTPC-H-01" offset="0%"></stop>
+                                        <stop class="NTPC-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 台北 TPE -->
+                                    <radialGradient id="map-TPE">
+                                        <stop class="TPE01" offset="0%"></stop>
+                                        <stop class="TPE02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-TPE-H">
+                                        <stop class="TPE-H-01" offset="0%"></stop>
+                                        <stop class="TPE-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <!-- 基隆 KEL -->
+                                    <radialGradient id="map-KEL">
+                                        <stop class="KEL01" offset="0%"></stop>
+                                        <stop class="KEL02" offset="100%"></stop>
+                                    </radialGradient>
+                                    <radialGradient id="map-KEL-H">
+                                        <stop class="KEL-H-01" offset="0%"></stop>
+                                        <stop class="KEL-H-02" offset="100%"></stop>
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+                            <ul id="mapTaiwan" class="mapTaiwan">
+                                <!-- 北北基宜 -->
+                                <li class="svg-container active" id="mapSVG2" aria-hidden="true">
+                                    <svg class="mapSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 442 364" preserveAspectRatio="xMinYMin meet" version="1.1">
+                                        <!-- 基隆 KEL -->
+                                        <a class="mapHover KEL" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100300"})" xlink:href="#City_100300" data-uk-modal="{target:'#City_100300', center:true}">
+                                            <g class="g_KeelungB">
+                                                <path id="KeelungB" class="mapArea KEL" style="stroke: #FFFFFF; stroke-width: 2;" d="M275.4,62.4l0.1-1.4l-1.2-1.2l0.6-3.8
+                                                l-2,0.1l-2.7,1.7l-2.5-2.3l-2.1-0.2l-1-0.7v-2.4l-1.8-0.5l-0.9,1.6l-1.7,0.5l-0.5-1.7h-1.5l0.6,1.7l1.6,2.3l-2,2.6l-3.2,2.3
+                                                l-1.5,0.1l2.6-2.5l-0.9-1.6v-3.6l-1.7-0.1l-1.6-0.9l-2-0.3l-2.3-2.3h-4.4l-1.2-0.9l0.6-1.2l-0.5-1l-2,1.4l-2.3,0.8l-1.2,1.8
+                                                l-2.6,0.6l-1.5,1.8l-4.6,2l-2.8,0.2l-2.3,0.8l-2,1.5l-5.4,0.6v3l1.2,2.3l2.6,0.8l1.6,1.8l0.2,2.8l3.4,7.7l2.6,1.8l1.8,2.4l2.6,0.6
+                                                l1.6-1.5v2.3l1.8,2l7.9,2l6.1,5.2l5.9,0.5L260,89l2.8-0.2l1.2-2l0.8-2.4l-5.2-5.1v-5.4l-0.6-2.4l2.6-0.6l3.3-3.4l2.8,0.6l2,1.5
+                                                l1,0.2l2-3.3l1.6-1.6L275.4,62.4L275.4,62.4L275.4,62.4z"></path>
+                                                
+                                                <g id="KeelungB_txt" class="textOutline">
+                                                    <path class="st1" d="M261.1,57.5l-0.7,1.1c-2.9-1.1-5-2.7-6.2-4.8h-6.2c-1.3,1.9-3.4,3.5-6.2,4.6l-0.8-1c2.4-0.8,4.2-2.1,5.5-3.6
+                                                    h-5.1v-1h4.1v-7.5h-3.6v-1.1h3.6v-1.6h1.1v1.6h9.1v-1.6h1.1v1.6h3.6v1.1H257v7.5h4.1v1h-5.5C257,55.5,258.9,56.7,261.1,57.5z
+                                                    M260,61.7h-17.6v-1.1h8.3v-2.4h-4.6v-1h4.6v-2.3h1.1v2.2h4.6v1h-4.6v2.4h8.2L260,61.7L260,61.7z M255.9,46.9v-1.7h-9.1v1.7
+                                                    H255.9z M255.9,49.8V48h-9.1v1.8H255.9z M246.8,50.9v1.8h9.1v-1.8H246.8z"/>
+                                                <path class="st1" d="M270.7,44c0,0.2-0.8,2-2.2,5.5c1.3,1.6,1.9,3.2,1.9,4.8c0,0.8-0.2,1.5-0.6,2c-0.4,0.5-1.1,0.8-2.3,0.8
+                                                    c-0.3,0-0.5,0-0.8,0l-0.5-1.1c0.3,0,0.7,0,1.1,0c0.8,0,1.2-0.1,1.4-0.3c0.2-0.2,0.4-0.6,0.4-1.2c0-1.6-0.7-3.1-2-4.7
+                                                    c0.9-2.2,1.6-4,2.2-5.5h-3.6v18h-1.1V42.9h5.9L270.7,44L270.7,44z M283.8,49.9l-0.6,1c-2.6-0.5-4.7-1.1-6.2-2
+                                                    c-1.5,0.8-3.6,1.5-6.2,2.2l-0.6-1c2-0.4,3.9-0.9,5.5-1.7c-1.1-0.9-1.9-1.7-2.2-2.2c-0.5,0.4-1.1,0.8-2.1,1.2l-0.8-0.9
+                                                    c2.3-1.1,3.9-2.5,5.1-4l1,0.5c-0.2,0.4-0.5,0.8-0.8,1.2h5.8v1.1c-0.8,1.2-2.1,2.3-3.7,3.2C279.7,49,281.5,49.5,283.8,49.9z
+                                                    M283.6,61.6h-13.3v-1h6.3v-2.1h-3.8v-1.1h3.8v-2h-3.3c-0.7,1.2-1.4,2.2-2.1,2.8l-0.8-0.8c1.2-1.4,2.3-2.9,2.8-4.6l0.9,0.5
+                                                    c-0.1,0.3-0.2,0.7-0.3,0.9h2.7v-1.9h-4.2v-1.1h9.5v1.1h-4.1v1.9h5.1v1.1h-5.1v2h4.5v1.1h-4.5v2.1h5.9L283.6,61.6L283.6,61.6z
+                                                    M280.4,45.2H275c-0.1,0.2-0.2,0.3-0.4,0.4c0.7,0.8,1.4,1.6,2.4,2.3C278.4,46.9,279.6,46,280.4,45.2z"/>
+                                                <path class="st1" d="M306.1,46.5h-9.2V50h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2c-0.3,0.3-0.7,0.5-1,0.5c-0.4,0-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6v-7h-6.5v11h-1.2v-11h-6.4v9H288V50h7.6v-3.6h-9.2v-1.2h9.5
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L306.1,46.5L306.1,46.5z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 239.8962 61.0093)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">基隆市</text>
+                                            </g>
+                                        </a>
+                                        <!-- 新北 NTPC -->
+                                        <a class="mapHover NTPC" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100200"})" xlink:href="#City_100200" data-uk-modal="{target:'#City_100200', center:true}">
+                                            <g class="g_NewTaipeiB">
+                                                <path id="NewTaipeiB" class="mapArea NTPC" style="stroke: #FFFFFF; stroke-width: 2;" d="M330.5,116.2l-4.2-0.8l-2.8,0.2
+                                                l-7.1,2.6l-6.1,0.5l-7.7,5.4l-1.6,1.8h-3.2l-2.6-1l-5.9-0.5l-2,1.6l-0.6,2.4l-1,2l4.6,6.6l-1.6,4.8l-6.6,4.4l-6.1-0.5l-2.6,0.5
+                                                l-3.4,2.8l-2.8,3.6l0.6,2.6l-0.2,2.4l-1.6,2L266,162l0.2,1.5l-2.8,0.6l-2,1l-8.4-1.2l-2.6,0.5l-2.3,1.2l-3,3.6l-5.4,2.9l-0.6,1.9
+                                                l-2,1.8l-1.2,2l-2.4,0.8l-0.8,2.3l-1.8-2l-4.1,2l-11.8,1.5l1.6,1.5l-0.6,2.4l-2.6,2l-2.8-0.8l-2,1.2l-2.4,0.6l-1,2.3l0.2,2.8
+                                                l-0.5,2.6l-2.3,1.8l0.5,2.8l1.6,1.6l0.8,2.4v3l-1.6,4.8l-2.6,0.5l-1.8,1.5l-1.2,1.8l-2.4,0.8l-3,0.2l-6.6,3.6l-0.6,2.8l-5.9,3.8
+                                                l-5.2,0.8l-2.6,1.6l-5.4-0.3l-1.7-0.7l-0.6-5.6l-2.3-1.6l-1.6-2.3l-2.8-0.8l-0.2-2l-2.8-1.2l0.6-2.3l-3.6-3.4l-2.3-5.6v-1.2l-1-2
+                                                l-0.5-2.6l1.2-2.3l3.6-3l1.2-1.8l1.8-1.2v-3l-2.6-0.8l-1-2.8l-0.2-2.8l-1.8-2l-1.8-1l-3.3-3.3l-0.8-2.3l-1.6-1.6l-0.5-1l-1.5-0.8
+                                                l-6.1,0.5l-2.3,1.2l-3,0.2l-3.3-0.8l-2-1.2l-1.8-1.8l-1.8,1.5l-2.8-0.5l0.2-2.4l5.2-1l1.8-1.5l-2.8-1.8l-0.2-0.2l-0.5-2.4l1.5-1.8
+                                                l-3.8-5.9l-5.1-3l-1-4.8l1-2.3l1.5-1.6l2.4-1.6l-1.8-1.5l-2.4-0.2l-1.5-2.6l1-2.3l1.6-1.6l0.6-5.6l-1.2-2.3l0.6-2.4l2-1l12.7,0.5
+                                                l3.3-2.3l2.3-4.1l2.4-0.8l1.8-1.2l-0.2-2.4l-2.4-1.8l2.3-0.8l2.3-1.5l1-1.8l-2.6-1.8l-1.5-1.6l-0.5-2.6l1-2v-0.8l-0.6-2.6l-2-2.4
+                                                l-1.5-1h-6.1l-5.9-1.5l-2.3-2l0.6-4.1l-10.5-5.1l-5.6-0.6l-1.5-1.8l-1.5-0.5l-2-2.8l1.1-1.6l2.7-2.6l13.5-0.1l1.5-1l5.9-1.8
+                                                l4.7-3.2L131,59l3.2-1.9l1.8-0.6l4.2-3.9l0.7-2.7l1.2-1.1h2.1l6.5,4.3l2.6,2.6l0.8,2l0.1,2l2.3,3l0.3,1.8l0.9,1.9l0.3,1.8l1-0.9
+                                                l-0.3-8.6l-2.5-5l-1.1-1.5l-1.6-1.1l-1.7-2.9l-3.9-1.9l-2.1-0.1l-3.8-3.6l-0.3-1.2l1.2,0.1L145,41l2.3-4.4l0.3-2.1l2.4-2.5
+                                                l1.5-0.9l1-1.5l0.3-2.1l1.5-2.8l0.5-1.7l1.1-1.2l0.1-2l1.5-1.1l4.4,0.9l0.7-0.1l3.9-8.3l1.9-0.6l1.6-1.1l3.8-1l1.6-1.2l0.3-2
+                                                l0.7-0.7l0.7,1.8l5.7-0.9l1.2-0.9V2.3l1.2-0.9l2.1,2.3h6.9l0.6-1.7l1.1-1.2l1.5-0.2l0.5,0.1l1.5,0.9l1.1,1.2l1.6,1h2.1l1.6,0.9
+                                                l2,2.6l3.6,1.1l4.2,5.9l1.2,1.1l0.8,1.5l0.5,2l-0.6,4.3l2.3,2.3l1.6,0.7h2.3l0.7,1.5l-1.5,1.5l0.3,1.5l5.5,5.7l7.1-0.5l5.1-4.4
+                                                l0.5,1.2l-1.5,1.2l-1.6,0.9l-1.1,1.2l1.2,1.1l0.3,0.9l-3.3,1.6l-0.8,1.7l0.6,1.5l1.8,1.2l1.7,0.6l3.3,2.4l-1.7,1.2l-2.3,0.8
+                                                l-1.2,1.8l-2.6,0.6l-1.5,1.8l-4.6,2l-2.8,0.2l-2.3,0.8l-2,1.5l-5.4,0.6v3l1.2,2.3l2.6,0.8l1.6,1.8l0.2,2.8l3.4,7.7l2.6,1.8
+                                                l1.8,2.4l2.6,0.6l1.6-1.5V82l1.8,2l7.9,2l6.1,5.2l5.9,0.5l5.2-2.6l2.8-0.2l1.2-2l0.8-2.4l-5.2-5.1V74l-0.6-2.4l2.6-0.6l3.3-3.4
+                                                l2.8,0.6l2,1.5l1,0.2l2-3.3l1.6-1.6l1-2.4v-1.4h2l1.8-0.7h2.1l-0.7,0.7l-0.9,1.5l-0.5,1.8l1.1,1.5h1.8l1.5-1.5l1.6-0.9l3.3,1
+                                                l5,0.1l1.6,0.7l1.7-0.7l6.6,1.5h2.1l3.8-1.4l1.1-1.1l1.9-0.5l2,0.1v2.1l-1.5,0.9l-0.9,1.5l0.7,1l1.1,1l0.7,1.5l-0.5,1.7l-1.7,1.1
+                                                l-1.7,5.1l1.5,3.4l4.7,4.7l0.3,0.7l-1.6,1.1l0.7,0.9v6.4l0.5,1.6l5.5,4.5l4.5,0.5l1.9-1.2l0.9-0.9l2-0.1l1.7,0.3l1,1.1l1.6,0.6
+                                                l1.4,2.5l1.2-1.1l1.6-0.1l2.1,2.3l-0.1,1.7l-0.8,1.6l-2.1,0.2l-0.9,1.5l-3.2,1.5l-0.9,1.2l-2,0.1l-0.9,1.7L330.5,116.2
+                                                L330.5,116.2L330.5,116.2z"></path>
+                                                
+                                                <g id="NewTaipeiB_txt" class="textOutline">
+                                                    <path class="st1" d="M165.4,162.9c-0.8,1.8-1.6,3.3-2.5,4.6l-1-0.7c0.8-1,1.7-2.5,2.5-4.4L165.4,162.9z M172.3,161.1h-4.6v8.3
+                                                    h-1.1v-8.3h-4.6v-1h4.6v-2.3h-4.3v-1.1h2.7c-0.1-0.8-0.6-1.8-1.2-3.4l0.8-0.6h-2.3v-1.1h4.1c-0.2-0.6-0.6-1-0.9-1.6l1-0.5
+                                                    c0.4,0.5,0.8,1.2,1.1,2.1h3.9v1.1h-1.8l0.8,0.6c-0.3,0.8-0.8,2-1.4,3.4h2.6v1.1h-4.1v2.3h4.6V161.1z M169.6,152.8h-4.7
+                                                    c0.6,1.5,1,2.7,1.3,3.9h1.9C168.8,155.5,169.3,154.2,169.6,152.8z M171.6,165.4l-1,0.7c-0.4-0.9-0.8-2-1.6-3.2l0.9-0.6
+                                                    C170.6,163.3,171.1,164.3,171.6,165.4z M181.5,158H179v11.4h-1.1V158h-3.4c0,5.1-0.9,8.8-2.8,11.5l-0.9-0.8
+                                                    c0.9-1.4,1.7-2.9,2.1-4.4c0.4-1.5,0.7-3.5,0.7-6v-6.8c2.8-0.4,5.2-1,7-2l0.8,0.9c-2,0.9-4.2,1.6-6.7,2v4.4h7L181.5,158L181.5,158
+                                                    z"/>
+                                                <path class="st1" d="M194.6,166.3c-4,1.4-7.3,2.4-9.9,3l-0.4-1.1c1.9-0.5,4-1,6.3-1.8v-8.6h-6v-1.2h6v-6.9h1.2V166
+                                                    c0.8-0.2,1.6-0.6,2.6-0.9L194.6,166.3L194.6,166.3z M203.9,163.4c0,0.9-0.1,1.8-0.2,2.8c-0.1,1-0.3,1.5-0.4,1.8
+                                                    c-0.1,0.3-0.3,0.5-0.5,0.7c-0.2,0.2-0.5,0.3-0.8,0.4s-0.9,0.1-1.9,0.1c-1.8,0-2.8-0.1-3.2-0.2s-0.6-0.4-0.8-0.7
+                                                    c-0.2-0.3-0.2-0.7-0.2-1v-17.6h1.2v7.1h6.4v1.2h-6.4v9.3c0,0.2,0.1,0.4,0.3,0.5c0.2,0.1,1,0.2,2.4,0.2c1,0,1.6,0,1.8-0.1
+                                                    c0.2-0.1,0.4-0.2,0.5-0.4c0.1-0.2,0.3-0.7,0.4-1.5s0.2-1.8,0.2-2.9L203.9,163.4z"/>
+                                                <path class="st1" d="M226.6,153.6h-9.2v3.6h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2c-0.3,0.3-0.7,0.5-1,0.5c-0.4,0-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6v-7.1h-6.5v11.2h-1.2v-11h-6.4v9h-1.2v-10.2h7.6v-3.6h-9.2v-1.1
+                                                    h9.6c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6V153.6z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 160.4768 168.1967)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">新北市</text>
+                                            </g>
+                                        </a>
+                                        <!-- 宜蘭 ILA -->
+                                        <a class="mapHover ILA" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100400"})" xlink:href="#City_100400" data-uk-modal="{target:'#City_100400', center:true}">
+                                            <g class="g_YilanB">
+                                                <path id="YilanB" class="mapArea ILA" style="stroke: #FFFFFF; stroke-width: 2;" d="M166.1,230.3l-0.6,1.4l-1.8,0.6l-3.9,0.3
+                                                l-1.5,0.8l-2,2.7l-0.7,5.7l-2.6,3.4l-0.5,1.7l-0.7,1.5l-0.5,1.7l-3.8,6l-0.3,1.8h-2l-1.6,0.7l-1.2,1l-0.5,0.8l-1,1l0.1,0.7
+                                                l1.2,0.9l0.7,1.6l0.1,2l0.6,1.6l-1.5,1.2l-0.6,0.3l-0.6,0.9l-1.5,0.9l-1.6,1.7l-0.5,1.8l0.7,1.5l0.1,8.2l-0.9,2l-1.2,1.6l-1.6,1.1
+                                                l-1.8,2.8l-2,1.6l-0.6,1.5l-1.6-0.1l-3.8,5.5l-1.5,0.9l-2.1-0.5l-1.6,3.2l-1.6,0.9l-1.2,3.3l-1,1.2l-1.7,1.5l-1.5,2.8l0.1,1.8
+                                                l-0.8,1.1l1.6,1.9l1,2l0.6,2.4l-1,8l3,3l2.3,0.8h5.4l4.6,7.9l2,1l3-0.5l1.5-1.8l1.8-1.5l2.6-0.5l2-1l8-1l2.4,1.2l1.2,2l1.8,1.2
+                                                l1.5,2.4l13.5,8.7h9.1l3.4,1.5l4.5,0.6l9.1,6.3l9.3,1.1l3.4-0.9l-3.4-2.8l0.9-3.4l3.7-0.9l2.6-1.7l2.6,1.1l2.3-2l-0.9-1.7l-2.3-2
+                                                l0.3-3.7l2.3-0.9l4.8,4.3l5.4,1.7l5.1,3.9l10.2,4.3l8.2,0.6l9.1,4.5l4.6,0.6l-0.2-4.5l-0.9-1.5l0.1-4.2l2.8-5.4l0.5-1.7l1.7-2.8
+                                                l0.6-12.3l0.6-1.8l1-1.4v-2.4l1.1-3.9l2-2.7l0.6-2l3-1.8l1.1-1.4l1.5-2.9l0.1-2l5.1-4.8l5.2-2.1h2.1l0.6-0.3l-1.6-0.9l-1.1-1.1
+                                                l-0.9-1.5V296l-2.8-1.7l-0.6-5.5l2-1.2l1-1.5l3.7-0.7l3.2-2l1.9-0.5l0.6-1.9l-0.1-1.7l-0.7-2l-0.1-2l-0.9-1.2l-0.3-3.9l0.9-1.2
+                                                l-1-1.6l0.8-1.7h2.1l-0.3-1.6l-1.1-1l-0.3-0.6l1.7-0.8l-1.5,0.3l-2-0.8l-0.1-1.5l-2.7-2.5l0.5-1.8l2-0.1l1.7,1l0.3,2l2-0.1
+                                                l1.7-0.9l-4.2-4.2l-3.4-1.1l-0.5-0.9l-0.2,0.2l-1.8-2.6l-0.1-1.5l-4.2-10.2l-0.1-4.3l-0.9-1.2l0.5-0.7v-2.3l-0.6-1.9l0.6-11.5
+                                                l-3.3-3.6l-1-1.7v-1.9l-1.6-1.8l-0.7-3.8l0.1-2l-1.1-1.1l0.6-15.8l0.8-2.5v-2.1l1.5-3.2l-0.3-4.2l1.1-3.4l0.1-2l2.7-5.9l0.3-2
+                                                l1.5-2.5l1.7-0.9l1.1-3.3l1-1.2l1.6-0.6l4.3-5l1.5-0.7l3.6-4.2l0.3-3.9l0.6-1.7l3.2-1.8l1.7-0.5l1.7-2.5l1.4-1l1.4-0.7l2.8-3.9
+                                                l0.3-2.1l2-1.1l2-0.3l1.4-0.6l1.2-1.2l1.9-0.3l1.5-0.9l2.1-0.1l3-1.4l-4.1-0.8l-2.8,0.2l-7.1,2.6l-6.1,0.5l-7.7,5.4l-1.6,1.8h-3.5
+                                                l-2.6-1l-5.9-0.5l-2,1.6l-0.6,2.4l-1,2l4.6,6.6l-1.6,4.8l-6.6,4.4l-6.1-0.5l-2.6,0.5l-3.4,2.8l-2.8,3.6l0.6,2.6l-0.2,2.4l-1.6,2
+                                                l-0.2,2.4l0.2,1.5l-2.8,0.6l-2,1l-8.4-1.2l-2.6,0.5l-2.3,1.2l-3,3.6l-5.4,2.9l-0.6,1.9l-2,1.8l-1.2,2l-2.4,0.8l-0.8,2.3l-1.8-2
+                                                l-4.1,2l-11.8,1.5l1.6,1.5l-0.6,2.4l-2.6,2l-2.8-0.8l-2,1.2l-2.4,0.6l-1,2.3l0.2,2.8l-0.5,2.6l-2.3,1.8l0.5,2.8l1.6,1.6l0.8,2.4v3
+                                                l-1.6,4.8l-2.6,0.5l-1.8,1.5l-1.2,1.8l-2.4,0.8l-3,0.2l-6.6,3.6l-0.6,2.8l-5.9,3.8l-5.2,0.8l-2.6,1.6L166.1,230.3L166.1,230.3
+                                                L166.1,230.3z"></path>
+                                                
+                                                <g id="YilanB_txt" class="textOutline">
+                                                    <path class="st1" d="M213.4,285h-19.6v-1.1h3.6v-12.2h12.4v12.2h3.7V285z M212.5,272.6h-1.1v-3.6h-15.8v3.6h-1.2v-4.7h8.6
+                                                    c-0.1-0.6-0.4-1.2-0.8-1.9l1.2-0.3c0.3,0.8,0.6,1.5,0.8,2.2h8.3L212.5,272.6L212.5,272.6z M208.5,275.5v-2.7h-10.1v2.7H208.5z
+                                                    M208.5,279.7v-2.9h-10.1v2.9H208.5z M208.5,283.9v-3.1h-10.1v3.1H208.5z"/>
+                                                <path class="st1" d="M225.6,268.3h-2.8v0.8h-1.1v-0.8h-5.4v-1h5.4v-1.5h1.1v1.5h2.8V268.3z M225,274.8h-6.5v10.8h-1.1v-15.8h7.6
+                                                    L225,274.8L225,274.8z M223.9,271.8v-0.9h-5.4v0.9H223.9z M223.9,273.8v-0.9h-5.4v0.9H223.9z M232.4,277.1h-5.7v0.9h4.7v3.9h-4.5
+                                                    c1,0.8,2.4,1.6,4.2,2.3l-0.6,0.9c-1.3-0.5-2.6-1.2-3.9-2.2v2.7h-1v-3c-1.3,0.9-3,1.9-5.1,2.7l-0.7-0.9c2.3-0.8,3.9-1.7,5.1-2.6
+                                                    H221V278h4.7V277h-5.8v-0.9h5.8V275h1v1.1h5.8v1H232.4z M225.6,280.9v-2h-3.7v2H225.6z M224.9,280.1l-0.7,0.6
+                                                    c-0.7-0.4-1.2-0.7-1.7-0.8l0.8-0.6C223.8,279.4,224.4,279.7,224.9,280.1z M235.8,268.3h-5.4v0.8h-1.1v-0.8h-2.8v-1h2.8v-1.5h1.1
+                                                    v1.5h5.4V268.3z M230.2,280.9v-2h-3.6v2H230.2z M234.6,284.3c0,0.4-0.1,0.7-0.4,0.8s-0.8,0.4-1.5,0.4h-1l-0.4-1.1
+                                                    c0.2,0,0.4,0,0.6,0h1.3c0.3,0,0.4-0.1,0.4-0.4v-9.2h-6.5v-4.9h7.5V284.3z M229.5,279.9c-0.7,0.4-1.2,0.7-1.8,0.8l-0.6-0.8
+                                                    c0.7-0.2,1.2-0.4,1.7-0.8L229.5,279.9z M233.6,271.8v-0.9h-5.4v0.9H233.6z M233.6,273.8v-0.9h-5.4v0.9H233.6z"/>
+                                                <path class="st1" d="M241.6,279.4c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L241.6,279.4z M247.6,277.6h-3.8v8
+                                                    h-1.1v-8h-3.9v-1h1v-10.1h6.7v10.1h1L247.6,277.6L247.6,277.6z M245.4,268.9v-1.4h-4.5v1.4H245.4z M245.4,271.3v-1.4h-4.5v1.4
+                                                    H245.4z M245.4,273.8v-1.6h-4.5v1.6H245.4z M245.4,276.6v-1.7h-4.5v1.7H245.4z M247.5,281.8l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9
+                                                    l1-0.5C246.7,279.9,247.1,280.8,247.5,281.8z M251.1,280.1c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L251.1,280.1z
+                                                    M255,266.6c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L255,266.6z M258.5,278.5l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.4,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.3,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C257.1,276,257.8,277.2,258.5,278.5z M258.5,284.1l-1,0.5c-0.5-1.2-1.2-2.7-2.4-4.6l1-0.5C257.2,281.2,257.9,282.7,258.5,284.1z"
+                                                    />
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 192.1296 284.4337)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">宜蘭縣</text>
+                                            </g>
+                                        </a>
+                                        <!-- 台北 TPE -->
+                                        <a class="mapHover TPE" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100100"})" xlink:href="#City_100100" data-uk-modal="{target:'#City_100100', center:true}">
+                                            <g class="g_TaipeiB">
+                                                <g class="g_TaipeiB">
+                                                    <polygon id="TaipeiB" class="mapArea TPE" style="stroke: #FFFFFF; stroke-width: 2;" points="195.4,125.2 190.6,122.1 
+                                                    189.4,117.6 187.2,117.4 184.1,115.3 182.4,112.4 182.4,109.2 181.8,107.5 180.3,106.4 177.5,105.2 176.9,105.3 175.7,107.1 
+                                                    173,108.6 169.6,108.9 167.9,105.5 167.3,99.2 168.5,96.5 170.6,94.6 173.3,90.8 173.1,82.2 171.8,79.6 168.2,76.1 161.9,75.4 
+                                                    159.3,73.6 158.2,70.4 158.8,66.9 160.7,65.8 160.7,63 162.3,61.2 162.8,60.4 164.1,58.9 165.7,55.7 168.2,54.9 169.1,52.6 
+                                                    172.8,48.2 175.4,47.1 178.2,46.9 179.4,46 180.4,43.4 184.7,40.9 185.7,38.7 188,37.6 191.5,32.2 194.2,35.3 196.1,38.8 
+                                                    201.7,38.3 201.7,42.7 200.9,45 200.9,47.3 204.2,50.5 204.4,56.4 205.3,57.9 208.7,60.8 209.5,63.8 207.7,65.8 207.3,67.5 
+                                                    215.8,74.7 216.4,80.8 213.6,86.6 213,87.3 214.1,88.4 214.6,91.4 213.4,93.1 214,94.5 219,98.2 223,100 225.7,99.2 228.8,100.7 
+                                                    227.5,104.1 219.3,103.6 217.1,104.1 215.2,105.4 209.6,105 208.1,105.9 207,107.5 207,109.7 208.3,114.4 208.2,116.9 
+                                                    208.4,118.9 214.1,121.6 213.7,125.4 209.7,125.4 207.2,126.5"></polygon>
+                                        
+                                                </g>
+                                                
+                                                <g id="TaipeiB_txt" class="textOutline">
+                                                    <path class="st1" d="M145.5,94h-19.1v-0.9h9v-1.3h-7.7v-0.9h7.7v-1.2c-1,0-3.3,0-6.7,0l-0.2-0.9c1.3-0.1,2.5-0.6,3.8-1.6h-3v-0.9
+                                                    h13.4V87h-1.5c0.7,0.7,1.5,1.5,2.3,2.5l-0.8,0.7c-0.3-0.4-0.6-0.8-0.8-1c-2.4,0.1-4.2,0.2-5.3,0.3v1.3h7.6v0.9h-7.6v1.3h8.9
+                                                    L145.5,94L145.5,94z M145.5,76.5h-8.8v1.1h7.9v0.9h-17v-0.9h7.9v-1.1h-8.9v-0.9h8.9v-1h1.2v1h8.8L145.5,76.5L145.5,76.5z
+                                                    M145.2,86.9H144v-2.2h-16v2.1h-1.1v-3h18.2L145.2,86.9L145.2,86.9z M143,82.8h-14.1v-3.1H143V82.8z M141.8,81.9v-1.2h-11.7v1.2
+                                                    H141.8z M140.9,88.4c-0.4-0.4-0.7-0.7-0.8-0.8l0.6-0.5h-6.6c-0.8,0.8-1.6,1.3-2.5,1.7C133.3,88.6,136.4,88.5,140.9,88.4z"/>
+                                                <path class="st1" d="M158.7,91.1c-4,1.4-7.3,2.4-9.9,3l-0.4-1.1c1.9-0.5,4-1,6.3-1.8v-8.6h-6v-1.2h6v-7h1.2v16.4
+                                                    c0.8-0.2,1.6-0.6,2.6-0.9L158.7,91.1L158.7,91.1z M168.1,88.2c0,0.9-0.1,1.8-0.2,2.8c-0.1,1-0.3,1.5-0.4,1.8
+                                                    c-0.1,0.3-0.3,0.5-0.5,0.7c-0.2,0.2-0.5,0.3-0.8,0.4s-0.9,0.1-1.9,0.1c-1.8,0-2.8-0.1-3.2-0.2c-0.4-0.1-0.6-0.4-0.8-0.7
+                                                    c-0.2-0.3-0.2-0.7-0.2-1V74.4h1.2v7.1h6.4v1.2h-6.5V92c0,0.2,0.1,0.4,0.3,0.5c0.2,0.1,1,0.2,2.4,0.2c1,0,1.6,0,1.8-0.1
+                                                    c0.2-0.1,0.4-0.2,0.5-0.4c0.1-0.2,0.3-0.7,0.4-1.5c0.1-0.8,0.2-1.8,0.2-2.9L168.1,88.2z"/>
+                                                <path class="st1" d="M190.8,78.4h-9.2V82h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2s-0.7,0.5-1,0.5c-0.4,0-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6V83h-6.5v11h-1.2V83.2H174v9h-1.2V82h7.6v-3.6h-9.2v-1.2h9.5
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L190.8,78.4L190.8,78.4z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 124.5862 92.9918)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">臺北市</text>
+                                            </g>
+                                        </a>
+                                    </svg>
+                                </li>
+                                <!-- 桃竹苗 -->
+                                <li class="svg-container" id="mapSVG3" aria-hidden="true">
+                                    <svg class="mapSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 442 364" preserveAspectRatio="xMinYMin meet" version="1.1">
+                                         <!-- 桃園 TYN -->
+                                         <a class="mapHover TYN" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100500"})" xlink:href="#City_100500" data-uk-modal="{target:'#City_100500', center:true}">
+                                            <g class="g_TaoyuanB">
+                                                <path id="TaoyuanB" class="mapArea TYN" style="stroke: #FFFFFF; stroke-width: 2;" d="M390.3,195l-0.7,1.6l-2.1,0.7l-4.7,0.4
+                                                l-1.7,0.9l-2.4,3.2l-0.8,6.8l-3.1,4l-0.5,2l-0.8,1.7l-0.5,2l-4.5,7.1l-0.4,2.1h-2.4l-1.9,0.8l-1.5,1.2l-2,2.5l-1.1,0.7l-2.4,0.5
+                                                l-4.9-0.7l-2-1.2l-1.7-2.5H347l-1.1-1.3l-0.7-2l-1.9-0.7v-5.2l1.1-1.9l0.5-2.4l-2-1.1l-2.1-0.4l-1.7-1.1l-0.1-5.1l1.3-1.3l0.1-2.5
+                                                l0.7-2l-0.4-2.5l-2.1-1.1h-2.5l-0.8-1.7l-0.4-2.4l-1.1-1.7l-1.5-1.2l-3.1-3.9l-3.9-1.9l-4,1.3l-1.6-0.3v-5.1l1.5-1.5l0.8-1.7v-5.1
+                                                l-2.8-0.5l0.1-5.9l0.7-1.9l1.2-1.7l0.5-2.1l-1.7-1.7l-0.8-2l-2.4-0.5l-1.7-1.7l-1.9-0.7l-2.4-0.1l-0.7-1.1h-0.4l-2.1-1.2l-1.3-1.7
+                                                l-2-1.2l-0.5-0.8l-0.1-1.5l-1.2-3.2l-2-0.8l-2.8-0.5v-2.4l-2-0.7l-5.2,2.4h-2.1l-7.6-6L279,135l-1.5-1.5l-2.7-1.1v-1.9l-2.5-0.4
+                                                l-2.4-0.8l-4.7-3.7l-0.8-1.2l-4-2.5l0.5-2.1l2.4-3.7l-0.7-7.5l-1.9-1.3l-15.6-1.3l-1.1-2l-0.4-2.5l1.3-1.2l-1.9-1.1l-1.7,1.2
+                                                l-2.1,0.8l-2.5,0.1l-2.1-1.7l-2.7-0.8h-2.8l-1.7-1.9l-4-1.5l0.1-4.9l0.8-2l-1.5-4l-0.1-2.4l-2.4-0.1l-2.8-2.8l-4.9-0.4l-5.7,1.7
+                                                l-3.1-2l-5.7,3.3l-4.1-1.1l0.7-1.1l1.7-1.3l4-5.3l0.8-1.9l1.7-1.7l1.7-1.1l2.4-2.5V61l-1.2-1.7l0.1-2.4l4-5.1l1.3-3.9l1.5-1.2
+                                                l3.2-4.7l6.3-5.5l5.2-2.4l2.1-0.4l1.6-1.6l2-0.7l3.3-2.1l1.7-1.9l2.3-1.3l2.4-0.7l3.7-2.9l2-0.8h2.7l16.1-4.3l2-1.7l4.7-2.1
+                                                l4.9-4.9l2.3-1.3l2.8-0.1l11-4.5h2.5l1.3-1.3l4.7-1.1l2,0.7l3.3,2.7l3.2,0.1l1.1,2.5l1.7,1.9l1.7,0.5l1.7,2.1l6.7,0.7l12.4,6
+                                                l-0.7,4.8l2.7,2.4l6.9,1.7h7.2l1.7,1.2l2.4,2.8l0.7,3.1V35l-1.2,2.4l0.5,3.1l1.7,1.9l3.1,2.1l-1.2,2.1l-2.7,1.7l-2.7,0.9l2.8,2.1
+                                                l0.3,2.8l-2.1,1.5l-2.8,0.9l-2.7,4.8l-3.9,2.7l-15-0.5l-2.4,1.2l-0.7,2.8l1.5,2.7l-0.7,6.7l-1.9,1.9l-1.2,2.7l1.7,3.1l2.8,0.3
+                                                l2.1,1.7l-2.8,1.9l-1.7,1.9l-1.2,2.7l1.2,5.7l6,3.6l4.5,6.9l-1.7,2.1l0.5,2.8l3.6,2.4l-2.1,1.7l-6.1,1.2l-0.3,2.8l3.3,0.5l2.1-1.7
+                                                l2.1,2.1l2.4,1.5l3.9,0.9l3.6-0.3l2.7-1.5l7.2-0.5l1.7,0.9l0.5,1.2l1.9,1.9l0.9,2.7l3.9,3.9l2.1,1.2l2.1,2.4l0.3,3.3l1.2,3.3
+                                                l3.1,0.9v3.6l-2.1,1.5l-1.5,2.1l-4.3,3.6l-1.5,2.7l0.5,3.1l1.2,2.4v1.5l2.7,6.7l4.3,4l-0.7,2.7l3.3,1.5l0.3,2.4l3.3,0.9l1.9,2.7
+                                                l2.7,1.9l0.7,6.7L390.3,195L390.3,195L390.3,195z"></path>
+                                                
+                                                <g id="TaoyuanB_txt" class="textOutline">
+                                                    <path class="st1" d="M252.1,59.5l-0.9,0.9c-0.6-1-1.2-2-1.9-2.8v11.7H248v-11c-0.8,2.1-1.7,3.8-2.5,5.1l-0.8-0.9
+                                                    c1.4-2.2,2.4-4.5,3.3-7h-2.8v-1.2h2.8v-4.5h1.2v4.5h2.1v1.2h-2.1V56C250.4,57.1,251.3,58.3,252.1,59.5z M256.8,59.9
+                                                    c0,4.2-1.4,7.5-4.3,9.8l-0.8-0.9c2.5-2,3.9-4.6,3.9-8c-1.1,1.1-2.4,2.1-3.7,3.1l-0.8-0.9c1.4-0.8,3-2.2,4.6-3.9v-9.3h1.1
+                                                    L256.8,59.9L256.8,59.9z M254.8,56.8l-1,0.6c-0.5-1.4-1.2-2.9-2.2-4.5l1-0.7C253.6,53.8,254.3,55.3,254.8,56.8z M264.6,65.4
+                                                    c-0.1,1.6-0.3,2.6-0.7,3.1c-0.4,0.5-1.1,0.8-2.2,0.8c-1.2,0-2.1-0.1-2.4-0.4c-0.4-0.3-0.6-0.8-0.6-1.7V49.7h1.1v6
+                                                    c1.3-1,2.4-2.1,3.2-3.1l0.9,0.8c-1.1,1.3-2.4,2.5-4,3.8v2.3c1.8,1,3.3,2.2,4.5,3.3l-0.7,1c-1.3-1.2-2.6-2.3-3.9-3v6.6
+                                                    c0,0.2,0.1,0.4,0.3,0.6c0.2,0.2,0.8,0.2,1.9,0.2c0.6,0,0.8-0.1,0.9-0.3c0.1-0.2,0.2-0.7,0.3-1.2c0.1-0.6,0.1-1.1,0.1-1.5
+                                                    L264.6,65.4z"/>
+                                                <path class="st1" d="M286.2,69.5h-1.1v-1.1h-15.5v1.1h-1.1V50.3h17.8V69.5z M285.1,67.2V51.3h-15.5v15.9H285.1z M282.5,61.6h-5.6
+                                                    c-0.4,0.5-0.9,1-1.6,1.7v2c0.8-0.2,1.9-0.5,2.9-0.8l0.2,1c-1.3,0.5-2.7,0.8-4.1,1.1l-0.5-1c0.3-0.1,0.4-0.3,0.4-0.6v-1
+                                                    c-1.4,0.8-2.6,1.2-3.5,1.4l-0.7-1c2.3-0.5,4-1.5,5.4-2.9H272v-3.6h10.5V61.6z M284,56.6h-13.4v-1h6.2v-1.5h-5.3v-0.9h5.3V52h1.1
+                                                    v1.1h5.3v0.9h-5.4v1.5h6.2V56.6z M281.4,60.6V59h-8.2v1.6H281.4z M283.9,65.6l-0.8,0.8c-1.6-1.1-3.6-2.3-5.8-3.4l0.7-0.8
+                                                    c0.8,0.4,1.6,0.8,2.4,1.2c0.6-0.4,1-0.8,1.6-1.3l0.8,0.7c-0.6,0.6-1.1,1-1.4,1.2C282.2,64.5,283.1,65,283.9,65.6z"/>
+                                                <path class="st1" d="M309.5,53.7h-9.2v3.6h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2c-0.3,0.3-0.7,0.5-1,0.5c-0.4,0-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6v-7.1h-6.5v11.2h-1.2v-11h-6.4v9h-1.2V57.3h7.6v-3.6h-9.2v-1.1h9.6
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L309.5,53.7L309.5,53.7z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 243.381 68.2982)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">桃園市</text>
+                                            </g>
+                                        </a>
+                                        <!-- 新竹市 HSC -->
+                                        <a class="mapHover HSC" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100600"})" xlink:href="#City_100600" data-uk-modal="{target:'#City_100600', center:true}">
+                                            <g class="g_HsinchuCityB">
+                                                <path id="HsinchuCityB" class="mapArea HSC" style="stroke: #FFFFFF; stroke-width: 2;" d="M153.7,168.7l0.3,1.5l1.7,0.8h2.7
+                                                l1.9-0.7l1.5-1.2l1.9,0.7l2.5,3.1l0.7,2.1v2l6.5,1.7l0.9-0.7l2.7-3.2l0.5-4.9l1.7-3.9l2.1-0.5l1.3-2l2-0.8l1.5-1.2l0.7-2l1.2-1.9
+                                                l7.2-1.7l-0.7-1.9l1.5-2.4l2-0.7h2.5l9.4,9.6l2-1.3v-5.1l-4.4-14.8l-2.5-3.6l-4.5-3.9l-4.9-0.5l-0.1-0.8l-0.7-1.3l-1.9-1.2h-2.5
+                                                l-10.2-2.5l-2.5-3.6l-0.7-1.9l-2-1.3l-1.3,1.1l-2,0.8l-6.8,9.3l-1.7,1.5l0.8,4l-0.4,1.3l0.7,0.7l2.5,0.1l0.4,2.1l-1.1,2l-0.5,4.7
+                                                l-1.1,1.5l-0.1,5.2l-2.5,3.3l-0.7,2l1.9,1.5l-1.1,1.3l-0.8,2.4l-3.1,2.9l-2.4,1.3L153.7,168.7L153.7,168.7L153.7,168.7z"></path>
+                                                
+                                                <g id="HsinchuCityB_txt" class="textOutline">
+                                                    <path class="st1" d="M118.8,148.1c-0.8,1.8-1.6,3.3-2.5,4.6l-1-0.7c0.8-1,1.7-2.5,2.5-4.4L118.8,148.1z M125.7,146.3h-4.6v8.3
+                                                    H120v-8.3h-4.6v-1h4.6v-2.3h-4.3v-1.1h2.7c-0.1-0.8-0.6-1.8-1.2-3.4l0.8-0.6h-2.3v-1.1h4.1c-0.2-0.6-0.6-1-0.9-1.6l1-0.5
+                                                    c0.4,0.5,0.8,1.2,1.1,2.1h3.9v1.1h-1.8l0.8,0.6c-0.3,0.8-0.8,2-1.4,3.4h2.6v1.1h-4.3v2.3h4.6v1H125.7z M123.1,138h-4.7
+                                                    c0.6,1.5,1,2.7,1.3,3.9h1.9C122.1,140.6,122.7,139.4,123.1,138z M125,150.7l-1,0.7c-0.4-0.9-0.8-2-1.6-3.2l0.9-0.6
+                                                    C124,148.5,124.6,149.5,125,150.7z M134.9,143.2h-2.4v11.4h-1.1v-11.4h-3.4c0,5.1-0.9,8.8-2.8,11.5l-0.9-0.8
+                                                    c0.9-1.4,1.7-2.9,2.1-4.4c0.4-1.5,0.7-3.5,0.7-6v-6.8c2.8-0.4,5.2-1,7-2l0.8,0.9c-2,0.9-4.2,1.6-6.7,2v4.4h7L134.9,143.2
+                                                    L134.9,143.2z"/>
+                                                <path class="st1" d="M147.8,139.8h-3.9v14.8h-1.2v-14.8h-1.2c-0.8,1.2-1.7,2.5-2.7,3.8l-0.9-0.8c2.1-2.2,3.7-4.9,4.8-8.1l1.1,0.5
+                                                    c-0.6,1.5-1.1,2.6-1.6,3.6h5.6L147.8,139.8L147.8,139.8z M157.6,139.8h-3.2v12.9c0,0.5-0.1,0.8-0.4,1.2c-0.3,0.4-0.6,0.5-0.8,0.6
+                                                    c-0.3,0.1-1,0.1-2.2,0.1c-0.5,0-0.9,0-1.3,0l-0.5-1.2c1.1,0.1,2,0.1,2.7,0.1c0.8,0,1.2-0.3,1.2-0.9v-12.7h-2.9
+                                                    c-0.9,1.6-1.9,2.9-3,4.1l-0.9-0.8c2.1-2.3,3.7-5.2,4.8-8.5l1.1,0.4c-0.3,0.8-0.8,2.1-1.4,3.6h6.7L157.6,139.8L157.6,139.8z"/>
+                                                <path class="st1" d="M180,138.8h-9.2v3.6h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2c-0.3,0.3-0.7,0.5-1,0.5c-0.4,0-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6v-7.1h-6.5v11h-1.2v-11h-6.4v9H162v-10.2h7.6v-3.6h-9.2v-1.2h9.5
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L180,138.8L180,138.8z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 113.8909 153.4058)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">新竹市</text>
+                                            </g>
+                                        </a>
+                                        <!-- 新竹縣 HSH -->
+                                        <a class="mapHover HSH" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100700"})" xlink:href="#City_100700" data-uk-modal="{target:'#City_100700', center:true}">
+                                            <g class="g_HsinchuB">
+                                                <path id="HsinchuB" class="mapArea HSH" style="stroke: #FFFFFF; stroke-width: 2;" d="M326.7,297.1l-2.3,1.2l-0.8,1.9l-1.7,1.1
+                                                l-7.7-0.1l-1.7,0.8l-7.6-0.1l-1.2-1.3l-0.1-2.8l0.4-1.7l-0.8-1.1v-5.1l-1.2-1.7l-2-1.2l-1.5-1.7l-0.8-2l-2.8-3.2l-0.8-2l-2-1.1
+                                                l-1.1-1.5l-2.1-1.2l-0.7-1.7l0.4-3.9l-1.5-2l-4.9-0.4l-2,0.7l-3.6,2.4h-6l-1.9,1.1h-2.5l-1.7-1.5l-10.1-0.5l-1.9,0.7l-2-0.5H248
+                                                l-2.8,2.5l-4.5,1.9l-4.5-1.1h-7.9V269l-1.2-2.5v-2.7l1.1-2l2.8-3.1l0.7-2l-0.1-2.5l-2-3.9l-3.6-2.8l2.7-4.4l1.5-5.6l1.5-1.9
+                                                l0.1-2.4l1.2-1.7l0.5-2.1l-1.9-1.1l-1.5-4.5l-2.5-0.7l-1.9-4.3l-1.2-0.5l-2.7,0.7l-2,1.2l-3.2-2.5l-1.2-2l-2.1-0.5l-1.7-1.2
+                                                l-2.7-4.3l-2.4-0.4l-2.4-1.1L204,206l-1.5-1.7l-2.4-0.4l-4.4-2.8l-1.2-2l-1.9-1.9l-2.1-3.9l-0.4-2.4l-2.7-1.1l0.5-1.7l1.2-1.9
+                                                l0.4-2.1l1.3-1.7l-1.9-1.1l1.2-1.5l-4.7,0.4l-1.7,1.3l-2,0.8l-1.2-1.5h-3.9l-2-1.1l-1.3-1.6l3.3-4.1l0.5-4.9l1.7-3.9l2.1-0.5
+                                                l1.3-2l2-0.8l1.5-1.2l0.7-2l1.2-1.9l7.2-1.7l-0.7-1.9l1.5-2.4l2-0.7h2.5l9.4,9.6l2-1.3v-5.1l-4.4-14.8l-2.5-3.6l-4.5-3.9l-4.9-0.5
+                                                l-0.1-0.8l-0.7-1.3l-1.9-1.2h-2.5l-10.2-2.5l-2.5-3.6l-0.7-1.9l-2.1-1.7l0.8-2l2.7-3.3l0.7-2.4l1.3-1.2l0.8-4.5l7.5-9.2l-1.1-2
+                                                l-0.5-2.5l7.3-10.5l4.1,1.1l5.7-3.3l3.1,2l5.7-1.7l4.9,0.4l2.8,2.8l2.4,0.1l0.1,2.4l1.5,4l-0.8,2l-0.1,4.9l4,1.5l1.7,1.9h2.5
+                                                l2.7,0.8l2.1,1.7l2.5-0.1l2.1-0.8l1.7-1.2l1.9,1.1l-1.3,1.2l0.4,2.5l1.1,2l15.6,1.3l1.9,1.3l0.7,7.5l-2.4,3.7l-0.5,2.1l4,2.5
+                                                l0.8,1.2l4.7,3.7l2.4,0.8l2.5,0.4v1.9l2.7,1.1l10.9,8.4h2.1l5.2-2.4l2,0.7v2.5l2.8,0.5l2,0.8l1.2,3.2l0.1,1.5l0.5,0.8l2,1.2
+                                                l1.3,1.7l2.1,1.2h0.4l0.7,1.1l2.4,0.1l1.9,0.7l1.7,1.7l2.4,0.5l0.8,2l1.7,1.7l-0.5,2.1l-1.2,1.7l-0.7,1.9l-0.1,5.9l2.8,0.5v5.1
+                                                l-0.8,1.7l-1.5,1.5v5.1l1.9,0.7l4-1.3l3.9,1.9l3.1,3.9l1.5,1.2l1.1,1.7l0.4,2.4l0.8,1.7h2.5l2.1,1.1l0.4,2.5l-0.7,2l-0.1,2.5
+                                                l-1.3,1.3l0.1,5.1l1.7,1.1l2.1,0.4l2,1.1l-0.5,2.4l-1.1,1.9v5.2l1.9,0.7l0.7,2l1.1,1.3h1.2l1.7,2.5l2,1.2l4.9,0.7l3.5-0.9l1.9,1.3
+                                                l0.8,1.9l0.1,2.4l0.7,1.9l-1.7,1.5l-0.7,0.4l-0.7,1.1l-1.7,1.1l-1.9,2l-0.5,2.1l0.8,1.7l0.1,9.7l-1.1,2.4l-1.5,1.9l-1.9,1.3
+                                                l-2.1,3.3l-2.4,1.9l-0.7,1.7l-1.9-0.1l-4.5,6.5l-1.7,1.1l-2.5-0.5l-1.9,3.7l-1.9,1.1l-1.5,3.9l-1.2,1.5l-2,1.7l-1.7,3.3l-0.1,2.4
+                                                L326.7,297.1"></path>
+                                                
+                                                <g id="HsinchuB_txt" class="textOutline">
+                                                    <path class="st1" d="M240.6,196c-0.8,1.8-1.6,3.3-2.5,4.6l-1-0.7c0.8-1,1.7-2.5,2.5-4.4L240.6,196z M247.4,194.2h-4.6v8.3h-1.1
+                                                    v-8.3h-4.6v-1h4.6v-2.3h-4.3v-1.1h2.7c-0.1-0.8-0.6-1.8-1.2-3.4l0.8-0.6h-2.1v-1.1h4.1c-0.2-0.6-0.6-1-0.9-1.6l1-0.5
+                                                    c0.4,0.5,0.8,1.2,1.1,2.1h3.9v1.1h-1.8l0.8,0.6c-0.3,0.8-0.8,2-1.4,3.4h2.6v1.1h-4.3v2.3h4.6V194.2z M244.8,185.9h-4.7
+                                                    c0.6,1.5,1,2.7,1.3,3.9h1.9C244,188.5,244.4,187.2,244.8,185.9z M246.8,198.5l-1,0.7c-0.4-0.9-0.8-2-1.6-3.2l0.9-0.6
+                                                    C245.7,196.3,246.3,197.4,246.8,198.5z M256.7,191.2h-2.4v11.4h-1.1v-11.4h-3.3c0,5.1-0.9,8.8-2.8,11.5l-0.9-0.8
+                                                    c0.9-1.4,1.7-2.9,2.1-4.4c0.4-1.5,0.7-3.5,0.7-6v-6.8c2.8-0.4,5.2-1,7-2l0.8,0.9c-2,0.9-4.2,1.6-6.7,2v4.4h7v1.1H256.7z"/>
+                                                <path class="st1" d="M269.6,187.7h-3.9v14.7h-1.2v-14.8h-1.2c-0.8,1.2-1.7,2.5-2.7,3.8l-0.9-0.8c2.1-2.2,3.7-4.9,4.8-8.1l1.1,0.5
+                                                    c-0.6,1.5-1.1,2.6-1.6,3.6h5.6L269.6,187.7L269.6,187.7z M279.4,187.7h-3.2v12.8c0,0.5-0.1,0.8-0.4,1.2s-0.6,0.5-0.8,0.6
+                                                    c-0.3,0.1-1,0.1-2.2,0.1c-0.5,0-0.9,0-1.3,0l-0.5-1.2c1.1,0.1,2,0.1,2.7,0.1c0.8,0,1.2-0.3,1.2-0.9v-12.7h-2.9
+                                                    c-0.9,1.6-1.9,2.9-3,4.1l-0.9-0.8c2.1-2.4,3.7-5.2,4.8-8.5l1.1,0.4c-0.3,0.8-0.8,2.1-1.4,3.6h6.7L279.4,187.7L279.4,187.7z"/>
+                                                <path class="st1" d="M285.1,196.2c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L285.1,196.2z M291.2,194.5h-3.8v8
+                                                    h-1.1v-8h-3.9v-1h1v-10.1h6.7v10.1h1V194.5z M289,185.7v-1.4h-4.5v1.4H289z M289,188.2v-1.4h-4.5v1.4H289z M289,190.7v-1.6h-4.5
+                                                    v1.6H289z M289,193.4v-1.7h-4.5v1.7H289z M291.1,198.7l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C290.2,196.7,290.7,197.7,291.1,198.7z M294.6,197c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L294.6,197z
+                                                    M298.6,183.5c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L298.6,183.5z M302.1,195.4l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.4,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C300.6,192.9,301.4,194.1,302.1,195.4z M302.1,200.9l-1,0.5c-0.5-1.2-1.2-2.7-2.3-4.6l1-0.5C300.7,198,301.5,199.5,302.1,200.9z"
+                                                    />
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 235.6909 201.2793)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">新竹縣</text>
+                                            </g>
+                                        </a>
+
+                                        <!-- 苗栗 ZMI -->
+                                        <a class="mapHover ZMI" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100800"})" xlink:href="#City_100800" data-uk-modal="{target:'#City_100800', center:true}">
+                                            <g class="g_MiaoliB">
+                                                <path id="MiaoliB" class="mapArea ZMI" style="stroke: #FFFFFF; stroke-width: 2;" d="M174.8,180.4l2,1.1h3.9l1.2,1.5l2-0.8
+                                                l1.7-1.3l4.7-0.4l-1.2,1.5l1.9,1.1l-1.3,1.7l-0.4,2.1l-1.2,1.9l-0.5,1.7l2.7,1.1l0.4,2.4l2.1,3.9l1.9,1.9l1.2,2l4.4,2.8l2.4,0.4
+                                                l1.5,1.7l0.1,2.4l2.4,1.1l2.4,0.4l2.7,4.3l1.7,1.2l2.1,0.5l1.2,2l3.2,2.5l2-1.2l2.7-0.7l1.2,0.5l1.9,4.3l2.5,0.7l1.5,4.5l1.9,1.1
+                                                l-0.5,2.1l-1.2,1.7l-0.1,2.4l-1.5,1.9l-1.5,5.6l-2.7,4.4l3.6,2.8l2,3.9l0.1,2.5l-0.7,2l-2.8,3.1l-1.1,2v2.7l1.2,2.5v2.8h7.9
+                                                l4.5,1.1l4.5-1.9l2.8-2.5h2.5l2,0.5l1.9-0.7l10.1,0.5l1.7,1.5h2.5l1.9-1.1h5.7l3.6-2.4l2-0.7l4.9,0.4l1.5,2l-0.4,3.9l0.7,1.7
+                                                l2.1,1.2l1.1,1.5l2,1.1l0.8,2l2.8,3.2l0.8,2l1.5,1.7l2,1.2l1.2,1.7v5.1l0.8,1.1l-0.4,1.7l0.1,5.2l-2.4,1.2l-2.7,2.1l-1.9,2.4
+                                                l-0.3,3.3l-4.5,7.3v3.6l-2.8,0.7h-3.6l-2.4-3.3l1.2-1.9l-3.6-1.5l-2.7,1.2l-0.9,2.8l-1.7,2.4l-3.1,0.9l-6.4,9l-2.7,0.9h-7.2
+                                                l-2.4,1.7l-0.9,2.7l-0.9,0.3l-2.7,2.8l-0.5,3.3l-2.8,0.7l-4.5,3.9l-2.8,0.7l-6.7-0.7l-6,2.1l-7.2,9l-3.6,0.3l-2.7-1.5l-4.3-4
+                                                l-0.5-3.3l-2.4-1.7l-3.6-5.2l-2.1,0.5h-3.6l-2.7-1.2l-6.7-0.5l-8.1-2.8l-6.4-0.3l-2.8,1.2l-1.9,1.9v3.6l1.2,2.7l0.5,6.7l-1.2,2.7
+                                                l-2.4,1.9l-2.8,0.9l-13.8-0.5l-2.7,1.2h-7.2l-6.9-2.1l-4.3-4l-1.5-2.7l-2.1-1.7l-15-2.8l-4.5-3.9l-3.3-0.9l-1.9-2.7l-4.8-2.7
+                                                l-1.9-2.1l-2.8-0.9l-1.7-2.1l-1.2-0.5l-4-0.5l-1.7-2.4l-4.3-2.8l-10-12.8h-0.5l-1.2-2.4l-4.9-3.1l-3.1-5.1l-0.5-2.7l-5.1-6.3
+                                                l2.1-0.9l5.1-4.3l4-5.2l0.8-1.9l6.9-9l1.7-4.3l1.9-2.5l12.6-37.5l3.1-3.9l0.1-1.1l1.6-1.7l4.3-1.1l3.6,3.1l1.5,2.3l0.5-2l-0.5-2.7
+                                                l3.6-2.1h1.9l1.3,0.4l-0.1-2.3l-2.3-1.1l-2-1.5l1.3-1.2l0.8-4.4l4-7.1l2.3-0.4l2.7-3.2l7.5-0.4l5.9-2.7h3.2l5.2,1.9l1.3,1.3
+                                                l3.1,0.7l1.7-1.1l-1.1-1.3l-2.5-0.4l-2-0.9l-1.1-2.1l-2.4-0.4l0.1-2.4l1.3-1.5l2-1.1l7.3-6.3l0.7-2.1l1.2-1.6l0.5-2v-2.5l1.7-3.7
+                                                l1.7-1.5l1.2-1.7l2.5-1.1l0.7,1.3l1.7,0.8h2.7l1.9-0.7l1.5-1.2l1.9,0.7l2.5,3.1l0.7,2.1v2l5.3,1.5L174.8,180.4L174.8,180.4
+                                                L174.8,180.4z"></path>
+                                                
+                                                <g id="MiaoliB_txt" class="textOutline">
+                                                    <path class="st1" d="M144.1,266.5h-2.9v2.3H140v-2.3h-5.3v-1.1h5.3v-2.5h1.2v2.5h2.9V266.5z M152.8,282.7h-1.2v-1.5h-13.9v1.5
+                                                    h-1.2v-12.9h16.4L152.8,282.7L152.8,282.7z M144,274.9v-3.9h-6.4v3.9H144z M144,280v-4h-6.4v4.1L144,280L144,280z M154.5,266.5
+                                                    h-5.3v2.3H148v-2.3h-2.9v-1.1h2.9v-2.5h1.2v2.5h5.3V266.5z M151.6,274.9v-3.9h-6.4v3.9H151.6z M151.6,280v-4h-6.4v4.1L151.6,280
+                                                    L151.6,280z"/>
+                                                <path class="st1" d="M177,275.6h-9.2v7h-1.1v-7h-9.2v-1.1h9.2v-2.3H159V267h5.2v-2.5h-6.4v-1.1h19.2v1.1h-6.4v2.5h5.2v5.3h-7.8
+                                                    v2.3h9.2L177,275.6L177,275.6z M164.6,277.7c-2,1.7-4,3.1-6.4,4.2l-0.8-0.9c2.1-0.8,4.1-2.2,6.4-4L164.6,277.7z M164.1,271.2v-3
+                                                    h-3.9v3H164.1z M169.2,267.1v-2.5h-4v2.5H169.2z M169.2,271.2v-3h-4v3H169.2z M177.1,281.1l-0.8,0.9c-2.1-1.6-4.3-2.9-6.7-4
+                                                    l0.8-0.9C173.3,278.3,175.4,279.8,177.1,281.1z M174.4,271.2v-3h-4v3H174.4z"/>
+                                                <path class="st1" d="M182.7,276.5c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L182.7,276.5z M188.7,274.7h-3.8v8
+                                                    h-1.1v-8H180v-1h1v-10.1h6.7v10.1h1V274.7z M186.5,265.9v-1.4H182v1.4H186.5z M186.5,268.4V267H182v1.4H186.5z M186.5,270.9v-1.6
+                                                    H182v1.6H186.5z M186.5,273.6v-1.7H182v1.7H186.5z M188.6,278.9l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C187.8,276.9,188.2,277.9,188.6,278.9z M192.3,277.2c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L192.3,277.2z
+                                                    M196.1,263.7c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L196.1,263.7z M199.6,275.6l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1s-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.4,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.3,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C198.2,273.1,199,274.3,199.6,275.6z M199.7,281.2l-1,0.5c-0.5-1.2-1.2-2.7-2.3-4.6l1-0.5C198.3,278.2,199.1,279.8,199.7,281.2z"
+                                                    />
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 133.2592 281.4995)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">苗栗縣</text>
+                                            </g>
+                                        </a>                                      
+                                    </svg>
+                                </li>
+                                <!-- 中彰投雲 -->
+                                <li class="svg-container" id="mapSVG4" aria-hidden="true">
+                                    <svg class="mapSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 442 364" preserveAspectRatio="xMinYMin meet" version="1.1">
+                                         <!-- 台中 TXG -->
+                                         <a class="mapHover TXG" href="@Url.Action("Query","UniversitySearch",new {cityTW = "100900"})" xlink:href="#City_100900" data-uk-modal="{target:'#City_100900', center:true}">
+                                            <g class="g_TaichungB">
+                                                <path id="TaichungB" class="mapArea TXG" style="stroke: #FFFFFF; stroke-width: 2;" d="M168.7,0.8l-2,0.4l-0.3,2.5l-10,13.9
+                                                l-2.1,5.2l0.3,4.2l-0.1,0.6l-1.4,1.8l-0.6,1.5l-3.1,1.4l-1.1,2l-5.2,3.5l0.1,1.5l0.6,1.3l0.1,2.3l-1,1.1l-2.4-1l3.1,1.4l0.6,1.4
+                                                l-1.1,1.5l-1,0.9l-2.5-3.2l-1,0.6l-1.2,1.4l-2.4,1.3l0.1,2l-0.9,1.4l-3.1,1.8l-1,1.5l4.6,6.3l-0.1,1.8l-1,1.4l-0.4,1.7l-1.1-2.1
+                                                l0.2-1.8l-1.7,1.8l-1.7-0.1l-0.4-2.1l1-2l-0.1-2l-1.4,1.4l-2.5,7.1l1.8,1.4l0.7,1.5l0.7,0.6l0.1-0.3l2,1.2v2.1l-0.7,1.7l-4.3,6.3
+                                                l-1.3,1l-1.7,4.2l0.1,2.2l4.9,2.2l2.4,3.7l0.3,2.5l1.2,3l0.4,3l3.5,3.7l-1.4,1.8l-0.2,2.8l1.4,1.8l2,1.4h0.6l1.5,2.5l2.2,1
+                                                l1.8,1.4l2.4,0.6l2.1,1.2l11.2,2.5h2.8l1.8,1.4l0.3,1v6l1.8,2.3l2,1.5v3.1l-1,2.2l1.5,7.7l2.8,0.2l1.8,1.5l4-0.4l1.2-0.8l6.3,5.3
+                                                l9.8,3.5l2.4-0.7h5.8l2.8,0.7l2,1.8l2.4-0.2l4.7-1.5l7.1-7.6l4.2-10.8l3.5-3.5l4.9-1.4l1.4-1.8l-0.3-7.3l4.2-8.3l1.8-1.2l2.5,0.8
+                                                l1.2,1.8l5.2,1l1.8,1.5v5.8l1.2,0.7l0.8-1.8l1.5-1.4l1-2l1.2-4.7l1.8,1.5l0.4,0.6l3.1,1.5l2.8,0.4l2.8-0.6l6.7-5.7l2.5-0.3
+                                                l1.5,1.4l2.5,0.6l5.7-0.2l2-1.2l3-3l2.2-6.9l1.5-1.5l2.8-0.6l4.7,0.6l1.8-1.2h4.5l4.3-2.2l1.4-2.2l2.2-1.4l1.4-1.8l2-1.2l1.4-2.2
+                                                l0.7-2.4l2-1l11.6-0.2l1.5-1.4l1.4-2.2l0.8-2.2l2.8-0.2l1.4-1.8l1.8-1.2l2.2,1l1.4,1.5l4.7,1.4l1-2l2-1.2h3l4.5-2l1.8,1.2l2.8,1
+                                                l2.2-0.8l1.4-2.3l0.6-2.4l2.5-4.2h1l3.5,2.5l1.2,1.8l5.2,1.2h3l1.2-1.8l5.3,0.6l1.4,1.4l7.1,2l2-1.5l1-2l-0.2-2.8l4.2-1.8l1.2-1.8
+                                                l3,0.2l1.5-1.4l0.7-2.5l-1-5.2l1.4-2.2l2.5-1l1.8-1.2l2-4.5l1.5-1.8h3l2-1.4l1.5-2l2.4-4.7l0.8-8l1-2.2l2.5-1.4l1.4-1.5l-1.4-2.3
+                                                l-1.8-1.2l-1.2-2l-2.4-1.2l-7.8,1l-2,1l-2.5,0.3l-1.8,1.4l-1.4,1.8l-3,0.4l-2-1l-4.5-7.7h-5.3l-2.2-0.8l-3-3l1-7.9l-0.6-2.3l-1-2
+                                                l-1.4-1.5l-0.4-0.2l-1.9,1l-0.8,1.5L392.8,4l-6.4-0.1L385,4.6l-7.2-0.3l-0.1,0.9l-2,1l-2.2,1.8l-1.5,2l-0.2,2.8l-3.7,6.1v3
+                                                l-2.4,0.7h-3l-2-2.8l1-1.5l-3-1.2l-2.2,1l-0.8,2.4l-1.4,2l-2.5,0.8l-5.3,7.5l-2.2,0.8h-5.8l-2,1.4l-0.8,2.2l-0.8,0.2l-2.2,2.4
+                                                l-0.4,2.8l-2.3,0.6l-3.7,3.1l-2.3,0.7l-5.5-0.7l-5,1.8l-6,7.5l-3,0.2l-2.2-1.2l-3.5-3.3l-0.4-2.8l-2-1.4l-3-4.3l-1.8,0.3h-3
+                                                l-2.1-1l-5.5-0.3l-6.7-2.4l-5.3-0.2l-2.4,1l-1.5,1.5v3l1,2.2l0.4,5.5l-1,2.1l-2,1.5l-2.4,0.8l-11.4-0.3l-2.2,1h-5.8l-5.7-1.8
+                                                l-3.5-3.3l-1.2-2.2l-1.8-1.4L216.9,44l-3.7-3.1l-2.8-0.8l-1.5-2.2l-4-2.2l-1.5-1.8l-2.3-0.8l-1.4-1.8l-1-0.4l-3.3-0.3l-1.4-2
+                                                l-3.5-2.4L182,15.5h-0.3l-1-2l-5-2l-2.5-4.2l-0.4-2.2L168.7,0.8z"></path>
+                                                
+                                                <g id="TaichungB_txt" class="textOutline">
+                                                    <path class="st1" d="M199.8,101h-19.1V100h9v-1.3h-7.7v-0.9h7.7v-1.2c-1,0-3.3,0-6.7,0l-0.2-0.9c1.3-0.1,2.5-0.6,3.8-1.6h-3v-0.9
+                                                    h13.4V94h-1.5c0.7,0.7,1.5,1.5,2.3,2.5l-0.8,0.7c-0.3-0.4-0.6-0.8-0.8-1c-2.4,0.1-4.2,0.2-5.3,0.3v1.3h7.6v0.9h-7.6v1.3h8.9
+                                                    L199.8,101L199.8,101z M199.8,83.5H191v1.1h7.9v0.9h-17v-0.9h7.9v-1.1h-8.9v-0.9h8.9v-1h1.2v1h8.8L199.8,83.5L199.8,83.5z
+                                                    M199.6,94h-1.2v-2.2h-16v2.1h-1.1v-3h18.2L199.6,94L199.6,94z M197.4,89.8h-14.1v-3.1h14.1V89.8z M196.3,88.8v-1.2h-11.7v1.2
+                                                    H196.3z M195.2,95.3c-0.4-0.4-0.7-0.7-0.8-0.8L195,94h-6.6c-0.8,0.8-1.6,1.3-2.5,1.7C187.6,95.6,190.8,95.5,195.2,95.3z"/>
+                                                <path class="st1" d="M221.5,94.4h-7.9v6.8h-1.2v-6.8h-8v-9h8v-4h1.2v4h7.9L221.5,94.4L221.5,94.4z M212.3,93.2v-6.6h-6.8v6.6
+                                                    H212.3z M220.2,93.2v-6.6h-6.8v6.6H220.2z"/>
+                                                <path class="st1" d="M245.1,85.4h-9.2v3.6h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2c-0.3,0.3-0.7,0.5-1,0.5c-0.4,0-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6V90h-6.5v11h-1.2V90h-6.4v9h-1.2V88.8h7.6v-3.6h-9.2V84h9.5
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L245.1,85.4L245.1,85.4z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 178.9733 99.9644)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">臺中市</text>
+                                            </g>
+                                        </a>
+                                        <!-- 彰化 CHW -->
+                                        <a class="mapHover CHW" href="@Url.Action("Query","UniversitySearch",new {cityTW = "101200"})" xlink:href="#City_101200" data-uk-modal="{target:'#City_101200', center:true}">
+                                            <g class="g_ChanghuaB">
+                                                <path id="ChanghuaB" class="mapArea CHW" style="stroke: #FFFFFF; stroke-width: 2;" d="M46.2,218.9l6.9,2.5l4.2,0.3l6.4,2
+                                                l17.9-0.9l3.1-1.1l16.1,0.3l2.8-1.4l5.6,3.1l0.9,1.4l4.7,0.6l8.9,4.4l6.9,1.7l8-0.3l3.3-0.9l33.7,5.6l6.4-2l2.2-2l1.4-2.8v-3.6
+                                                l-2.2-0.6l-2.8,1.4h-3.6l-2.8-1.4l-8-8.6l0.3-2.5l1.4-2.8l-2-2.2l1.7-2.8l0.6-3.6l1.4-2.8l1.4-10.6l-0.6-3.1l0.6-2.5l-1.1-6.2
+                                                l1.7-2.5l2.2-2l1.4-2.8l0.3-3.9l-1.4-3.1l-2-2.2l-0.6-0.3l0.3-4.2h8.4l4.4-2.5l-6.4-5.3l-1.2,0.8l-4,0.4l-1.8-1.5l-2.8-0.2
+                                                l-1.5-7.7l1-2.2v-3.2l-2-1.5l-1.8-2.3v-6l-0.4-1l-1.8-1.4h-2.8l-8.3-2.3l-3-0.2l-2.2-1.2l-2.3-0.6l-1.8-1.4l-2.2-1l-1.5-2.5h-0.6
+                                                l-2-1.4l-1.4-1.8l0.2-2.8l1.4-1.8l-3.5-3.7l-0.4-3l-1.2-3l-0.4-2.5l-2.3-3.7l-4.9-2.2l-1.7,0.4l0.6,1.7l0.8,1l-1.7,0.9l-3.6,4.6
+                                                v0.1l-3,4.7l-1.4,0.9l-6.2,0.1l0.3,1.7l1.7,1.4l-0.1,4.1l-1.1,1l-0.7,1.5l-0.4,2l-1,1.4l-0.1,4.2l-0.1,0.4l-1.1,1.7v2.1l0.7,1.4
+                                                l-0.3,2.1l-1.5,1.4l-3.3,1.3l-0.9,2l-2.5,2.6l-0.3,3.9l-0.7,1.5l-3,0.6l-1.5,1.2l-1.8,0.3l-2.6,2l-1.5,0.6l-0.4,1.8l-4.5,3.3
+                                                l-0.9,3.3v2.4l-1,1.7l-0.3,1.8l-1.4,1l-0.7,3.6l-2.6,0.2l-2-0.6l-1.5,1.3l-1.1,5.4l0.4,1.3H73v1l-5.3,7.9l-0.3-0.1l-0.4,2.2
+                                                l-1,1.2l-0.4,1.7l-1.1,1.1l-1.4,5.3l-2.3,2.6l-0.6,2L58,199l-0.7,1.7l-1,1.1l-0.3,2.4l-1.4,0.8l-1.2,1.1l-1.5,0.9l-1,1.4
+                                                l-1.5,0.9v1.5l1,1.4l-0.8,0.6h-2.1l-1,1.4l-0.3,4.1l-0.4,1.1"></path>
+                                                
+                                                <g id="ChanghuaB_txt" class="textOutline">
+                                                    <path class="st1" d="M100.7,175H88.7v-1h3.6c-0.2-0.8-0.6-1.6-1-2.5h-2v-1h5c-0.2-0.5-0.4-0.8-0.7-1.3l1-0.5
+                                                    c0.3,0.6,0.6,1.1,0.8,1.8h4.5v1h-1.7c-0.4,0.9-0.8,1.8-1.1,2.5h3.4L100.7,175L100.7,175z M100.7,185.7h-5.3v2.7h-1.1v-2.7h-5.5
+                                                    v-1h5.5V183h-4.1v-6.6h9.1v6.6h-3.9v1.7h5.3V185.7z M98,179.1v-1.7h-6.8v1.7H98z M98,181.9v-1.6h-6.8v1.6H98z M97.1,171.4h-4.6
+                                                    c0.5,0.9,0.8,1.8,1,2.5h2.4C96.4,173.1,96.8,172.3,97.1,171.4z M108.6,182.4c-1.8,2.5-4.4,4.6-7.8,6.1l-0.8-0.9
+                                                    c3.6-1.7,6.2-3.8,7.7-6L108.6,182.4z M108.3,176.1c-1.4,2-3.8,3.8-6.9,5.3l-0.8-0.9c3.2-1.4,5.5-3.1,6.9-5.1L108.3,176.1z
+                                                    M108.2,170.1c-1.3,2-3.4,3.5-6.2,4.6l-0.8-1c2.6-0.9,4.7-2.4,6.1-4.4L108.2,170.1z"/>
+                                                <path class="st1" d="M117.9,169.1c-0.3,0.8-0.8,1.9-1.3,3.2l-0.9,1.9v14.4h-1.2v-12.3c-0.7,1-1.4,2.1-2.4,3.1l-0.8-0.9
+                                                    c2-2.3,3.8-5.5,5.4-9.8L117.9,169.1z M131,183.3c0,1.1-0.1,2.2-0.4,3.2c-0.3,1-0.7,1.5-1.3,1.7c-0.7,0.2-2.4,0.2-5.4,0.2
+                                                    c-0.7,0-1.3,0-1.8,0c-0.5,0-0.9-0.2-1.2-0.5c-0.3-0.3-0.5-0.8-0.5-1.2v-17.9h1.2v7.6h8.7v1.2h-8.6v8.9c0,0.2,0.1,0.3,0.2,0.4
+                                                    c0.1,0.1,0.2,0.2,0.4,0.2s0.7,0,1.5,0c3,0,4.8-0.1,5.3-0.2c0.5-0.1,0.8-1.5,0.8-4.1L131,183.3z"/>
+                                                <path class="st1" d="M136.7,182.3c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L136.7,182.3z M142.7,180.6h-3.8v8
+                                                    h-1.1v-8h-3.9v-1h1v-10.1h6.7v10.1h1V180.6z M140.5,171.8v-1.4H136v1.4H140.5z M140.5,174.3v-1.4H136v1.4H140.5z M140.5,176.8
+                                                    v-1.6H136v1.6H140.5z M140.5,179.5v-1.7H136v1.7H140.5z M142.6,184.8l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C141.7,182.8,142.2,183.7,142.6,184.8z M146.2,183c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L146.2,183z
+                                                    M150.1,169.6c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L150.1,169.6z M153.6,181.5l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5V181c-0.9,0.1-2.3,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.3,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C152.2,179,152.9,180.2,153.6,181.5z M153.7,187l-1,0.5c-0.5-1.2-1.2-2.7-2.3-4.6l1-0.5C152.3,184.1,153.1,185.6,153.7,187z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 87.2295 187.37)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">彰化縣</text>
+                                            </g>
+                                        </a>
+                                         <!-- 南投 NTC -->
+                                         <a class="mapHover NTC" href="@Url.Action("Query","UniversitySearch",new {cityTW = "101100"})" xlink:href="#City_101100" data-uk-modal="{target:'#City_101100', center:true}">
+                                            <g class="g_NantouB">
+                                                <path id="NantouB" class="mapArea NTC" style="stroke: #FFFFFF; stroke-width: 2;" d="M171.2,235.9l5.6,12l-0.6,7.8l-3.1-0.6
+                                                l-0.9,3.3l0.3,8l1.7,2.8l0.3,3.9l-1.7,6.7l-0.9,1.4l-0.3,0.3l-2.2,6.4l0.3,8l5.3-3.9l0.9,3.3l1.7,3.1l2.5,1.7l3.9,0.3l3.3-0.6
+                                                l0.9-3.3l3.6,0.9l3.1-0.6l1.1-3.1l3.6,0.6l2.5,2.2l0.1,3.3l7.2-0.8l12.8,4.7h4.2l3.6,0.9l1.4,2.8l0.3,9.5l-0.9,3.6l-3.1,2.5v4.2
+                                                l1.7,2.8l2.5,2.2l0.6,8l2.8,6.4l2.2,2.5l12.6,1.4l6.2-2.5l12.2,1.1l3.1,1.1l13.1,0.9l6.9,2.5h0.6l2.8,2l1.4,6.9l1.1,0.6l1.4-1.4
+                                                l3.3-0.9l3.3-2.2l3.3-0.9l0.9-3.9l-1.1-3.3l-2.5-2l2-2.2l0.9-3.6l2.2-2.5l2.5-1.7l0.9-3.3l2.5-1.7l3.9,0.3l3.1-1.4h4.2l1.4-0.6
+                                                l2.8,1.7l3.3,0.9l5.3-4.4V322l0.9-3.3l2.5-1.7l-2.5-6.9l2.8-1.4l4.2,1.1l3.1-1.4l1.7-2.5l3.6-1.7l5-0.3l4.2-9.1l1.4-11.5l1.4-2.8
+                                                v-4.2l2.2-6.2v-10.3l-2.8-2.5l-0.3-3.9l0.9-3.1l-8.9-6.4l0.3-3.9l3.6-0.9l3.3-2.5V235l-0.9-3.3l0.6-3.9l2.5-1.7l1.1-3.6l0.3-4.2
+                                                l1.1-3.3l2.2-2.8l0.3-4.2l2.5-2.5l3.3-0.9l-0.6-6.2l-2-3.3l4.7-4.2l-0.3-3.3l-1.1-3.6v-4.2l0.9-2.2v-8.4l-2.2-2.8l-1.1-0.3v-4.1
+                                                l6.7-14.2l0.3-8l2.5-2.5l2.8-1.4l1.7-2.8l2.8-1.4l2.2-3.9l0.9-2.8l0.3-3.9l-1.7-2.5l-3.9-0.6l-1.1-3.1l-2-2.2l-4.2-1.4l-0.9-1.1
+                                                l-0.3-6.9l3.1-7.3l3.3-0.9l2.2-2l3.1-1.4l4.2-4.2h4.2l1.7-2.5l-1.9-6.2l-1.5-0.9l-5.3-1.2l-1.4-1.4l-5.3-0.6l-1.2,1.8l-5.7-0.4
+                                                l-2.3-0.8l-1.2-1.8l-3.5-2.5h-1l-2.5,4.2l-0.6,2.3l-1.4,2.3l-2.2,0.8l-2.8-1l-1.8-1.2l-4.5,2h-3l-2,1.2l-1,2l-4.7-1.4l-1.4-1.5
+                                                l-2.2-1l-1.8,1.2l-1.4,1.8l-2.8,0.2l-0.8,2.2l-1.4,2.2l-1.5,1.4L325.3,89l-2,1l-0.6,2.3l-1.4,2.2l-2,1.2l-1.4,1.8l-2.2,1.4
+                                                l-1.4,2.2l-4.3,2.2h-4.5l-1.8,1.2L299,104l-2.8,0.6l-1.5,1.5l-2.2,6.9l-3.2,2.9l-2,1.2l-5.7,0.2l-2.5-0.6l-1.5-1.4l-2.5,0.4
+                                                l-6.7,5.7l-2.8,0.6l-2.8-0.4l-3.2-1.5l-0.4-0.6l-1.8-1.5l-1.1,4.5l-1,2l-1.5,1.4l-0.8,1.8l-1.2-0.6v-6l-1.8-1.5l-5.1-1l-1.2-1.8
+                                                l-2.5-0.8l-1.8,1.2l-4.2,8.3l0.4,7.3l-1.4,1.8l-5,1.4l-3.5,3.5l-4.2,10.8l-7.1,7.7l-4.7,1.5l-2.3,0.2l-2-1.8l-2.8-0.6h-6
+                                                l-2.3,0.6l-9.9-3.6l-4.3,2.5h-8.4l-0.3,4.2l0.6,0.3l2,2.2l1.4,3.1l-0.3,3.9l-1.4,2.8l-2.2,2l-1.7,2.5l1.1,6.2l-0.6,2.5l0.6,3.1
+                                                l-1.4,10.6l-1.4,2.8l-0.6,3.6l-1.7,2.8l2,2.2l-1.4,2.8l-0.3,2.5l8,8.6l2.8,1.4h3.6l2.8-1.4l2.2,0.6v3.6l-1.4,2.8l-2.2,2l-6.4,2
+                                                L171.2,235.9L171.2,235.9L171.2,235.9z"></path>
+                                                
+                                                <g id="NantouB_txt" class="textOutline">
+                                                    <path class="st1" d="M274.4,213.9h-9.2v2.6h8.1v12c0,0.5-0.1,0.8-0.4,1.1c-0.3,0.3-0.9,0.5-2,0.5c-0.5,0-1,0-1.5-0.1l-0.5-1.1
+                                                    c0.7,0.1,1.2,0.1,1.7,0.1c0.7,0,1.1-0.1,1.2-0.2c0.1-0.1,0.3-0.3,0.3-0.6v-10.6h-14.9v12.5h-1.1v-13.6h7.9v-2.6h-9.1v-1.1h9.1
+                                                    v-2.2h1.2v2.2h9.2L274.4,213.9L274.4,213.9z M270.8,225.6h-5.6v3.9H264v-3.9h-5.6v-1.1h5.6v-2.4h-4.7V221h2.5
+                                                    c-0.3-0.8-0.8-1.7-1.2-2.4l1.1-0.6c0.7,1,1.1,2.1,1.5,3h2.9c0.6-0.9,1-1.9,1.4-2.9l1.2,0.4c-0.4,0.9-0.8,1.8-1.2,2.5h2.6v1.1
+                                                    h-4.8v2.4h5.6v1.1H270.8z"/>
+                                                <path class="st1" d="M284.8,215.6h-2.9v4.5l2.2-0.8l0.3,1.1c-1,0.5-1.9,0.8-2.4,1v7c0,0.8-0.2,1.2-0.5,1.5
+                                                    c-0.3,0.3-1,0.4-2.1,0.4c-0.4,0-0.8,0-1-0.1l-0.5-1.2c1,0,1.8,0.1,2.2,0.1c0.2,0,0.4-0.1,0.5-0.2c0.1-0.1,0.2-0.3,0.2-0.6v-6.5
+                                                    c-0.8,0.4-1.9,0.8-3.1,1.1l-0.4-1.1c1.3-0.4,2.5-0.8,3.5-1.2v-5h-3.3v-1.1h3.3v-3.9h1.1v3.9h2.9L284.8,215.6L284.8,215.6z
+                                                     M297.3,229.1l-0.8,1.1c-2.4-0.8-4.2-1.8-5.7-2.9c-1.7,1.1-3.9,2.2-6.8,2.9l-0.7-1c2.9-0.8,5.1-1.6,6.5-2.6
+                                                    c-1.8-1.7-3-3.6-3.6-5.5h-0.8v-1.2h9.9c-0.2,2.5-1.4,4.8-3.6,6.7C293.3,227.6,295,228.4,297.3,229.1z M296.9,218.6h-2.3
+                                                    c-1.2,0-1.8-0.6-1.8-1.7v-4.8h-4.5c-0.1,3.1-1,5.4-2.8,7l-0.9-0.8c0.8-0.6,1.4-1.4,1.9-2.5c0.5-1.1,0.7-2.6,0.7-4.7h6.9v5.9
+                                                    c0,0.1,0.1,0.2,0.2,0.3c0.1,0.1,0.2,0.2,0.3,0.2h2.4L296.9,218.6L296.9,218.6z M293.9,221.1h-6.4c0.7,2,1.8,3.5,3.4,4.7
+                                                    C292.5,224.5,293.5,223,293.9,221.1z"/>
+                                                <path class="st1" d="M302.7,224c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L302.7,224z M308.8,222.1H305v8h-1.1v-8
+                                                    H300v-1h1v-10.1h6.7v10.1h1V222.1z M306.6,213.5v-1.4h-4.5v1.4H306.6z M306.6,215.9v-1.4h-4.5v1.4H306.6z M306.6,218.5v-1.6h-4.5
+                                                    v1.6H306.6z M306.6,221.1v-1.7h-4.5v1.7H306.6z M308.7,226.4l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C307.8,224.5,308.3,225.4,308.7,226.4z M312.2,224.7c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L312.2,224.7z
+                                                     M316.2,211.1c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L316.2,211.1z M319.7,223.2l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.4,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C318.3,220.6,319,221.9,319.7,223.2z M319.7,228.7l-1,0.5c-0.5-1.2-1.2-2.7-2.4-4.6l1-0.5C318.4,225.7,319.1,227.3,319.7,228.7z"
+                                                    />
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 253.2904 229.0323)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">南投縣</text>
+                                            </g>
+                                        </a>
+                                        <!-- 雲林 YUN -->
+                                        <a class="mapHover YUN" href="@Url.Action("Query","UniversitySearch",new {cityTW = "101300"})" xlink:href="#City_101300" data-uk-modal="{target:'#City_101300', center:true}">
+                                            <g class="g_YunlinB">
+                                                <path id="YunlinB" class="mapArea YUN" style="stroke: #FFFFFF; stroke-width: 2;" d="M202.2,300v-3.3l-2.5-2.2l-3.6-0.6
+                                                l-1.1,3.1l-3.1,0.6l-3.6-0.9l-0.9,3.3l-3.3,0.6l-3.9-0.3l-2.5-1.7l-1.7-3.1l-0.9-3.3l-5.3,3.9l-0.3-8l2.2-6.4l0.3-0.3l2-4.4
+                                                l0.6-3.6l-0.3-3.9l-1.7-2.8l-0.3-8l0.9-3.3l3.1,0.6l0.6-7.8l-5.6-12l-22.8-3.3l-4.2-1.7l-2.2-0.3l-11.5,1.1l-15.9-6.2l-4.7-0.6
+                                                l-0.9-1.4l-5.6-3.1l-2.8,1.4l-16.1-0.3l-8.4,2.2l-12.6-0.3l-6.4-2l-4.2-0.3l-7.1-2.4l-4.3,0.1l-1.4-0.8l-1.5-0.3l-0.6,1.7l-2,0.1
+                                                l-6.7,11.9l-0.1,0.8l-2.4-0.1l-1.4,0.9l-2.2,2.6l-0.7,1.8l-0.3,4.2l-1.1,1.3l-0.3,1.8l1.9,2.6l-0.3,2l-1.9,2.6l-3.5,0.1l-0.4,1.7
+                                                v2.1l-2.4,1.3v2.6l-0.1-0.1l-0.6,0.3l-0.4,1.8v2.1l0.6,1.5l2.1,0.1l1.5,2.2l-2.5,3.1l-1.5,3.1l-0.4,1.7l-2.1,3.5l-1.1,3.9L8,285
+                                                l-2.9,8.2l0.3,8.3L5,303l0.1,1.5l2,1L7,307.5l-1.7,0.7l-2.4,1.8l0.6,2.4l1.2,0.7l1.7,0.3l0.1,2.1l-1.1,1.4v4.2l1.4,1l2.2,3.1
+                                                l1.5,1.2l-1.4,0.9l-1,1.9l-2,0.1l-0.6-1.5l-1.1-1l-1.7,1l-2.4,2.8l4.3,0.1L11,333h4.2l1.7,2.5h4.2l3.1-1.4l6.9,2.5l4.2,0.6l2.5-2
+                                                l2-2.5l0.3-3.9l-0.9-3.3l2.2-2.2h3.6v3.6l3.9,1.4l1.1-3.1l5.3-3.1l0.9-3.9l2-2.2l6.9-2.8l3.1,1.7l2-6.7l1.7-2.8l4.4,0.3l2.8-1.4
+                                                l1.1-3.3l6.4-2l1.1-3.1l2.5-2l2-2.5l3.1,1.4l2.5,2l3.1,1.1l6.4-2.5h8.4l5.8-3.1l5.6,1.4l1.7,5.6l4.7,3.9l1.7,2.5l2.8,1.7l3.9,0.3
+                                                l2.5,2l3.3,1.1l15.3,1.7l3.1-1.7l2-2.2l6.2,0.3l-0.6,4.2l2.2,3.6l2.2-2.2l3.6-0.9l2.2,2.2l3.3-0.3l3.1-1.1l3.9,0.3l3.1,1.7
+                                                l3.9,0.6l1.4-2.8v-3.9l-0.9-3.3l-1.7-2.5L202.2,300L202.2,300L202.2,300z"></path>
+                                                
+                                                <g id="YunlinB_txt" class="textOutline">
+                                                    <path class="st1" d="M67.5,270.3h-6.4c2.3,1.5,4,3,5.4,4.4l-0.8,0.8c-0.6-0.6-1.1-1.1-1.7-1.6c-5.5,0.8-10.1,1.2-13.7,1.4
+                                                    l-0.1-0.9c1.5-0.8,3-2.3,4.5-4h-6.7v-1.1h19.6V270.3z M67,264h-1.1v-3.8h-7.7v5.1H57v-5.1h-7.6v3.8h-1.1v-4.8H57v-1.9h-8v-1h17.1
+                                                    v1h-8.1v1.8h8.8L67,264L67,264z M65.7,267.4h-16v-1h16V267.4z M56.2,264.5c-1.7,0.5-3.5,0.8-5.5,1l-0.5-0.9
+                                                    c2.4-0.3,4.1-0.7,5.5-1L56.2,264.5z M56.1,262.1l-0.5,0.8c-1.7-0.5-3.4-0.8-5.1-1l0.4-0.9C52.9,261.3,54.7,261.7,56.1,262.1z
+                                                    M62.8,273.1c-0.9-0.8-1.8-1.4-2.5-1.9l0.6-0.8h-4.7c-1.5,1.9-2.8,3.2-3.9,3.9C56.2,273.9,59.8,273.4,62.8,273.1z M64.9,261.9
+                                                    c-1.5,0.5-3.3,0.8-5.3,1l-0.4-0.9c2.2-0.3,3.9-0.6,5.2-0.9L64.9,261.9z M65.1,264.6l-0.5,0.9c-1.5-0.5-3.3-0.9-5.4-1.2l0.5-0.9
+                                                    C61.8,263.8,63.6,264.1,65.1,264.6z"/>
+                                                <path class="st1" d="M79.7,266.6l-0.8,0.9c-0.6-1-1.5-2.2-2.7-3.4v11.4h-1.1v-11.9c-1.2,2.4-2.5,4.6-3.9,6.4l-0.8-1
+                                                    c1.8-2.2,3.3-4.8,4.5-7.8H71V260h4v-4.2h1.1v4.2h3.2v1.1h-3.2v1.4C77.5,263.8,78.7,265.2,79.7,266.6z M90.2,270.5l-0.8,0.8
+                                                    c-1.4-1.6-2.9-4.1-4.3-7.5v11.7H84v-11.7c-1.4,3-3,5.5-4.7,7.5l-0.8-1c2.2-2.6,4-5.7,5.5-9.3h-3.6v-1.1h3.7v-4.2h1.1v4.2H90v1.1
+                                                    h-4.6C86.4,264.7,88.1,267.8,90.2,270.5z"/>
+                                                <path class="st1" d="M95.8,269.4c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L95.8,269.4z M101.8,267.5H98v8h-1.1
+                                                    v-8H93v-1h1v-10.1h6.7v10.1h1L101.8,267.5L101.8,267.5z M99.6,258.9v-1.4h-4.5v1.4H99.6z M99.6,261.2v-1.4h-4.5v1.4H99.6z
+                                                    M99.6,263.8v-1.6h-4.5v1.6H99.6z M99.6,266.5v-1.7h-4.5v1.7H99.6z M101.7,271.7l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C100.8,269.9,101.3,270.8,101.7,271.7z M105.4,270c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L105.4,270z
+                                                    M109.2,256.5c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L109.2,256.5z M112.7,268.5l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1s-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5V268c-0.9,0.1-2.3,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.3,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.3,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C111.3,265.9,112.1,267.2,112.7,268.5z M112.8,274.1l-1,0.5c-0.5-1.2-1.2-2.7-2.3-4.6l1-0.5C111.4,271.1,112.2,272.6,112.8,274.1
+                                                    z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 46.36 274.3842)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">雲林縣</text>
+                                            </g>
+                                        </a>
+                                    </svg>
+                                </li>
+                                <!-- 嘉南高屏 -->
+                                <li class="svg-container" id="mapSVG5" aria-hidden="true">
+                                    <svg class="mapSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 442 364" preserveAspectRatio="xMinYMin meet" version="1.1">
+                                        <!-- 屏東 PIF -->
+                                        <a class="mapHover PIF" href="@Url.Action("Query","UniversitySearch",new {cityTW = "102000"})" xlink:href="#City_102000" data-uk-modal="{target:'#City_102000', center:true}">
+                                            <g class="g_Pingtung_1_">
+                                                <path id="PingtungB" class="mapArea PIF" style="stroke: #FFFFFF; stroke-width: 2;" d="M290.3,290.8l-1.9,0.6l-1.3,1.1l-2.1,0.8
+                                                l-1.8-3.1l-1.9-0.5h-2.6l-0.8-1.8l-1.8-0.6l-1.5-1l-2.7,0.2l-0.3-1.5l0.5-2.1l1.1-0.6l-1.8-0.6l-0.6-1.6l-3.1-1.8l1.1-1.5l1.6-0.8
+                                                l-0.2-4.8l-1.6-1l-0.8-1.6h-1.8l-2.4-2.6l-2.2-1.1l3.1-9.3l4.2-0.6l0.8-1.8l-0.5-2.1l-1.8-1.3l-1.6-3.4l-2.6-1.6l-0.2-1.9
+                                                l-0.6-1.9l2.7-2.1v-2.4l-2.6-5.2l-0.3-2.7L261,228l-0.6-1.9l0.3-2.2l1.8-3.3l-0.8-1.8l1-1.5l0.6-1.8l-0.2-2.2l0.6-1.6l1.3-1.3
+                                                l0.5-1.9l1.1-1.3l0.2-0.6l2.6-3.6l0.2-2.2l1.1-1.5l0.2-1.6l2.1,0.3l2.2-1.1l3.9-0.8l1.9-4l7.1-0.3l1.3-1.5l0.2-2.2l1.1-1.3
+                                                l0.3-6.3l1.3-1.3l-0.6-1.5v-2.4l-0.6-2.1l-1.6-0.8l-2.1-0.2l-1.8-1.6l-0.5-1l-0.6-5.3l-2.4-1.6l-1.5,0.5l-0.2-0.8l-1.6-0.8
+                                                l-0.6-0.2H276l-1,1.5l-3.3,1.6l-1.1,1.5l-1.8,1l-1.8-1l-4-4.8l-5.5-3.4h-2.4l-1.9,0.5l-2.1,3.1l-1.9,0.5l-0.6,0.6h-1.8l-1.8-0.8
+                                                v-2.4l-1.1-1.3l-1.9-0.8l-1.9,0.5l-1.8,1.3l-2.2,0.2l-4.2,2.9l-0.8,0.3l-2.6,2.1l-0.2,0.8l-1.6,2.1l-1.5,1.1l-2.2,0.2l-3.9-1
+                                                l-1.8,0.8h-2.4l-1-1.5l-2.9-0.2l-1.1-0.5l-1.6,0.8l-1,6.3l-0.8,1.6l-0.3,2.1l-0.8,1.8l0.2,9.7l-0.5,0.8l0.2,2.9l-1.1,4.3l-1.1,1.5
+                                                l-1.3,3.9l-0.2,11.6l2.2,2.7l-1.8,10.5l-0.8,1.8l-1.6,1.4l-0.1,1.1l-0.5,0.7l0.1,2.2l-0.3,0.8l0.5,1.1l0.1,5.8l1.8,0.2l1.3,1.2
+                                                l-0.1,1.1l-0.6,0.2l1.1,1.5l3.2,2.4l0.6,0.8l0.9,0.4l0.4,0.1h-0.1l0.1,0.3l1.9,0.8l0.8,0.8l1,0.6l1.8,0.6l0.7,0.6l1,0.5l0.6,0.6
+                                                l1.1,0.5l0.7,0.6l6.1,3.3l0.7,0.9l1.1,0.3l6.9,5.5l0.6,0.8l1.3,3.4l-0.3,0.5l3.4,2.4l3.7,4.7l0.3,1v3.1l1.1,1.8l0.5,2.2l-0.1,1.1
+                                                l-0.3,1l0.1,1l2.6,2.2l0.6,0.8l0.8,0.6l0.5,0.8l0.6,2.2l2.1,2.2l-0.6,1.1v1.2l0.3,1.1l0.8,0.8l1,3.1l0.1,3.6l0.6,2.1v1.2l0.4,0.8
+                                                l0.3,1.4l0.8,0.7l0.5,0.8l0.2,1.1l0.9,0.9l0.2,2.3l0.5,0.8l-0.1,1.2l-0.5,0.8l-3.3,1l0.2,1.1l1.1,0.3l0.3,0.8l-0.1,0.4l0.3,1
+                                                l0.4,0.8l-0.4,0.8l-0.6,0.6l-1.6,1l-0.2,1l0.6,0.8l-2.4,2.2v2.4l1,0.6v1.2l0.8,0.7l-0.3,1l2.5,2.2l0.3,0.9l0.8,0.8l0.5,0.8
+                                                l0.3,1.6l-0.6,1.9l0.1,3.8l-0.7,1.7l0.6,0.7l1.1,0.2l0.6,2.1l0.6,1.1l2.5,0.3l1-1.5l0.7-0.6l0.2-1.1l-0.5-2l0.4-0.9l0.9-0.4
+                                                l1.3-1.4l0.8-0.4h1.2l0.3,0.9l2.7,1.8l0.3,0.1l1.5-0.1l1,0.3l0.4,0.8l1,0.3l0.9,0.6l1.2,0.4l1.2,0.1l2.4,2.4l0.1,1.1l1.2,0.4
+                                                l0.6,0.5l0.4,0.8l0.1,1.1l1.7,1.6h1.2l0.8-0.6l-0.2-1.1l-0.6-0.6l-0.3-1l0.1-1.1l-0.3-0.9l-3.1-4.8v-4.7l0.3-0.9l-0.4-0.9l0.3-1.9
+                                                l0.6-0.3l0.1-1.1l2.2-0.3l1.1-0.4l0.4-0.8l1-0.3l0.8-0.6l0.3-1l0.1-1.1l0.6-0.6l1.1-0.1l0.3-2.2l2.4-1.5l0.3-0.9l-1.3-1.6
+                                                l-0.1-5.9l-0.8-1.1v-1.2l1.7-2.9l0.6-0.7v-1l-1-0.4l-1.3-1.4l-0.4-1l-0.2-3.1l0.2-0.4l0.6-0.1l0.3-0.4l0.4-0.3l0.2-0.4l-0.6-0.9
+                                                l0.1-2.4l-0.5-0.8l0.2-0.4l0.3-0.4l0.2-0.4l0.1-0.5l-0.1-0.5v-1.2l-0.2-0.6l-0.3-0.4l0.1-0.7l-0.4-0.5l-0.2-0.5l0.1-1l0.9-0.8
+                                                l0.3-0.4l0.1-0.4l0.1-1.1l-0.2-0.5v-0.4l0.1-0.3l-0.6-0.6l0.5-2.1l0.6-0.7l0.3-0.9l-0.6-0.8l-0.1-0.6"></path>
+                                                
+                                                <g id="PingtungB_txt" class="textOutline">
+                                                    <path class="st1" d="M244.4,218.9h-15v1.8c0,2.9-0.2,5.4-0.6,7.1c-0.4,1.8-1,3.6-2,5.2l-1-0.8c0.8-1.2,1.3-2.7,1.7-4.5
+                                                    s0.7-4.4,0.7-7.7v-6.1h16.3L244.4,218.9L244.4,218.9z M243.2,217.8v-2.7h-13.9v2.7H243.2z M245.8,228.2h-4.6v4.9H240v-4.9h-4.5
+                                                    c-0.1,1-0.6,2.1-1.4,3c-0.8,0.9-1.9,1.6-3,2l-0.8-1c2.3-0.7,3.6-2,3.9-3.9h-4.5v-1.1h4.6c0.1-0.7,0.1-1.3,0.1-2.2
+                                                    c0-0.4,0-0.7,0-0.9h-4.1v-1.2h14.5v1.2h-3.7v3.1h4.6V228.2z M235.9,221.6l-0.9,0.8c-0.8-0.8-1.6-1.6-2.4-2.1l0.9-0.8
+                                                    C234.6,220.3,235.4,221,235.9,221.6z M240,227v-3.1h-4.3c0,0.9,0,2.1,0,3.1H240z M243.1,220.2c-0.8,0.8-1.5,1.6-2.4,2.3l-1-0.8
+                                                    c0.8-0.6,1.7-1.2,2.4-2.2L243.1,220.2z"/>
+                                                <path class="st1" d="M268.3,231.3l-0.7,1c-3.8-1.5-6.6-3.4-8.6-5.8v6.6H258v-6.6c-2.6,2.8-5.5,4.8-8.7,5.9l-0.7-1
+                                                    c3.4-1.3,6.1-3.1,8.3-5.5h-6.1v-7.6h7.2v-1.9h-9v-1h9v-2h1.1v2h9v1.1h-9v1.9h7.1v7.6h-6.1C261.9,228.2,264.7,229.9,268.3,231.3z
+                                                    M257.9,221.6v-2.2h-6v2.2H257.9z M257.9,224.9v-2.2h-6v2.2H257.9z M265,221.6v-2.2h-5.9v2.2H265z M265,224.9v-2.2h-5.9v2.2H265z
+                                                    "/>
+                                                <path class="st1" d="M274,226.9c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L274,226.9z M280,225.1h-3.8v8h-1v-8
+                                                    h-3.9v-1h1v-10.1h6.7v10.1h1L280,225.1L280,225.1z M277.8,216.4V215h-4.5v1.4H277.8z M277.8,218.8v-1.4h-4.5v1.4H277.8z
+                                                    M277.8,221.4v-1.6h-4.5v1.6H277.8z M277.8,224.1v-1.7h-4.5v1.7H277.8z M279.9,229.4l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C279,227.4,279.5,228.4,279.9,229.4z M283.6,227.7c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L283.6,227.7z
+                                                    M287.4,214.1c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L287.4,214.1z M290.9,226.1l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5s-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.3,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C289.5,223.5,290.3,224.9,290.9,226.1z M291,231.6l-1,0.5c-0.5-1.2-1.2-2.7-2.4-4.6l1-0.5C289.6,228.7,290.4,230.2,291,231.6z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 224.5686 231.9733)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">屏東縣</text>
+                                            </g>
+                                        </a>
+                                        <!-- 高雄 KHH -->
+                                        <a class="mapHover KHH" href="@Url.Action("Query","UniversitySearch",new {cityTW = "101800"})" xlink:href="#City_101800" data-uk-modal="{target:'#City_101800', center:true}">
+                                            <g class="g_KaohsiungB">
+                                                <path id="KaohsiungB" class="mapArea KHH" style="stroke: #FFFFFF; stroke-width: 2;" d="M187,235.2l4.3,3.6l1.1,0.5l1.8,1.6
+                                                l3.4,1l0.2-0.4l-0.6-9.2l0.6-1.8l0.6-0.7l1.1,0.3l1.6-1.4l1.3-3.7l0.2-2.2l1.1-3.9v-2.4l-2.2-2.7l0.2-11.6l1.3-3.9l1.1-1.5
+                                                l1.1-4.3l-0.2-2.9l0.5-0.8l-0.2-9.7l0.8-1.8l0.3-2.1l0.8-1.6l1-6.3l1.6-0.8l1.1,0.5l2.9,0.2l1,1.5h2.4l1.8-0.8l3.9,1l2.2-0.2
+                                                l1.5-1.1l1.6-2.1l0.2-0.8l2.6-2.1l0.8-0.3l4.2-2.9l2.2-0.2l1.8-1.3l1.9-0.5l1.9,0.8l1.1,1.3v2.4l1.8,0.8h1.8l0.6-0.6l1.9-0.5
+                                                l2.1-3.1l1.9-0.5h2.4l5.5,3.4l4,4.8l1.8,1l1.8-1l1.1-1.5l3.3-1.6l1-1.5h2.1l0.6,0.2l1.6,0.8l0.2,0.8l1.5-0.5l2.9,1.9l0.4-4.3
+                                                l-1.8-2.5l-3.4-0.3l-1.8-5.5l0.3-3.2l-0.9-0.9l-1.1-2.5V142l0.7-2.7l6.4-8.2l0.4-1.1v-2.5l4.1-2.9l-0.9-2.7l-1.6-1.6l1.1-2.7
+                                                l2.3-2.5l-0.7-14.3l2-1.3l1.3-3.2l2.3-1.1l-0.7-2.5v-2.5l0.9-2.5l-0.3-1.1l-0.7-0.4l1.8-2.3l2.3-0.9l4.3-3.6L305,75h2.5l5-1.3
+                                                l1.8-1.8l5.4-2.3l0.5-1.9l-0.2-2.2l-9.8-6.8l-1.9-0.5l0.6-2.2l1.1-1.6l2.1-0.6l-0.3-1.5l1-1.5l2.1-0.3l1-1.5v-4.5l-1.5-1l-0.4-1.1
+                                                l-0.6-0.2l-0.8-4l-1.6-1.1h-0.3l-6.3-1.8l-0.6,0.2l-1.6,0.8l-4.2,0.6l-1.5,1l-4,0.8l-2.7,2.2l-1,1.6l-1.8,0.8l-1.5,1.1l-2.1,0.3
+                                                l-1.5,1.6l-1.1,2.7l-1.1,1l-0.6,1.8l-1.1,1.3l-0.2,2.2L276,56h-2.4l-1.3,1.3l-1,1.6l-2.6,2.6l-4.5,0.3l-1.5,3.7l-3.3,1.7l-0.6,1.8
+                                                l-4.2,0.3l-0.8,4.2l-5.2-0.2l-1.5-1.3l-5-0.2l-0.8,7.4l0.8,1.8l1.3,1.6V85l-0.7,0.7l0,0l0.2,0.3l1.5,1.1L244,89l-2.6,3.3l-0.2,2.4
+                                                l-5.2,6.9l-1.1,0.2l-3.6,4.3l-0.2,2.2l-0.8,1.6l-0.3,2.2l-0.8,0.5l-0.2,0.2l-0.3,1.9l-10.5,7.6L216,126l-5.8,4.2l-0.2,2.2
+                                                l-3.6,0.2l-0.2,2.2l-0.6,1.9l-1.9,0.5l-2.4,5.6l-0.3,2.1l-0.6,0.8l-0.7,0.4l-1,4h-1.9l-1.6-1l-2.2,0.2l-1.9,0.6l-5.2,5.3l-2.4,0.2
+                                                l-6.4-2.1l-5-0.5l-1,1.3l-1.3-0.2l-1.8-0.8l-0.3,0.5h-2.2l-2.4-2.6l-1.1-0.6l-1.6,0.8l-5.4-2l-1.1,0.4l-2,1.9l0.8,0.9l0.5,2.7
+                                                l1.9,4v1.2h0.4l0.2-1l0.4-0.8l1.2-0.1l1.3,3.3l-0.2,1l-1.2,0.2l-0.9-0.6l-0.5-0.8l-0.3,0.6l0.1,1.1l0.5,1.5l0.1,1.1l1.1,2.2v0.9
+                                                l5.7,13.5l0.1,1.1l1,2.2l0.9,1.1l2,4.2l1.1,2.4l2.9,3.6l-1.3,1.6l-2.5-2.5l1.6,3.9l-2.6,2.5l-0.2,2.7l-0.3,1l0.3,1.1l1.8,1.6
+                                                l0.6,0.9v1.2l0.6,0.6l-0.1,1.2l-0.7,0.5l0.5,0.7l1,0.5l0.8,2.2l1.7,1.7l0.4,0.9l0.8,1.1l0.7,0.5l0.6,0.7l0.4,0.9l0.6,0.6l1.8,2.9
+                                                l-1.7,0.3l-0.3,0.4v0.4l1,0.3l2.1-0.1l0.4,0.1l2.1,2.2l0.9,0.5l1.5,1.6l0.4,0.9l2.5,2.1L187,235.2"></path>
+                                                
+                                                <g id="KaohsiungB_txt" class="textOutline">
+                                                    <path class="st1" d="M263.8,110.2h-19v-1h8.9c-0.1-0.5-0.3-1-0.7-1.8l1.1-0.4c0.3,0.5,0.5,1.2,0.8,2.2h8.8L263.8,110.2
+                                                    L263.8,110.2z M262.9,125.1c0,0.6-0.1,0.9-0.4,1.3c-0.3,0.4-0.9,0.5-2,0.5c-0.4,0-0.8,0-1.2,0l-0.4-1.1c0.9,0,1.5,0.1,1.8,0.1
+                                                    c0.7,0,1-0.3,1-0.8v-6.3h-14.7v8.3h-1.1v-9.4h17L262.9,125.1L262.9,125.1z M260.6,115.9H248v-4.3h12.6V115.9z M259.4,114.8v-2.1
+                                                    h-10.2v2.1H259.4z M258.9,124.5h-9.2v-4.4h9.2V124.5z M257.8,123.5v-2.3h-6.9v2.3H257.8z"/>
+                                                <path class="st1" d="M276.1,111.4H272c-0.8,3.9-2.1,7.3-4,10.3L267,121c2-3.2,3.3-6.4,3.9-9.7h-3.6v-1h3.7
+                                                    c0.2-1.2,0.3-2.3,0.4-3.4l1.2,0.2c-0.1,0.9-0.2,2.1-0.4,3.2h3.9V111.4z M276.4,125.8l-1.1,0.6c-0.1-0.6-0.3-1.1-0.5-1.8
+                                                    c-2,0.6-4.1,1.1-6.3,1.6l-0.5-0.9c1.8-2.1,3.3-5.5,4.6-10.3l1.1,0.4c-1.1,3.7-2.4,6.7-3.8,9.2c1.6-0.3,3-0.6,4.4-1
+                                                    c-0.3-1-0.7-2.1-1.2-3.1l0.9-0.6C275.3,122,275.9,124,276.4,125.8z M286.7,125.6h-8.5v1.1h-1.1v-13.3c-0.5,0.7-1,1.5-1.8,2.3
+                                                    l-0.8-0.8c2-2.5,3.4-5.2,4.2-8.1l1.1,0.3c-0.4,1.2-0.8,2.4-1.5,3.9h4c-0.2-1.1-0.5-2.3-0.9-3.4l1-0.4c0.5,1.2,0.8,2.4,1,3.8h2.7
+                                                    v1.1h-3.4v3.1h3v1.1h-3v3.3h3v1.1h-3v3.4h3.8L286.7,125.6L286.7,125.6z M281.8,115.5v-3.1h-3.6v3.1H281.8z M281.8,119.9v-3.3
+                                                    h-3.6v3.3H281.8z M281.8,124.5v-3.4h-3.6v3.4H281.8z"/>
+                                                <path class="st1" d="M309.1,111.2h-9.2v3.6h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2s-0.7,0.5-1,0.5c-0.4,0-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6v-7.1h-6.5v11h-1.2v-11h-6.4v9h-1.2v-10.1h7.6v-3.6h-9.2v-1.2h9.5
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L309.1,111.2L309.1,111.2z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 242.9674 125.6866)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">高雄市</text>
+                                            </g>
+                                        </a>
+                                        <!-- 台南 TNN -->
+                                        <a class="mapHover TNN" href="@Url.Action("Query","UniversitySearch",new {cityTW = "101600"})" xlink:href="#City_101600" data-uk-modal="{target:'#City_101600', center:true}">
+                                            <g class="g_TainanB">
+                                                <path id="TainanB" class="mapArea TNN" style="stroke: #FFFFFF; stroke-width: 2;" d="M202.5,47l-0.2,0.3l-1.5,1l-2.1,0.2
+                                                l-1.3-1.3l-2.1,0.3l-3.4,1.6h-4.8l-3.8,2.2l-0.2,0.2l-1,1.6l-4-0.2l0.2,1.9l-4.5,0.3l-0.3,2.1l-0.8,1.6l-1.1,1l-1.6-1l-1.3,1.3
+                                                l0.6,1.8L169,63l-6.1,3.1l-0.5,1.9l-2.1,3.1l-1.9,0.8l-2.9-0.8l-0.8-1.3v1.8l-1.6-0.2l-1.5-1.3l-0.6-1.9l-2.3-0.4l-1.8-1.1
+                                                l-0.5-0.6l-4.6-0.8l-2.5,4.3l0.4,0.8l0.6,0.1l-0.4,1.2l-0.8,0.6l-0.2,1.1l1.8,1.1l0.8,0.2l1-0.3l-1.4,2l-2.2,0.8l-0.6,0.8l0.2,1.1
+                                                l0.5,1l-1.6,1.5l-0.3,1.1l-0.5,0.9l-1.5-0.4l-0.4,0.8l-0.5,2.2l0.1,2.4l-3.1,5.9l-0.3,2.2l-1,1.6l0.7-0.9l1-0.4l1-0.1l0.4,5.1
+                                                l0.8,0.6l1,0.4l-0.6,3.4l-2.1,0.9h-0.2l-2.2,0.8l-2,1.8l-2.1,1l-0.2,2.2l0.2,0.3l0.2,2.4l0.5,0.6h1.2l-0.1,3.8l0.5,1.5l1.3,1.6
+                                                l0.2,0.5l1.2-0.4l0.8-0.6l0.6-0.7l0.2,1l-0.2,1.1l3,1.8l0.6,0.2l1.1,1l2,1.1l2.5,2.7l1,0.5l3.4,3.1l0.1,0.3l2.2,2.1l1.5,2.4l1-0.3
+                                                l1.5-1.3l0.9-0.5l-0.6,1.4l-0.6,0.7v0.8l2.1,0.6l-1.1,0.9l-1.2-0.1l-0.6-0.9l-0.6-0.3l0.5,1.2l0.8,1l0.3,1.1l-0.3,6.1l-0.3,0.9
+                                                l0.6,1.3l0.8-0.5l1.3-1.3l1-0.4l1.7-3.1l-1.7,3.1l5.4,2l1.6-0.8l1.1,0.6l2.4,2.6h2.2l0.3-0.5l1.8,0.8l1.3,0.2l1-1.3l11.4,2.6
+                                                l2.4-0.2l4-3.7l1.1-1.6l1.9-0.6l2.2-0.2l1.6,1h1.9l1-4l1-0.5l0.6-0.8l0.3-2.1l2.4-5.6l1.9-0.5l0.6-1.9l0.2-2.2l3.6-0.2l0.2-2.2
+                                                l5.8-4.2l2.2-3.6l6.6-4.5l1.5-1.6l2.4-1.5l0.3-1.9l0.2-0.2l0.8-0.5l0.3-2.2l0.8-1.6l0.2-2.2l3.6-4.3l1.1-0.2l5.2-6.9l0.2-2.4
+                                                l2.6-3.3l0.5-1.9l-1.5-1.1l-0.2-0.3l-0.6,0.5l-1.6-0.8l-4,0.8l-1.9-0.6l-2.2-1.6l-2.4,3.6l-1.9,0.5l-2.1-0.2l-2.7-1.9l-3.9-1.1
+                                                l-0.6-1.6l2.1-3.1l-0.5-1.6l-1.3-2.1l-0.3-1.6l0.8-1.6l-0.6-1.8l-0.2-2.2l1-1.8l1.5-1.1l0.2-1.9l-0.6-1.8l-2.2-0.2l-2.4-0.8
+                                                l-0.6-1.5l1.6-1.1L217,57l-5-0.3v-2.4l1.6-1.1l1-1.5l-1.3-1.1l-1.5,0.8l-1.9-0.5l-1.6-1.3l-2.1-0.6l-1.1-1.5L202.5,47z"></path>
+                                                
+                                                <g id="TainanB_txt" class="textOutline">
+                                                    <path class="st1" d="M169,110.7h-19.1v-0.9h9v-1.3h-7.7v-0.9h7.7v-1.2c-1,0-3.3,0-6.7,0l-0.2-0.9c1.3-0.1,2.5-0.6,3.8-1.6h-3
+                                                    v-0.9h13.4v0.9h-1.5c0.7,0.7,1.5,1.5,2.3,2.5l-0.8,0.7c-0.3-0.4-0.6-0.8-0.8-1c-2.4,0.1-4.2,0.2-5.3,0.3v1.3h7.6v0.9H160v1.3h8.9
+                                                    V110.7z M169,93.3h-8.8v1.1h7.9v0.9h-17v-0.9h7.9v-1.1H150v-0.9h8.9v-1h1.2v1h8.8L169,93.3L169,93.3z M168.6,103.7h-1.2v-2.2h-16
+                                                    v2.1h-1.1v-3h18.3V103.7z M166.5,99.6h-14.1v-3.1h14.1V99.6z M165.3,98.6v-1.2h-11.7v1.2H165.3z M164.3,105
+                                                    c-0.4-0.4-0.7-0.7-0.8-0.8l0.6-0.5h-6.6c-0.8,0.8-1.6,1.3-2.5,1.7C156.7,105.4,159.8,105.3,164.3,105z"/>
+                                                <path class="st1" d="M191.7,94.6h-9.2v2.6h8.1v12c0,0.5-0.1,0.8-0.4,1.1c-0.3,0.3-0.9,0.5-2,0.5c-0.5,0-1,0-1.5-0.1l-0.5-1.1
+                                                    c0.7,0.1,1.2,0.1,1.7,0.1c0.7,0,1.1-0.1,1.2-0.2s0.3-0.3,0.3-0.6V98.3h-14.9v12.5h-1.1V97.2h7.9v-2.6h-9.1v-1.1h9.1v-2.2h1.2v2.2
+                                                    h9.2L191.7,94.6L191.7,94.6z M188.1,106.3h-5.6v3.9h-1.2v-3.9h-5.6v-1.1h5.6v-2.3h-4.7v-1.1h2.5c-0.3-0.8-0.8-1.7-1.2-2.4
+                                                    l1.1-0.6c0.7,1,1.1,2.1,1.5,3h2.9c0.6-0.9,1-1.9,1.4-2.9l1.2,0.4c-0.4,0.9-0.8,1.8-1.2,2.5h2.6v1.1h-4.8v2.3h5.6v1.1H188.1z"/>
+                                                <path class="st1" d="M214.2,95.1H205v3.6h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2c-0.3,0.3-0.7,0.5-1,0.5s-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6v-7.1H205v11h-1.2v-11h-6.4v9h-1.2V98.6h7.6v-3.6h-9.2v-1.2h9.5
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L214.2,95.1L214.2,95.1z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 148.0414 109.7319)" class="st1 st5 st6" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">臺南市</text>
+                                            </g>
+                                        </a>
+                                        <!-- 嘉義縣 CHY -->
+                                        <a class="mapHover CHY" href="@Url.Action("Query","UniversitySearch",new {cityTW = "101500"})" xlink:href="#City_101500" data-uk-modal="{target:'#City_101500', center:true}">
+                                            <g class="g_ChiayiB">
+                                                <path id="ChiayiB" class="mapArea CHY" style="stroke: #FFFFFF; stroke-width: 2;" d="M146.9,66.6l-0.1-1.1l-1-0.4h-2.4l-0.3-1
+                                                l0.1-3.3l1.9-4.4l0.9,0.1l2.4-1l0.8-3.2l0.6-1.1l-0.2-2.2l-0.4-0.6l-0.9,0.8l-0.8-0.6l-0.5-1l-0.1-1.2l0.6-2v-1l-1-0.3l0.1-1.1
+                                                l1.4-2.7H147l-1-0.6l-0.3-1.3l0.5-1v-1.3l0.6-0.7l0.3-1.1l0.5-0.9v-1.2l-0.9-0.4l-3.6,0.3l-1.1-0.4l-0.6-1l0.3-5.8l1-0.6l2.5,0.1
+                                                l3.7,1.5h2.4l1,1.5h2.4l1.8-0.8l4,1.5l2.4,0.3l1.5-1.1l1.1-1.5l0.2-2.2l-0.5-1.9l1.3-1.3h2.1v2.1l2.2,0.8l0.6-1.8l3.1-1.8l0.5-2.2
+                                                l1.1-1.3l4-1.6l1.8,1l1.1-3.9l1-1.6l2.6,0.2l1.6-0.8l0.6-1.9l3.7-1.1l0.6-1.8l1.5-1.1l1.1-1.5l1.8,0.8l1.5,1.1l1.8,0.6l3.7-1.5
+                                                h4.8l3.4-1.8l3.3,0.8l1,3.3l2.7,2.2l1,1.5l1.6,1l2.2,0.2l1.5,1.1l1.9,0.6l8.9,1l1.8-1l1.1-1.3l3.6,0.2l-0.3,2.4l1.3,2.1l1.3-1.3
+                                                l2.1-0.5l1.3,1.3l1.9-0.2l1.8-0.6l2.2,0.2l1.8,1l2.2,0.3l0.8-1.6V11L259.1,9l-1-1.5l1-1.5l4.1-0.4l7.4,2.7h2.4l2.1,0.5l0.8,1.6
+                                                l0.2,5.5l-0.5,2.1l-1.8,1.5V22l1,1.6l1.5,1.3l0.3,4.7l1.6,3.7l1.3,1.5l7.3,0.8l3.6-1.5l7.1,0.6l1.8,0.6l5.4,0.1l-0.8,0.2l-1.6,0.8
+                                                l-4.2,0.6l-1.5,1l-4,0.8l-2.7,2.2l-1,1.6l-1.8,0.8l-1.5,1.1l-2.1,0.3l-1.5,1.6l-1.1,2.7l-1.1,1l-0.6,1.8l-1.1,1.3l-0.2,2.2
+                                                l-1.8,0.6h-2.4l-1.3,1.3l-1,1.6l-2.6,2.6l-4.5,0.3l-1.5,3.7l-3.3,1.5l-0.6,1.8l-4.2,0.3l-0.8,4.2l-5.2-0.2l-1.5-1.3l-5-0.2
+                                                l-0.8,7.4l0.8,1.8l1.3,1.6V85l-1.3,1.1l-1.6-0.8l-4,0.8l-1.9-0.6l-2.2-1.6l-2.4,3.6l-1.9,0.5l-2.1-0.2l-2.7-1.9l-3.9-1.1l-0.6-1.6
+                                                l2.1-3.1l-0.5-1.6l-1.3-2.1l-0.3-1.6l0.8-1.6l-0.6-1.8l-0.2-2.2l1-1.8l1.5-1.1l0.2-1.9l-0.6-1.8l-2.2-0.2l-2.4-0.8l-0.6-1.5
+                                                l1.6-1.1l-0.2-2.1l-5-0.3v-2.1l1.6-1.1l1-1.5l-1.3-1.1l-1.5,0.8l-1.9-0.5l-1.6-1.3l-2.1-0.6l-1.1-1.5l-2.4-0.6l-0.2,0.3l-1.5,1
+                                                l-2.1,0.2l-1.3-1.3l-2.1,0.3L192,49h-4.8l-3.9,2.2l-0.2,0.2l-1,1.6l-4-0.2l0.2,1.9l-4.5,0.3l-0.3,2.1l-0.8,1.6l-1.1,1l-1.6-1
+                                                l-1.3,1.3l0.6,1.8l-0.3,1.1l-6.1,3.1l-0.5,1.9l-2.1,3.1l-1.9,0.8l-2.9-0.8l-0.8-1.3v1.8l-1.6-0.2l-1.5-1.3l-0.6-1.9l-2.3-0.4
+                                                L146.9,66.6L146.9,66.6L146.9,66.6z"></path>
+                                                
+                                                <g id="ChiayiB_txt" class="textOutline">
+                                                    <path class="st1" d="M256,17.5h-9.2v1.7h7.8v1h-16.8v-1h7.9v-1.7h-9.2v-1h9.2v-1h1.1v1h9.2V17.5z M256.1,27.8h-13.7
+                                                    c0,0.5-0.1,1-0.2,1.7h3.9c0,1-0.1,2-0.2,2.8c-0.1,0.8-0.2,1.4-0.4,1.7c-0.2,0.3-0.4,0.5-0.7,0.7c-0.3,0.2-0.8,0.3-1.8,0.3
+                                                    c-0.4,0-0.7,0-1,0l-0.4-1.1c0.4,0,0.8,0,1.1,0c0.8,0,1.2-0.1,1.4-0.2c0.2-0.1,0.3-0.4,0.5-0.8c0.2-0.5,0.2-1.1,0.2-2.2H242
+                                                    c-0.7,2-2.2,3.5-4.5,4.5l-0.8-0.8c2-0.9,3.3-2.1,4-3.6h-3.7v-1h3.9c0.1-0.4,0.2-1,0.2-1.7h-4.7v-1.1h6.4
+                                                    c-0.4-0.7-0.7-1.1-0.9-1.5h-3.3v-3.6h15.5v3.6h-3.4c-0.3,0.6-0.6,1-0.9,1.5h6.3L256.1,27.8L256.1,27.8z M252.9,24.1v-1.3h-13.2
+                                                    v1.3H252.9z M249.4,25.3h-6c0.3,0.6,0.6,1,0.8,1.5h4.1C248.7,26.3,249.1,25.7,249.4,25.3z M254.6,35h-1.2v-1h-4.7v1h-1.1v-5.8
+                                                    h7.1V35z M253.4,32.9v-2.5h-4.7v2.5H253.4z"/>
+                                                <path class="st1" d="M278.7,32.2c-0.6,2-1.4,3-2.5,3c-0.8,0-2-0.8-3.4-2.4c-1.4,0.8-3,1.3-4.9,1.8l-0.7-1
+                                                    c2.2-0.6,3.9-1.1,4.9-1.8c-0.7-1.1-1.1-2.3-1.3-3.4h-5.5v1.9c1.4-0.2,2.6-0.4,3.6-0.6v1c-1.1,0.2-2.3,0.4-3.7,0.6v2.2
+                                                    c0,0.5-0.1,0.8-0.3,1c-0.2,0.2-0.4,0.5-0.7,0.6c-0.3,0.1-0.7,0.1-1.3,0.1c-0.5,0-1.1,0-1.8,0l-0.5-1.1c1.6,0,2.5,0,2.9,0
+                                                    s0.6-0.3,0.6-0.7v-1.9c-2.8,0.3-4.4,0.4-4.9,0.4l-0.4-1c2.4-0.2,4.1-0.3,5.3-0.5v-2.1h-4.9v-1h4.9v-1.3c-0.8,0-1.6,0-2.3,0
+                                                    c-0.6,0-1,0-1.4,0l-0.5-1c3.4,0.1,6.2-0.2,8.4-0.6l0.5,0.9c-1,0.3-2.3,0.5-3.5,0.6v1.5h5.2c-0.1-0.6-0.3-1.6-0.4-2.9h1.1
+                                                    c0.1,1.3,0.3,2.4,0.5,2.9h6.7v1H272c0.2,0.8,0.6,1.8,1.1,2.8c0.8-0.5,1.6-1.1,2.3-2.1l0.9,0.7c-0.6,0.8-1.5,1.6-2.6,2.4
+                                                    c0.3,0.4,0.7,0.8,1.1,1.2c0.5,0.5,0.9,0.7,1.2,0.7c0.6,0,1.1-0.8,1.6-2.4L278.7,32.2z M278.7,23.7h-19.6v-1h9.2v-1.5h-7.1v-1h7.1
+                                                    v-1.4h-8.2v-1.1h17.5v1.1h-8.2v1.4h7.2v1h-7.2v1.5h9.2L278.7,23.7L278.7,23.7z M266.7,16.4l-1.1,0.7c-0.6-0.6-1.1-0.9-1.7-1.2
+                                                    l1-0.8C265.4,15.4,266.1,15.9,266.7,16.4z M274,15.8c-0.6,0.7-1.2,1.1-1.9,1.4l-1-0.8c0.8-0.4,1.3-0.8,1.8-1.2L274,15.8z
+                                                    M277.1,26l-0.8,0.8c-0.8-0.7-1.6-1.3-2.6-1.9l0.8-0.8C275.5,24.7,276.3,25.4,277.1,26z"/>
+                                                <path class="st1" d="M284.3,28.8c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L284.3,28.8z M290.4,27.1h-3.8v8h-1.1
+                                                    v-8h-3.9v-1h1V16h6.7V26h1V27.1z M288.3,18.3V17h-4.5v1.4L288.3,18.3L288.3,18.3z M288.3,20.8v-1.4h-4.5v1.4H288.3z M288.3,23.3
+                                                    v-1.6h-4.5v1.6H288.3z M288.3,26v-1.7h-4.5V26H288.3z M290.3,31.3l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C289.5,29.4,290,30.3,290.3,31.3z M293.9,29.6c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L293.9,29.6z M297.9,16.1
+                                                    c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L297.9,16.1z M301.3,28l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.4,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C299.9,25.5,300.7,26.8,301.3,28z M301.3,33.6l-1,0.5c-0.5-1.2-1.2-2.7-2.4-4.6l1-0.5C300,30.6,300.8,32.1,301.3,33.6z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 234.9645 33.8945)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">嘉義縣</text>
+                                            </g>
+                                        </a>
+                                        <!-- 嘉義市 CYI -->
+                                        <a class="mapHover CYI" href="@Url.Action("Query","UniversitySearch",new {cityTW = "101400"})" xlink:href="#City_101400" data-uk-modal="{target:'#City_101400', center:true}">
+                                            <g class="g_ChiayiCityB">
+                                                <path id="ChiayiCityB" class="mapArea CYI" style="stroke: #FFFFFF; stroke-width: 2;" d="M193.3,29.1l0.3,2.1l1.9,1.9l-1.3,2.9
+                                                l6.4,1l0.6,1.8l1.3,1.8l1.6,0.8l1.6-1l0.8-1.6l2.9-2.2l1.3,1.1l2.9,1l0.5-1.6l2.2-2.7l-1.3-1.3l-0.5-1.9l-1.9-0.5l-0.8-1.6l-1.5-1
+                                                l-1.8,0.6l-1.3-1.1l-1.1-1.6l-1.6-0.8l-1.9,0.5l-4.5,3.3l-1.9-0.5L193.3,29.1L193.3,29.1L193.3,29.1z"></path>
+                                                
+                                                <g id="ChiayiCityB_txt" class="textOutline">
+                                                    <path class="st1" d="M142.8,28.6h-9.2v1.7h7.8v1h-16.8v-1h7.9v-1.7h-9.2v-1h9.2v-1h1.1v1h9.2V28.6z M142.8,38.9h-13.7
+                                                    c0,0.5-0.1,1-0.2,1.7h3.9c0,1-0.1,2-0.2,2.8s-0.2,1.4-0.4,1.7c-0.2,0.3-0.4,0.5-0.7,0.7c-0.3,0.2-0.8,0.3-1.8,0.3
+                                                    c-0.4,0-0.7,0-1,0l-0.4-1.1c0.4,0,0.8,0,1.1,0c0.8,0,1.2-0.1,1.4-0.2c0.2-0.1,0.3-0.4,0.5-0.8c0.2-0.5,0.2-1.1,0.2-2.2h-2.9
+                                                    c-0.7,2-2.2,3.5-4.5,4.5l-0.8-0.8c2-0.9,3.3-2.1,4-3.6h-3.7v-1h3.9c0.1-0.4,0.2-1,0.2-1.7h-4.7V38h6.4c-0.4-0.7-0.7-1.1-0.9-1.5
+                                                    h-3.3v-3.6h15.5v3.6h-3.4c-0.3,0.6-0.6,1-0.9,1.5h6.3L142.8,38.9L142.8,38.9z M139.6,35.1v-1.3h-13.2v1.3H139.6z M136.2,36.3h-6
+                                                    c0.3,0.6,0.6,1,0.8,1.5h4.1C135.5,37.3,135.9,36.8,136.2,36.3z M141.3,46.1h-1.2v-1h-4.7v1h-1.1v-5.8h7.1V46.1z M140.2,43.9v-2.5
+                                                    h-4.7v2.5H140.2z"/>
+                                                <path class="st1" d="M165.4,43.2c-0.6,2-1.4,3-2.5,3c-0.8,0-2-0.8-3.4-2.4c-1.4,0.8-3,1.3-4.9,1.8l-0.7-1
+                                                    c2.2-0.6,3.9-1.1,4.9-1.8c-0.7-1.1-1.1-2.3-1.3-3.4H152v1.9c1.4-0.2,2.6-0.4,3.6-0.6v1c-1.1,0.2-2.3,0.4-3.7,0.6v2.2
+                                                    c0,0.5-0.1,0.8-0.3,1c-0.2,0.2-0.4,0.5-0.7,0.6c-0.3,0.1-0.7,0.1-1.3,0.1c-0.5,0-1.1,0-1.8,0l-0.5-1.1c1.6,0,2.5,0,2.9,0
+                                                    s0.6-0.3,0.6-0.7v-1.9c-2.8,0.3-4.4,0.4-4.9,0.4l-0.4-1c2.4-0.2,4.1-0.3,5.3-0.5v-2.1H146v-1h4.9v-1.3c-0.8,0-1.6,0-2.4,0
+                                                    c-0.6,0-1,0-1.4,0l-0.5-1c3.4,0.1,6.2-0.2,8.4-0.6l0.5,0.9c-1,0.3-2.3,0.5-3.5,0.6v1.5h5.2c-0.1-0.6-0.3-1.6-0.4-2.9h1.1
+                                                    c0.1,1.3,0.3,2.4,0.5,2.9h6.7v1h-6.4c0.2,0.8,0.6,1.8,1.1,2.8c0.8-0.5,1.6-1.1,2.4-2.1l0.9,0.7c-0.6,0.8-1.5,1.6-2.6,2.4
+                                                    c0.3,0.4,0.7,0.8,1.1,1.2c0.5,0.5,0.9,0.7,1.2,0.7c0.6,0,1.1-0.8,1.6-2.4L165.4,43.2z M165.4,34.7h-19.6v-1h9.2v-1.5h-7.1v-1h7.1
+                                                    v-1.4h-8.2v-1.1h17.5v1.1h-8.2v1.4h7.2v1h-7.2v1.5h9.2L165.4,34.7L165.4,34.7z M153.5,27.5l-1.1,0.7c-0.6-0.6-1.1-0.9-1.7-1.2
+                                                    l1-0.8C152.2,26.5,152.8,27,153.5,27.5z M160.8,26.8c-0.6,0.7-1.2,1.1-1.9,1.4l-1-0.8c0.8-0.4,1.3-0.8,1.8-1.2L160.8,26.8z
+                                                    M163.9,37.1l-0.8,0.8c-0.8-0.7-1.6-1.3-2.6-1.9l0.8-0.8C162.3,35.8,163.1,36.4,163.9,37.1z"/>
+                                                <path class="st1" d="M187.9,30.4h-9.2v3.6h7.6v8.5c0,0.5-0.1,0.9-0.4,1.2c-0.3,0.3-0.7,0.5-1,0.5s-1.3,0.1-2.8,0l-0.6-1.2
+                                                    c0.6,0,1,0,1.6,0c1,0,1.6-0.1,1.8-0.2c0.2-0.1,0.3-0.3,0.3-0.6v-7h-6.5v11h-1.2v-11H171v9h-1.2V34h7.6v-3.6h-9.2v-1.2h9.5
+                                                    c-0.4-0.8-0.9-1.5-1.8-2.4l1.1-0.6c0.6,0.6,1.3,1.6,2.1,3h8.6L187.9,30.4L187.9,30.4z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 121.7185 44.9674)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">嘉義市</text>
+                                            </g>
+                                        </a>
+                                        
+                                    </svg>
+                                </li>
+                                <!-- 花東離島 -->
+                                <li class="svg-container" id="mapSVG6" aria-hidden="true">
+                                    <svg class="mapSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 442 364" preserveAspectRatio="xMinYMin meet" version="1.1">
+                                        <!-- 花蓮 HUN -->
+                                        <a class="mapHover HUN" href="@Url.Action("Query","UniversitySearch",new {cityTW = "102100"})" xlink:href="#City_102100" data-uk-modal="{target:'#City_102100', center:true}">
+                                            <g class="g_HualienB">
+                                                <path id="HualienB" class="mapArea HUN" style="stroke: #FFFFFF; stroke-width: 2;" d="M308,144.9l-1.6-0.4l-1.1-0.8l-1.4-0.4
+                                                h-1.7l-1.3,0.5l-2,1.6l-3.4,6.2l-0.1,0.1l0.2,2.1l0.9,1.1l1.6,0.8v0.1l-5.7,8.7l-0.2,4.1l-0.8,1.1l-1.1,0.7l-0.6,1.2l-0.7,2.9
+                                                l-1.1,0.8v1.8l-0.7,1.3l-0.1,1.3l-1.4,2.7l-2,1.6l-0.5,1.3l0.4,1.6v5.4l-0.5,1.3l-4.7,0.7l-1.2,0.8l-0.9-0.1l-0.1-1.6l-0.8-1.6
+                                                l-0.9-0.8l-2.1-0.1l-0.5-0.4l-0.8-1.1l-1.4-0.5l-1.2-0.7v-1.3l-1.8-2.5v-2l-0.6-1.3l-0.8-1.1l-2.4-1.6l-2.5,1.2l-0.2,0.6h-0.5
+                                                l-1.3-0.6l-0.6-1.2l-1.6-1.9l-1.6-0.1l-2.5-1.6h-2l-0.6-1.2l-0.4-0.4l-1.8-4.3l0.1-1.8l-1.8-2.3l-0.4-1.2l0.4-1.4l-0.1-1.6l-7.3-5
+                                                l-1.4-0.4l0.5-1.6l0.8-1.2l1.6-0.5l-0.2-1.1l0.7-1.1l1.6-0.2l0.7-1.1v-3.3l-1.1-0.7l-0.2-0.8l0.6-0.5l1.4-0.4l1.4-0.9l1.4-0.4
+                                                l0.4-1.6l-0.5-1.4l-1.1-0.8l0.8-0.9l0.4-1.6l0.9-1.1l1.1-0.7l0.4-1.4l1.1-0.7l1.6,0.1l1.3-0.6h1.8l0.6-0.2l1.2,0.7l1.4,0.4
+                                                l2.3-1.9v-3.6l0.4-1.4l1.1-0.7l-1.1-3l1.2-0.6l1.8,0.5l1.3-0.6l0.7-1.1l1.6-0.7l2.1-0.1l1.8-3.9l0.6-4.9l0.6-1.2v-1.8l0.9-2.6
+                                                v-4.4l-1.2-1.1l-0.1-1.6l0.4-1.3l-3.8-2.7l0.1-1.6l1.6-0.4l1.4-1.1v-0.7l-0.4-1.4l0.2-1.6l1.1-0.7l0.5-1.6l0.1-1.8l0.5-1.4
+                                                l0.9-1.2l0.1-1.8l1.1-1.1l1.4-0.4l-0.2-2.6l-0.8-1.4l2-1.8l-0.1-1.4l-0.5-1.6v-1.8l0.4-0.9v-3.6l-0.9-1.2l-0.5-0.1v-1.6l2.9-6.1
+                                                l0.1-3.4l1.1-1.1l1.2-0.6l0.7-1.2l1.2-0.6l0.9-1.6l0.4-1.2l0.1-1.6l-0.7-1.1l-1.6-0.2l-0.5-1.3l-0.8-0.9l-1.8-0.6l-0.4-0.5l-0.1-3
+                                                l1.3-3.1l1.4-0.4l0.9-0.8l1.3-0.6l1.8-1.8h1.8l0.7-1.1l-0.8-2.6l0.9-0.7l0.4-0.8l-0.1-1.2l1.8-0.8l0.5-0.8l1.3,0.1l0.7-0.6
+                                                l0.2-1.1l-0.4-2.2l0.6-0.9l1.1-0.4l0.8-0.5l0.8-1.9l0.7-0.8h1.3l0.8-0.6l0.7-0.8l1-2l0.3-3.4l0.4-0.9l1.1-0.6l0.6-0.7l5.7,3.6h3.8
+                                                l1.4,0.6l1.9,0.2l3.8,2.6l3.9,0.5l1.4-0.4l-1.4-1.2l0.4-1.4l1.6-0.4l1.1-0.7l1.1,0.5l0.9-0.8l-0.4-0.7l-0.9-0.8l0.1-1.6l0.9-0.4
+                                                l2,1.8l2.3,0.7l2.1,1.6l4.3,1.8l3.4,0.2l3.8,1.9l2,0.2l0,0.6l-0.3,0.6l-0.7,0.3l-0.4,0.7l-1.1,0.9l-1.3,1.8l0,2.6l-0.6,0.4
+                                                l-0.5,1.3l-0.7,0.3l-0.4,0.9l-0.1,0l-1.6,0.2l-1.4,2.5l-0.6,0.5l-0.8,0.1l-1.6,1.4l-0.7,0.2l-0.4,0.5l-0.6,0.4l-1.8,2.5l-0.5,1.6
+                                                V32l1.1,2l-0.4,0.4l-0.2,2.4l-0.1,0.2l-0.2-0.1l-0.7,1.1l-0.7,0.2l-1.5,1.7l-0.7,0.4l-2,2.2l-0.3,0.7l0,5.6l0.3,0.6l0.2,1.6
+                                                l3.4,3.5v0.9l-0.5,1.6l-0.7-0.2l-0.2,0.8l0.3,0.6l-0.7,0.2l-0.5,1.2h0.8l-0.4,1.4l-0.9,0l-0.4-0.5h-0.7l-0.5,0.4l-0.3,0.8
+                                                l-0.5,0.5l-0.5,1.4l0.7,1.4l0,2.6l-0.5,1.6l0,2.5l-0.2,0.8l0,2.6l-0.3,0.6l-0.2,1.6l-0.9,2v0.9l-0.3,0.7l-0.1,0.8l-0.9,1.8
+                                                l-0.1,0.8l-1.6,2.3l-0.3,1v4.9l0.2,0.7l-0.7,3l-1.6,2.5l-0.8,0.5v0.8l-0.2,0.7l0,0.8l0.4,0.3l0.4,1.2l-0.4,0.5l-0.1,0.8l-0.3,0.6
+                                                l-0.4,3.2l-0.4,0.5l0,0.6l0.4,0.6l-0.5,0.5l-0.7,0.3l-0.2,1.6l-0.6,0.7l0,6l-0.4,0.8l0,1.8l-0.4,1.4l-0.7,0.6l-0.2,0.8l-0.8,1.1
+                                                l-0.1,0.9l-0.6,1.6l0,1.7l-0.4,0.7l-0.1,1l0.2,0.2l0.3,0.8v1.8l0.8,1.2l0,1.7l-0.2,0.7l-0.5,0.5l-0.7,0.3l-0.8,0l0.2,0.2l0.8,0.5
+                                                l-0.4,0.7v0.9l-0.4,1.6v0.9l-0.3,0.7L308,144.9L308,144.9L308,144.9z"></path>
+                                                
+                                                <g id="HualienB_txt" class="textOutline">
+                                                    <path class="st1" d="M290.6,94.9c-0.6,1.1-1.2,2.2-1.9,3.2v10.1h-1.2v-8.6c-0.8,0.8-2,1.9-3.4,2.9l-0.9-0.8
+                                                    c2.7-1.8,4.8-4.1,6.2-7.1L290.6,94.9z M292.7,91.9h-2.7v2.2h-1.1v-2.2h-5.5v-1.1h5.5v-2.3h1.1v2.3h2.7V91.9z M302.9,103.3
+                                                    c-0.1,1.9-0.3,3-0.6,3.5c-0.3,0.5-0.6,0.8-0.9,0.9c-0.4,0.1-1.5,0.3-3.5,0.3c-2.2,0-3.4-0.1-3.9-0.4s-0.7-0.8-0.7-1.4V94.8h1.2
+                                                    v3.9h7.8v1h-7.8v6.5c0,0.3,0.1,0.5,0.4,0.6c0.3,0.1,1.2,0.1,2.8,0.1c1.8,0,2.8-0.1,3-0.2c0.2-0.1,0.4-0.6,0.6-1.3
+                                                    c0.2-0.8,0.2-1.6,0.3-2.6L302.9,103.3z M303,91.9h-5.4v2.3h-1.2v-2.3h-2.9v-1.1h2.9v-2.3h1.2v2.3h5.4V91.9z"/>
+                                                <path class="st1" d="M325.6,106.7l-0.3,1.1c-3,0-5.9,0.1-8.9,0.1c-3.1,0-5.4-0.7-6.9-2.1c-0.8,0.9-1.9,1.8-2.9,2.4l-0.7-0.8
+                                                    c2.4-1.4,3.9-3.2,4.7-5.4h-3.9v-0.8c1.3-1.4,2.5-2.6,3.4-3.8h-3.6v-1h5.1v1c-1.2,1.4-2.3,2.5-3.2,3.6h3.5v1c-0.4,0.9-0.8,2-1.6,3
+                                                    c1.5,1.1,3.6,1.8,6.3,1.8C318.6,106.9,321.6,106.8,325.6,106.7z M315.1,91.2h-2.9v1.7h-1.1v-1.7h-5.4v-1h5.4v-1.6h1.1v1.6h2.9
+                                                    V91.2z M310.9,94.9l-0.8,0.8c-0.9-1-2-1.8-3-2.4l0.8-0.8C308.8,92.9,309.9,93.7,310.9,94.9z M325.4,104.5h-6.2v1.5H318v-1.5h-6
+                                                    v-1h6v-1.4h-4.8v-6h4.8v-1.3H312v-0.9h5.9v-0.9h1.2v0.9h5.8v0.9h-5.8v1.4h4.9v6h-4.9v1.4h6.2V104.5z M318,98.7v-1.6h-3.7v1.6H318
+                                                    z M318,101.2v-1.6h-3.7v1.6H318z M325.4,91.2h-5.3v1H319v-1h-2.8v-1h2.8v-1.6h1.1v1.6h5.3V91.2z M322.9,98.7v-1.6h-3.7v1.6H322.9
+                                                    z M322.9,101.2v-1.6h-3.7v1.6H322.9z"/>
+                                                <path class="st1" d="M331.2,102.1c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L331.2,102.1z M337.2,100.3h-3.8v8
+                                                    h-1.1v-8h-3.9v-1h1V89.2h6.7v10.1h1L337.2,100.3L337.2,100.3z M335.1,91.6v-1.4h-4.5v1.4H335.1z M335.1,94v-1.4h-4.5V94H335.1z
+                                                    M335.1,96.5v-1.6h-4.5v1.6H335.1z M335.1,99.3v-1.7h-4.5v1.7H335.1z M337.1,104.5l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C336.3,102.7,336.8,103.6,337.1,104.5z M340.7,102.8c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L340.7,102.8z
+                                                    M344.7,89.3c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L344.7,89.3z M348.1,101.2l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.4,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C346.7,98.7,347.5,100,348.1,101.2z M348.1,106.9l-1,0.5c-0.5-1.2-1.2-2.7-2.4-4.6l1-0.5C346.8,103.9,347.6,105.4,348.1,106.9z"
+                                                    />
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 281.76 107.1427)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">花蓮縣</text>
+                                            </g>
+                                        </a>
+                                        <!-- 台東 TTT -->
+                                        <a class="mapHover TTT" href="@Url.Action("Query","UniversitySearch",new {cityTW = "102200"})" xlink:href="#City_102200" data-uk-modal="{target:'#City_102200', center:true}">
+                                            <g class="g_TaitungB">
+                                                <path id="TaitungB2" class="mapArea TTT" style="stroke: #FFFFFF; stroke-width: 2;" d="M307.9,144.9l-1,3.2v0.9l-0.7,0.4
+                                                l-0.8,3.3l0,2.7l-0.8,1.8l0,2.6l-0.5,2.6l-0.7,0.5h-0.9l-0.7,0.2l-0.6,0.5l-0.5,1.5l-0.4,0.6l-0.7,0.6l-0.3,0.7l0,0.8l-0.6,0.5
+                                                l-0.2,1.9l-0.5,0.6l-1.1,4.6l0.4,0.5l0.2,0.7l-0.4,0.6l-0.7,0.6l-0.7-0.1l-0.4-0.7l-0.5,0.2l0.5,0.5l0,0.7l-1.4,0.9l0.1,3.7
+                                                l0.9,1.8l0.2,0.8l-0.1,1.7l-0.7,0.7l0,2.5l1.4,1.5l-0.4,1.4l-1.7,0L293,194l-1,2l-0.6,0.3l-1.8,0l-0.4,0.6l-0.7,0.4v0.9l-0.4,0.6
+                                                v0.9l-0.9,1.4l-0.7,2.3l-0.5,0.7l-0.4,2.7l-0.6,0.8l-0.1,0.8l-0.5,0.4l-0.5,0.5l-0.5,1.4l-0.5,0.8l-0.6,2.4L282,214l-0.2,0.7v0.9
+                                                l-1.6,1.6l-0.2,0.7l-0.8,0l-0.5,0.5l-0.4,0.7l-0.3,0.1l-0.1,1.5l-1.6,3.5l-1,0.9l-1,2.1l-0.3,1.5l-0.6,0.5l-0.7,0.2l-1.1,1.2
+                                                l0,1.4l-1.5-0.4l-0.7,0.2l-1.6,0.2l-2.7,2.3l-0.4,0.6l-0.1,0.8l0.3,0.6l0.8,0.9l0.2,0.6h-0.9l-0.4,0.6l0.3,0.6l0.6,0.3l0.5,0.5
+                                                l-0.2,0.8l0.5,1.3l-0.2,0.8l-1,0.9l-0.8,0.1l-0.7,0.7l-0.6,3.8l-1,0.9l-1.3,0.6l-0.6,0.5l-0.4,0.6l-1.2,0.9l-0.4,0.5l-0.5,0.4
+                                                l-0.7,0.3l-1.8,2.1l-1.3,0.7l-0.7,0.2l-0.5,0.4l-0.7,0.3l-0.9,0.1l-0.5,0.5l-0.8,0l-0.4,0.5l-1.1,0.7l-0.5,0.5l-1.3,0.6l-0.2,0.7
+                                                l-0.5,0.6l-0.8,0l-0.5,0.5l-1.9,0.8l-0.5,0.5l-0.8,1.2l-0.4,1.5l-0.5,0.6L240,267l-0.4,0.6l0,0.8l-0.4,0.7l0,0.8l-0.1,0.3
+                                                l-0.1,2.4l-0.4,0.7l0,0.7l-0.9,1.3l-1.6,1.5l-0.4,0.6l-0.8,0.4l-0.4,0.6l-0.1,0.8l-0.4,0.6l0,0.8l-0.3,0.8v0.9l-0.6,0.4v1.2
+                                                l-1.4,3.2v0.9l-0.4,0.4v1.8l-1,2l0,1l-0.6,0.8l-0.2,1.6l-0.4,0.5l-0.1,1.6l-0.5,0.6l-0.2,0.8l-0.9,1.2l-0.2,0.7l-0.4,0.5l-1.7,4.8
+                                                l-0.4,0.6l-0.2,2.4l-1.2,1.2l-1.4,4.3v1.6l-0.3,0.7l0.1,2.5l0.6,0.8v3.7l0.4,1.5l0,2.2l-1.6,0.6l-0.9,0.8l-1.6,0.6l-1.3-2.3
+                                                l-1.4-0.4h-1.9l-0.6-1.3l-1.3-0.5l-1.1-0.7l-2,0.1l0.7-1.6l0.4-1.6l0.8-0.5l-1.3-0.5l-0.5-1.2l-2.3-1.3l0.8-1.1l1.2-0.6l-0.1-3.6
+                                                l-1.2-0.7l-0.6-1.2h-1.3l-1.8-1.9l-1.6-0.8l2.3-6.9l3.1-0.5l0.6-1.3l-0.4-1.6l-1.3-0.9l-1.2-2.5l-1.9-1.2l-0.1-1.4l-0.5-1.4l2-1.6
+                                                v-1.8l-1.9-3.8l-0.2-2l-0.8-0.5l-0.5-1.4l0.2-1.6l1.3-2.4l-0.6-1.3l0.7-1.1l0.5-1.3l-0.1-1.6l0.5-1.2l0.9-0.9l0.4-1.4l0.8-0.9
+                                                l0.1-0.5l1.9-2.6l0.1-1.6l0.8-1.1l0.1-1.2l1.6,0.2l1.6-0.8l2.9-0.6l1.4-3l5.2-0.2l0.9-1.1l0.1-1.6l0.8-0.9l0.2-4.7l0.9-0.9
+                                                l-0.5-1.1v-1.8l-0.5-1.6l-1.2-0.6l-1.6-0.1l-1.3-1.2l-0.4-0.7l-0.4-1.4v-1.8l0.2-0.5l0.3-3.2l-1.4-1.8l-2.5-0.2l-1.4-4l0.2-2.4
+                                                l-0.7-0.7l-0.8-1.8v-2.5l0.5-2l4.7-6.1l0.3-0.8v-1.8l3-2.2l-0.7-2l-1.2-1.2l0.8-2l1.7-1.8l-0.5-10.6l1.5-1l1-2.4l1.7-0.8l-0.5-1.8
+                                                v-1.8l0.7-1.8l-0.2-0.8l-0.5-0.3l1.4-1.7l1.7-0.7l3.2-2.7l2.4-3h1.8l3.7-1l1.4-1.4l4-1.7l0.4,1.2l1.8,2.3l-0.1,1.8l1.8,4.3
+                                                l0.4,0.4l0.6,1.2h2l2.5,1.6l1.6,0.1l1.6,1.9l0.6,1.2l1.3,0.6h0.5l0.2-0.6l2.5-1.2l2.4,1.6l0.8,1.1l0.6,1.3v2l1.8,2.5v1.3l1.2,0.7
+                                                l1.4,0.5l0.8,1.1l0.5,0.4l2.1,0.1l0.9,0.8l0.8,1.6l0.1,1.6l0.9,0.1l1.2-0.8l4.7-0.7l0.5-1.3v-5.4l-0.4-1.6l0.5-1.3l2-1.6l1.4-2.7
+                                                l0.1-1.3l0.7-1.3v-1.8l1.1-0.8l0.7-2.9l0.6-1.2l1.1-0.7l0.8-1.1l0.2-4.1l5.7-8.7v-0.1l-1.6-0.8l-0.9-1.1l-0.2-2.1l0.1-0.1l3.4-6.2
+                                                l2-1.6l1.3-0.5h1.8l1.4,0.4l1.1,0.8L307.9,144.9L307.9,144.9L307.9,144.9z"></path>
+
+                                                <path id="TaitungB1" class="mapArea TTT" style="stroke: #FFFFFF;" d="M288.3,260.5v1.3l1.1,0.8l0.3,1.2v1.3
+                                                l0.5,0.6l1.2,0.2l1.2,1.4l1.2,0.3l0.8-0.2l-0.8-0.8l-0.1-1l1.4-1.9v-1.3l-0.2-1.1l-0.8-0.6l-1.3,0.1l-1.1-0.5l-2.4,0.4
+                                                L288.3,260.5L288.3,260.5L288.3,260.5z"></path>
+
+                                                <path id="TaitungB" class="mapArea TTT" style="stroke: #FFFFFF;" d="M302.3,361.6l0.7,0.9l0.8,0.7h1.3
+                                                l1.2,0.2l0.6-0.2l0.3-0.9l0.6-0.8l0.2-1.1l-1.1-0.5l-0.8-0.8l-0.9-0.2l-2-1.8l-0.3-0.9l0.1-1.2l1.2-0.1l-0.1-1l-0.7-0.7l-0.2-1.1
+                                                l0.6-0.7l-0.5-0.8l-4.6,0.1l-0.9,0.3h-2.5l-0.8-0.5l-0.8,0.2v0.8l0.9,0.6v3.7l0.5,0.8l1.2,0.4l2.4,3h2.5l1,0.7L302.3,361.6
+                                                L302.3,361.6L302.3,361.6z"></path>
+                                                
+                                                <g id="TaitungB_txt" class="textOutline">
+                                                    <path class="st1" d="M257.1,229.8H238v-0.9h9v-1.3h-7.7v-0.9h7.7v-1.2c-1,0-3.3,0-6.7,0l-0.2-0.9c1.3-0.1,2.5-0.6,3.8-1.6h-3
+                                                    v-0.9h13.4v0.9h-1.5c0.7,0.7,1.5,1.5,2.3,2.5l-0.8,0.7c-0.3-0.4-0.6-0.8-0.8-1c-2.4,0.1-4.2,0.2-5.3,0.3v1.3h7.6v0.9h-7.6v1.3
+                                                    h8.9V229.8z M257.1,212.4h-8.8v1.1h7.9v0.9h-17v-0.9h7.9v-1.1h-8.9v-0.9h8.9v-1h1.2v1h8.8L257.1,212.4L257.1,212.4z M256.8,222.9
+                                                    h-1.2v-2.2h-16v2.1h-1.1v-3h18.2L256.8,222.9L256.8,222.9z M254.6,218.8h-14.1v-3.1h14.1V218.8z M253.5,217.7v-1.2h-11.7v1.2
+                                                    H253.5z M252.5,224.2c-0.4-0.4-0.7-0.7-0.8-0.8l0.6-0.5h-6.6c-0.8,0.8-1.6,1.3-2.5,1.7C244.9,224.6,248,224.4,252.5,224.2z"/>
+                                                <path class="st1" d="M279.9,228.2l-0.7,1c-3.8-1.5-6.6-3.4-8.6-5.8v6.6h-1.1v-6.6c-2.6,2.8-5.5,4.8-8.7,5.9l-0.7-1
+                                                    c3.4-1.3,6.1-3.1,8.3-5.5h-6.1v-7.6h7.2v-1.9h-9v-1h9v-2h1.1v2h9v1.1h-9v1.9h7.1v7.6h-6.1C273.6,225,276.3,226.8,279.9,228.2z
+                                                    M269.6,218.5v-2.2h-6v2.2H269.6z M269.6,221.8v-2.2h-6v2.2H269.6z M276.6,218.5v-2.2h-5.9v2.2H276.6z M276.6,221.8v-2.2h-5.9
+                                                    v2.2H276.6z"/>
+                                                <path class="st1" d="M285.7,223.8c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L285.7,223.8z M291.7,222h-3.8v8h-1.1
+                                                    v-8h-3.9v-1h1v-10.1h6.7V221h1V222L291.7,222z M289.5,213.3v-1.4H285v1.4H289.5z M289.5,215.7v-1.4H285v1.4H289.5z M289.5,218.3
+                                                    v-1.6H285v1.6H289.5z M289.5,221v-1.7H285v1.7H289.5z M291.6,226.3l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C290.7,224.3,291.2,225.3,291.6,226.3z M295.1,224.6c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L295.1,224.6z
+                                                    M299.1,211c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L299.1,211z M302.6,223l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5s-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.4,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C301.2,220.4,301.9,221.8,302.6,223z M302.6,228.5l-1,0.5c-0.5-1.2-1.2-2.7-2.4-4.6l1-0.5C301.3,225.6,302,227.1,302.6,228.5z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 236.2025 228.869)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">臺東縣</text>
+                                            </g>
+                                        </a>
+                                        <!-- 金門 -->
+                                        <a class="mapHover KNH" href="@Url.Action("Query","UniversitySearch",new {cityTW = "102400"})" xlink:href="#City_102400" data-uk-modal="{target:'#City_102400', center:true}">
+                                            <g class="g_KinmenB">
+                                                <path id="KinmenB1" class="mapArea KNH" style="stroke: #FFFFFF;" d="M126.6,61.5l-0.7,0.5l-0.5,0.6l-2.1-0.3
+                                                l-0.8,0.4l-0.4,0.8v2.4l-0.4,0.8l-0.1,1.1l-0.7,0.5h-1.2l-0.8,0.4l0.3,1.2l0.5,0.8l-0.4,0.8l-0.7,0.7l-0.8,0.3h-0.3l0.5,0.9
+                                                l2.2,0.2l0.4,1l1.1-0.1l1.7-2.3l0.9-0.3l1,0.3l0.5,0.7l0.8-0.4l0.5-0.8l-0.1-1.1l0.5-0.8l2.3-0.1l1-0.3l0.5-0.6l1.3-3.6l-0.2-1
+                                                l-2.5-1.5l-0.6-0.7l-0.8-0.4l-1.1-0.3L126.6,61.5L126.6,61.5z"></path>
+                                                <path id="KinmenB" class="mapArea KNH" style="stroke: #FFFFFF;" d="M176.6,46.3l-0.3-1.1l-0.5-0.8v-1.2
+                                                l-0.5-0.7l0.5-0.5h-1l0.1-0.6l-0.8-0.1l-0.6,0.2l-0.3-0.5l-1.4,1.4l-0.4-0.8l0.8-0.5l-0.7-0.5l-0.8,0.5l-0.5,0.7l0.8,0.7l0.6,0.8
+                                                l-0.3,0.9l-1,0.2l-1.4,1l-1,0.2l-1-0.1l-0.4,0.3l-0.3,0.8l0.4,0.6l0.1,1.1l1.1-1.2l0.8,0.4h1.2l-0.1,0.6h-1.2l0.8,0.7l0.4,0.8
+                                                l-0.7,0.5v1.2l-0.8-0.3l-1-1.4l-0.6-0.5l-0.2,0.8l0.5,0.8v0.3l-0.8,0.8l-0.8,0.5l-0.5,0.7l-0.8,0.4H163l1.1,1l-0.3,0.4l0.5,2
+                                                l-0.3,0.6h-0.5l-1.4,1.2l-0.5,0.8l-6.9-0.9l-9.2-6.7l-1-0.3l-0.3-0.3l-0.5,0.6l-1.1,0.2l-1.8,1.8l-1,0.2l-1.7,3.2l1.9,1.1l1,0.3
+                                                l-0.2-0.8l-0.6-0.7l0.8-0.4l2.4,0.1l0.4-0.9l0.8-0.5l0.6,0.7l-0.1,1.4l-0.6,0.6l-2,0.4l-0.4,1V61l0.3,0.3l0.6,1l0.6,2v2.4l0.2,0.6
+                                                l1.4,0.2l0.5,0.7l-0.1,1.1l-0.8,0.3l-0.5-1.4l-0.4,0.8l-1.9,0.3l-0.1,1.9l-0.7,0.5l-3.4,0.1l-0.5-0.4l0.1-1.1l-0.7,1.4l-0.9-0.2
+                                                l-0.3,0.8l0.8,0.6l0.8,0.3l1.4,1.9l1.3,1l0.5,0.8l2.3,0.2l0.8,0.4l0.5,0.9l1.1,0.4l1.3,0.2l1.7,1.1l0.4-0.7l1.4-0.3l0.3-0.8
+                                                l0.6-0.5l0.5-2l2.5-3.6l0.6-0.5l0.5-0.8l0.7-0.5l0.2-0.4l1-0.2l0.7-0.5l1-0.3l0.6-0.5l0.8-0.4l1.1-0.1l1.7-0.7l6.7-0.5l1.3,0.5
+                                                l1.4,1.2l0.8,0.4h1.2l1.9,0.8l2,2l-0.1,0.9l-0.5,0.7l-0.7,0.5L176,74l0.9,0.4h1.2l0.8-0.3l0.7-0.5l1-0.3l0.5-0.8l1.9-0.5l0.3-0.8
+                                                l-0.4-0.7l0.3-0.8l0.7-0.3l1.2,0.3l0.5-0.6l0.3-0.7l-1.2-1.4l-0.2-0.8l1.5-0.9l0.8-0.1l0.5,0.5l0.8-0.7l-0.3-0.7l0.1-0.8l0.4-0.6
+                                                l-0.8-0.4h-1.2l-0.3-0.6l-0.6-0.6l-0.6-2.9v-1.9l1.3-0.8l0.3-0.9l-0.5-0.6l-1.7,0.6l-0.8-0.3l-0.4-0.8l-0.5-1.9l0.2-1l-0.5-0.5
+                                                l-0.8-0.4l-0.2-2.9L176.6,46.3L176.6,46.3L176.6,46.3z"></path>
+                                                
+                                                <g id="KinmenB_txt" class="textOutline">
+                                                    <path class="st1" d="M172.6,85.2l-0.8,1c-1.5-0.7-2.7-1.3-3.7-1.9v1h-4.9v3.2h8.1v1.1h-8.1V96h8.5v1.1h-18V96h8.3v-6.3h-7.9v-1.1
+                                                    h7.9v-3.2h-4.8v-1.1c-1.4,0.8-2.6,1.4-3.7,1.9l-0.8-1c4.2-1.7,7.4-4,9.8-7.1l1.2,0.5l-0.3,0.4C165.9,81.6,169,83.7,172.6,85.2z
+                                                    M159.6,94.7l-1.1,0.5c-0.4-1-1.1-2.3-2.3-3.8l1-0.5C158.3,92.1,159.1,93.4,159.6,94.7z M168.1,84.2c-1.9-1.1-3.6-2.6-5.3-4.5
+                                                    c-1.3,1.6-3.1,3.1-5.4,4.5H168.1z M169.5,91.5c-0.8,1.7-1.7,2.9-2.5,3.9l-1-0.7c0.8-0.8,1.7-2.1,2.5-3.8L169.5,91.5z"/>
+                                                <path class="st1" d="M184.2,87.6h-6.6v10.2h-1.2V78.8h7.8V87.6z M183.1,82.6v-2.6h-5.4v2.6H183.1z M183.1,86.4v-2.7h-5.4v2.7
+                                                    H183.1z M194.2,96c0,0.6-0.1,0.9-0.4,1.2c-0.3,0.3-0.5,0.5-0.8,0.6c-0.3,0.1-0.8,0.1-1.8,0.1c-0.5,0-1,0-1.7,0l-0.5-1.2
+                                                    c0.6,0,1.1,0.1,1.9,0.1c1,0,1.6,0,1.8-0.1c0.2-0.1,0.3-0.3,0.3-0.5v-8.5h-6.6v-8.8h7.8L194.2,96L194.2,96z M193,82.6v-2.6h-5.5
+                                                    v2.6H193z M193,86.4v-2.7h-5.5v2.7H193z"/>
+                                                <path class="st1" d="M200.8,91.7c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L200.8,91.7z M206.8,89.8h-3.8v8h-1.1
+                                                    v-8h-3.9v-1h1V78.7h6.7v10.1h1C206.8,88.8,206.8,89.8,206.8,89.8z M204.7,81.1v-1.4h-4.5v1.4H204.7z M204.7,83.5v-1.4h-4.5v1.4
+                                                    H204.7z M204.7,86.1v-1.6h-4.5v1.6H204.7z M204.7,88.8v-1.7h-4.5v1.7H204.7z M206.7,94l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C205.9,92.1,206.4,93.1,206.7,94z M210.4,92.3c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L210.4,92.3z M214.3,78.8
+                                                    c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L214.3,78.8z M217.7,90.7l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.3,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.4,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.4,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C216.3,88.2,217.2,89.5,217.7,90.7z M217.8,96.4l-1,0.5c-0.5-1.2-1.2-2.7-2.3-4.6l1-0.5C216.4,93.4,217.3,94.9,217.8,96.4z"/>
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 151.4132 96.6702)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">金門縣</text>
+                                            </g>
+                                        </a>
+                                        <!-- 澎湖 PEH -->
+                                        <a class="mapHover PEH" href="@Url.Action("Query","UniversitySearch",new {cityTW = "102300"})" xlink:href="#City_102300" data-uk-modal="{target:'#City_102300', center:true}">
+                                            <g class="g_PenghuB">
+                                                <polygon id="bgArea_1_" style="fill: #FFFFFF; stroke: #FFFFFF;" points="M118,165v1.2V165L118,165z"></polygon>
+                                                <path id="PenghuB6" class="mapArea PEH" style="stroke: #FFFFFF;" d="M101.8,160.9l-0.5,1l-0.2,0.7l0.7,0.8
+                                                l-1.3,1.2l0.3,0.9l0.9,0.4l0.7,0.6l0.3,0.7l-0.8,0.3l-0.6,1.8l0.3,1l-1,0.3h-1.1l-0.9,0.6l0.3,0.8l1.2,0.3l1.5,1.9v1.1l-0.4,0.9
+                                                l-0.8,0.6l-0.6,0.8l-0.8,0.6l-0.8,0.3l-1.5-1.4l-1.1,0.3l-0.8,0.6l-0.5,0.8l-1.3,1.1l-0.5,0.8l0.8,0.4h1.1l0.5-0.7h3.4l0.6-0.5
+                                                l0.8-0.3l2.2,0.3l1,0.4h1.1l1-0.4l-0.4-0.9l-0.6-0.8l-0.3-0.8l-0.1-1.1l1.3-1.2l-1-2.5l3.1-2.8l-0.3-0.8l-0.8-0.6l-0.2-1l0.5-1.8
+                                                l-0.4-1l-0.5-0.7l-0.3-0.9l0.3-0.8l0.8-0.5h2.3l1.9-0.5l0.8-0.5l0.2-1.1l-0.6-0.5l-0.9,0.8l-0.9,0.3l-1.1-0.5l-1.8-2l0.3-1
+                                                l-0.3-0.8L105,156l-0.7,0.6l-1.9,3.5L101.8,160.9L101.8,160.9L101.8,160.9zz"></path>
+
+                                                <path id="PenghuB5" class="mapArea PEH" style="stroke: #FFFFFF;" d="M114.4,152.1l-0.8,0.8l0.1,1l2.5,1.8
+                                                l0.5,0.9l0.5-0.5l0.8-1.8l0.8-0.5l2.4,0.1l0.4,1v1.1l0.6,0.7l0.3,0.8l1.9,1.9l0.3,1.1l0.8,0.2l0.7-0.8l0.2-1.1l1.9-1.1l1.1-0.2
+                                                l-0.1-1l-1.1-1l-0.4-0.7l0.7-1.2l-1.2-0.1l-1.4-2.6l-0.6-0.2l-0.7,0.4l-1.8-0.5l-0.3-0.9l-1.1-0.2l-1.1,0.4l-0.4,0.9l-1.1,0.3
+                                                l-1.9-0.3l-0.9-0.4l-0.3-0.5L114.4,152.1L114.4,152.1L114.4,152.1z"></path>
+
+
+                                                <path id="PenghuB4" class="mapArea PEH" style="stroke: #FFFFFF;" d="M124.8,161.8l-1.2,1.6l1.5,1.4h1.1
+                                                l0.8-0.5l0.1-1.1l1.4-1.8l-0.7-0.4h-1.1l-1.1,0.3L124.8,161.8L124.8,161.8z"></path>
+
+                                                <path id="PenghuB3" class="mapArea PEH" style="stroke: #FFFFFF;" d="M127.6,165.1l-1,0.4l-0.3,0.8l0.3,0.9
+                                                l0.9,0.4h1.1l1.1-0.3l0.3-1l-0.5-0.8l-1-0.5L127.6,165.1L127.6,165.1z"></path>
+
+
+                                                <path id="PenghuB2" class="mapArea PEH" style="stroke: #FFFFFF;" d="M121.6,172.6l-2.5,2.1l-1,0.3H117l0.5,1
+                                                v1.1l-0.3,1.1l-1.5,1.3l-0.2,1.1l0.8,0.4l2-0.9l0.8-0.6l1.2,0.1l0.8,0.5l0.7,0.8l-2.3,2.5l-1.1,0.2l-2.3-0.3l1.3,1.4l1.8,0.8
+                                                l1.4-0.2l1-0.6l3.4,0.1l0.7,0.9l0.3,1l-1.1,1.8l-0.2,0.6l1,0.7l-0.1,0.8l-0.9,0.9l-1-0.1l-0.7-0.6l-0.9-0.4l-1.1,0.2l-1.4,2.9
+                                                l-1.3,1.4l0.5,0.9l2.2,0.3l1.2-0.2l1.5-0.5l1.3-0.1l1.4,1.5l1-0.3l0.2-1l0.9-0.8l0.1-1.1l0.3-1.1l-0.9-0.5l-0.2-0.8l0.8-0.8l0.5-1
+                                                l3.8-3l1-0.2l1.9-2.4l0.3-0.9l0.8-0.7l5.3-0.2l1.6-0.8l0.7,0.5l0.3,1.1l0.5,1l0.9,0.6l1.1-0.3l0.8-0.4h1.2l0.4-0.7l-2.6-2.8
+                                                l-0.7-2.5l0.3-0.9v-1.1l-0.4-1l-2-2.2l-0.5-1.8l-0.6,0.7l-0.3,2.1l-1.1-0.2l-0.5-1.1l-0.7-0.8l0.3-0.7l0.6-0.4l-1.4-1.4l-1-0.3
+                                                l-0.7,0.7l-1.4,2.6l-0.8-0.2l-0.8,0.3l-1.3,1.3l-0.3,0.9l-0.6,0.2l-0.1-3.4l0.8-1.8l-1.3,0.2l-0.7,0.4l-4.4,0.8l-0.7,0.5l0.1,1.1
+                                                l0.6,0.8v1.1l-0.4,0.8l-1.1,0.3l-0.7,0.8v2.4l-0.6,0.7l-1.1-0.5l-0.8-0.8l0.2-1.5l-1.2-0.2l-0.2-1.1l0.6-1l0.1-0.7L121.6,172.6
+                                                L121.6,172.6L121.6,172.6"></path>
+
+                                                <path id="PenghuB1" class="mapArea PEH" style="stroke: #FFFFFF;" d="M112.9,183.4l-0.4,1.1l-0.8,0.3l-0.3,1
+                                                l0.1,2.2l1.3,0.6l0.4,0.7l0.8,0.7l0.3-0.8l-0.6-0.8l1-0.9l-0.6-0.7l-0.3-2.5l-0.8-0.6"></path>
+
+                                                <path id="PenghuB" class="mapArea PEH" style="stroke: #FFFFFF;" d="M114.9,190.3v1.2l3.7,0.1l0.4-0.7
+                                                l-0.6-0.8l-0.9-0.7l-0.4-0.7l-0.3,0.8L114.9,190.3L114.9,190.3L114.9,190.3z"></path>
+                                                
+                                                <g id="PenghuB_txt" class="textOutline">
+                                                    <path class="st1" d="M106.9,211.9c-0.7,2.3-1.7,4.7-3.3,7.3l-0.9-0.7c1.5-2.7,2.6-5.2,3.2-7.2L106.9,211.9z M107.1,208.2
+                                                    l-0.8,0.8c-1-1.1-2.3-2.1-3.6-3l0.8-0.9C104.9,206.1,106.1,207.1,107.1,208.2z M106.9,202.2l-0.8,0.8c-0.9-1.1-1.9-2.2-3-3
+                                                    l0.8-0.8C105,200.2,106.1,201.2,106.9,202.2z M116,215.2v1.1c-2.7,0.8-5.6,1.5-8.7,2.1l-0.3-1.1c0.8-0.1,1.8-0.3,3.3-0.7
+                                                    c-0.3-1.3-0.8-2.5-1.2-3.7l0.8-0.7h-1.4v-4.6h6.9v4.6h-1.3l0.8,0.6c-0.3,1.1-0.6,2.1-0.9,2.9C114.4,215.6,115.1,215.5,116,215.2z
+                                                    M116.3,202.7h-3.9v2h3.3v1.1h-7.7v-1.1h3.3v-2h-3.9v-1h3.9v-2.1h1.1v2.1h3.9V202.7z M114.1,211v-2.3h-4.5v2.3H114.1z
+                                                    M113.8,212.3H110c0.6,1.4,1,2.7,1.3,4.1c0.4,0,0.8-0.1,1.2-0.3C113.2,214.6,113.6,213.4,113.8,212.3z M122.5,212.3
+                                                    c-1.2,2.3-3.5,4.6-6.8,7l-0.9-0.8c3.2-2.1,5.4-4.3,6.7-6.7L122.5,212.3z M122.2,200c-1.2,1.8-3,3.4-5.3,5l-0.8-0.8
+                                                    c2.4-1.6,4.1-3.2,5.2-4.8L122.2,200z M122.3,206c-1.1,1.9-2.9,3.7-5.5,5.5l-0.8-0.8c2.5-1.7,4.3-3.5,5.4-5.2L122.3,206z"/>
+                                                <path class="st1" d="M129.4,208.2l-0.8,0.8c-1-1.3-2.2-2.4-3.3-3.2l0.8-0.8C127.6,206.2,128.7,207.4,129.4,208.2z M129.6,211.9
+                                                    c-1,2.7-2.2,5.2-3.4,7.2l-0.9-0.7c1.5-2.6,2.5-5,3.4-7.2L129.6,211.9z M130,202.4l-0.8,0.8c-1-1.2-2.2-2.2-3.4-2.9l0.8-0.8
+                                                    C127.7,200.2,128.8,201.2,130,202.4z M137.8,204.7h-3.4v4h2.3v7.8h-1.1v-0.9h-3.7v1.5h-1.1v-8.4h2.4v-4H130v-1.1h3.3v-4.1h1.1
+                                                    v4.1h3.4V204.7z M135.6,214.5v-4.6h-3.7v4.6H135.6z M144.2,217.5c0,0.4-0.1,0.8-0.3,1s-0.4,0.5-0.7,0.6s-0.8,0.1-1.4,0.1
+                                                    c-0.3,0-0.7,0-1.1,0l-0.5-1.2c0.3,0,0.8,0,1.4,0c0.7,0,1.1,0,1.2-0.1c0.1-0.1,0.2-0.2,0.2-0.4v-7.6c-0.8,0.8-1.8,1.8-2.8,2.6
+                                                    l-0.6-0.6c-0.4,3.3-1,5.7-2.1,7.4l-0.9-0.8c1.4-2.4,2.1-5.6,2.1-9.8V200h5.5V217.5z M143.1,208.4v-1.5l-0.8,0.7
+                                                    c-0.7-1.3-1.5-2.4-2.4-3.3v4.5c0,0.8,0,1.7-0.1,2.5C140.9,210.6,142,209.6,143.1,208.4z M143.1,206.6v-5.4h-3.2v2.6l0.7-0.6
+                                                    C141.6,204.5,142.5,205.6,143.1,206.6z"/>
+                                                <path class="st1" d="M150.6,213c-0.5,1.8-1.1,3.4-1.9,4.8l-1-0.6c0.7-1.1,1.2-2.6,1.8-4.6L150.6,213z M156.6,211.2h-3.8v8h-1.1
+                                                    v-8h-3.9v-1h1v-10.1h6.7v10.1h1V211.2z M154.5,202.5v-1.3H150v1.4L154.5,202.5L154.5,202.5z M154.5,204.9v-1.4H150v1.4H154.5z
+                                                    M154.5,207.5v-1.6H150v1.6H154.5z M154.5,210.2v-1.7H150v1.7H154.5z M156.6,215.5l-1,0.6c-0.5-1.1-0.9-2.1-1.4-2.9l1-0.5
+                                                    C155.7,213.6,156.2,214.5,156.6,215.5z M160.2,213.8c-0.8,1.8-1.8,3.3-2.9,4.5l-1-0.7c1-1.1,2.1-2.5,2.9-4.4L160.2,213.8z
+                                                    M164.1,200.2c-1.8,1.4-3.9,2.6-6.7,3.6l-0.7-1c2.5-0.9,4.7-2,6.3-3.3L164.1,200.2z M167.6,212.2l-1,0.6c-0.2-0.6-0.6-1-0.8-1.6
+                                                    c-1,0.2-2,0.3-2.9,0.4v6.1c0,0.5-0.1,0.8-0.4,1c-0.3,0.3-0.5,0.5-0.8,0.5c-0.3,0-0.9,0.1-2.1,0.1l-0.4-1c0.3,0,0.8,0,1.7,0
+                                                    c0.2,0,0.3-0.1,0.5-0.2c0.2-0.1,0.2-0.3,0.2-0.5v-5.8c-0.9,0.1-2.3,0.2-4.2,0.3l-0.3-1c2-0.9,3.8-2.1,5.4-3.6
+                                                    c-1.3,0.2-2.9,0.4-4.9,0.5l-0.3-0.9c1.9-1,3.5-2.5,5-4.4l1.2,0.4c-1,1.2-2.3,2.5-3.9,3.8c1.5-0.1,2.8-0.2,4-0.5
+                                                    c0.7-0.7,1.2-1.3,1.7-1.8l1,0.7c-2.3,2.5-4.6,4.5-6.9,5.8c1.9-0.1,3.7-0.4,5.5-0.7c-0.3-0.5-0.6-0.8-0.9-1.2l1-0.6
+                                                    C166.1,209.6,167,210.9,167.6,212.2z M167.6,217.8l-1,0.5c-0.5-1.2-1.2-2.7-2.3-4.6l1-0.5C166.2,214.8,167.1,216.3,167.6,217.8z"
+                                                    />
+                                                </g>
+                                                <text transform="matrix(1 0 0 1 101.233 218.0637)" style="display: inline; font-family: 'MicrosoftJhengHeiRegular'; font-size: 24px;">澎湖縣</text>
+                                            </g>
+                                        </a>
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+
+        </div>
+            <!--新鮮人熱搜-->
+            <div class="col-12 freshman_hot">
+                <h2><span>新鮮人</span>熱搜</h2>
+                <p>搶先一步，卡位理想工作</p>
+                <div class="row">
+                    <div class="col-6 col-sm-3">
+                        <a class="hvr-bob" href="https://www.1111tc.com.tw/freshman/fast.php?page=1&ri=1~5&agent=campusr_fresh_Limit&sort=sa%20desc" target="_blank" title="限時回覆">
+                            <img src="~/Content/images/freshman_01.png" alt="限時回覆">
+                            <h3>限時回覆<i class="fa fa-caret-right" aria-hidden="true"></i></h3>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <a class="hvr-bob" href="https://www.1111tc.com.tw/freshman/hotsearch.php?page=1&exp=*1&oat=2&agent=campusr_fresh_famous&sort=sa%20desc" target="_blank" title="千大企業">
+                            <img src="~/Content/images/freshman_02.png" alt="千大企業">
+                            <h3>千大企業<i class="fa fa-caret-right" aria-hidden="true"></i></h3>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <a class="hvr-bob"
+                           href="https://www.1111tc.com.tw/freshman/hotsearch.php?page=1&st=1&sa0=30000&exp=*1&agent=campusr_fresh_30K&seopart=3&sort=sa%20desc"
+                           target="_blank" title="月薪30K">
+                            <img src="~/Content/images/freshman_03.png" alt="月薪30K">
+                            <h3>月薪30K<i class="fa fa-caret-right" aria-hidden="true"></i></h3>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <a class="hvr-bob" href="https://www.1111tc.com.tw/freshman/hotsearch.php?page=1&exp=*1&va=1&agent=campusr_fresh_2days&sort=sa%20desc" target="_blank" title="週休二日">
+                            <img src="~/Content/images/freshman_04.png" alt="週休二日">
+                            <h3>週休二日<i class="fa fa-caret-right" aria-hidden="true"></i></h3>
+                        </a>
+                    </div>
+                    <div class="col-12 pt-4">
+                        <a href="https://www.1111tc.com.tw/freshman/hotsearch.php?page=1&exp=*1&agent=campusr_fresh_search" target="_blank" title="更多新鮮人熱搜">
+                            <div class="hvr-trim more">
+                                看更多<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--新鮮人熱搜END-->
+
+        </div>
+        </div>
+</div>
+
+  
+   
+    <script src="/CampusR/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="/CampusR/Content/js/bootstrap.min.js" defer></script>
+
+    <script src="/CampusR/Content/js/owl.carousel.min.js"></script>
+    <script src="/CampusR/Content/js/custom.js"></script>
+    <link rel="prefetch" href="/CampusR/Content/js/sweetalert.min.js" as="script">
+    <script src="/CampusR/Content/js/sweetalert.min.js" defer></script>
+    <script>
+        (function tabMapEvent() {
+            $('.tab-map li').click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                var areaId = '#' + $(this).data("areaId");
+                $(areaId).addClass('active').siblings().removeClass('active');
+            });
+        })();
+        //思源黑體非同步載入
+        var cb = function () {
+            var a = document.createElement('link');
+            a.rel = 'stylesheet';
+            a.href = 'https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700&display=swap';;
+
+            var z = document.getElementsByTagName('head')[0];
+            z.parentNode.insertBefore(a, z);
+        };
+        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+            webkitRequestAnimationFrame || msRequestAnimationFrame;
+        if (raf) raf(cb);
+        else window.addEventListener('load', cb);
+    </script>
+
+</body>
+
+</html>

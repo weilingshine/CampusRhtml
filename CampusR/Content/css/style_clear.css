@@ -324,9 +324,15 @@ a.nav-link{
 .session .newsession_st02{
 	vertical-align: middle;
 	border-bottom:1px solid #eee;
-	padding:8px 0;
+	padding:21px 0;
 	color:#333;
 	font-weight:400;
+}
+@media (max-width:1199px) {
+	.session .newsession_st02 {
+		padding:10px 0;
+
+	}
 }
 .session .newsession_st02 a{
 	color:#333;
@@ -416,8 +422,16 @@ a.nav-link{
 .session .list_more{
 	text-align: right;
 	color:#231815;
-	padding:10px 20px 10px 0;
+	padding:21px 20px 10px 0;
 }
+@media (max-width:1199px) {
+	.session .list_more {
+		padding:10px 20px 10px 0;
+
+	}
+	
+}
+
 .session .list_more a{
 	color:#231815;
 }

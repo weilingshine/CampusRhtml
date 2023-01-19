@@ -1,11 +1,17 @@
 @mixin lg1200Screen
     @media (max-width: 1200px)
         @content
+@mixin lg1199Screen
+    @media (max-width: 1199px)
+        @content
 @mixin md768Screen
     @media (max-width: 768px)
         @content
 @mixin md767Screen
     @media (max-width: 767px)
+        @content
+@mixin sm575Screen
+    @media (max-width: 575px)
         @content
         
 /*表頭*/
@@ -194,8 +200,21 @@
         margin-bottom: -3px
         padding: 0
 .map_list
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-end
+    padding-top: 78px
+    @include lg1199Screen
+        padding-top: 50px
+    @include md767Screen
+        padding-top: 10px
+    @include sm575Screen
+        padding-top: 0
+
     .session_list
-        margin-top: 58px
+        width: 100%
+        background: #ffffff
+        
         @include md767Screen
             margin-top: 40px
         .newsession_st02 
@@ -205,6 +224,7 @@
                 display: -webkit-box
                 -webkit-line-clamp: 2
                 -webkit-box-orient: vertical
+
 
 
 // 新鮮人熱搜
@@ -272,6 +292,8 @@
                 right: 0%
                 bottom: inherit
                 text-align: right
+.color_pink
+    color: #ed5950
 
 
 
