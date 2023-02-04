@@ -1,0 +1,271 @@
+@mixin lg1200Screen
+    @media (max-width: 1200px)
+        @content
+@mixin md768Screen
+    @media (max-width: 768px)
+        @content
+@mixin md767Screen
+    @media (max-width: 767px)
+        @content
+        
+/*表頭*/
+.navbar
+    background: #ffffff
+    color: #282828
+    padding: 0
+    button.navbar-toggler
+        @include md767Screen
+            color:#ec6d65
+    a,
+    a.nav-link
+        color: #000
+        font-weight: 400
+        padding: 23px 0
+        @include md767Screen
+            color: #fff
+            padding: 10px
+        &:hover
+            color: #fff
+            font-weight: 500
+            background: #ec6d65
+    .navbar-nav
+        @include md767Screen
+            background: #ec6d65
+    a.navbar-brand
+        padding: 0
+    a
+        &:hover
+            .navbar-brand
+                background: transparent
+    .nav-item
+        @include md767Screen
+            padding: 10px
+
+        &:last-child
+            display: flex
+            align-items: center
+            a:hover
+                color: unset
+                background: unset
+        .nav-item-block
+            margin-left: .5rem
+            display: flex
+            justify-content: center
+            align-items: center
+            padding: 0 4px 2px
+            background: rgb(34, 34, 34)
+            border-radius: 3px
+            a.nav-link
+                padding: unset
+                color: #ffffff
+                font-size: 15px
+                &:hover
+                    color: #f5a39f
+            span
+                padding: 0 8px
+                color: #ffffff
+                font-size: 12px
+.navbar-expand-md
+    .navbar-collapse
+        flex-grow: inherit
+
+.navbar-dark
+    .navbar-toggler
+        color: #fff
+        border-color: rgba(255,255,255,1)
+
+// 右側懸浮按鈕
+.share
+    position: fixed
+    right: 20px
+    bottom: 20%
+    @include md768Screen
+        width: 100%
+        right: 0
+        bottom: 0
+        z-index: 99
+    .share_fb
+        display: flex
+        justify-content: center
+        align-items: center
+        // background: #3a559f
+        width: 50px
+        height: 50px
+        text-align: center
+        margin-bottom: 10px
+        border-radius: 50%
+        @include md768Screen
+            display: none
+            width: 20%
+            float: left
+            margin-bottom: 0
+            border-radius: 0
+
+    .share_line
+        // background: #00c200
+        display: flex
+        justify-content: center
+        align-items: center
+        
+        width: 50px
+        height: 50px
+        text-align: center
+        border-radius: 50%
+        padding-top: 10px
+        @include md768Screen
+            display: none
+            width: 20%
+            // float: left
+            margin-bottom: 0
+            border-radius: 0
+
+    .bottom_link
+        display: none
+        @include md768Screen
+            width: 100%
+            display: flex
+            background: #0088cc
+            // float: left
+        a
+            color: #ffffff
+            width: 33.3333%
+            height: 50px
+            line-height: 50px
+            font-size: 1.1rem
+        .career_btn
+            background: #ff601a
+        .session_btn
+            background: #e43b30
+        .G2000_btn
+            background: #53acca
+        
+
+        
+
+
+
+
+#gotop 
+    position: fixed
+    width: 70px
+    height: 70px
+    z-index: 99
+    right: .5rem
+    bottom: 70px
+    img
+        width: 100%
+       
+
+
+
+
+/*校徵場次*/
+.session
+    padding: 60px 0
+    text-align: center
+    @include md767Screen
+    padding: 60px 0 40px
+        // padding-top: 10%
+        
+
+    h2
+        display: inline-block
+/*TAB切換視覺*/
+.nav-tabs
+    border-bottom: 3px solid #ec6d65
+    .nav-link
+        color: #000
+        text-align: center
+        font-size: 1.2em
+        border-top-left-radius: .5rem
+        border-top-right-radius: .5rem
+        padding: 14px 0
+        @include md767Screen
+            font-size: 1em
+
+        &:hover
+            background: #ec6d65
+            border: none
+    .nav-link.activ
+        background: #ec6d65
+        border: none
+        color: #fff
+    .nav-item
+        margin-bottom: -3px
+        padding: 0
+.map_list
+    .session_list
+        margin-top: 58px
+        @include md767Screen
+            margin-top: 40px
+
+// 新鮮人熱搜
+.freshman
+    margin-bottom: 40px
+    background: #fbfbfb
+    .freshman_hot
+        text-align: center
+        padding-top: 5%
+        letter-spacing: 2px
+        h2
+            font-size: 28px
+            font-weight: 600
+            text-align: center
+            span
+                color: #ed5950
+        p
+            font-size: 18px
+        h3
+            font-size: 20px
+            padding-top: 15px
+            @include md768Screen
+                font-size: 18px
+            i
+                padding-left: 3px
+        a
+            color: #000
+            padding-top: 5%
+        .more
+            background: #ed5950
+            border-radius: 25px
+            color: #fff
+            margin-top: 3%
+            width: 150px
+            height: 50px
+            line-height: 50px
+            margin: auto
+            i
+                padding-left: 3px
+        .hvr-bob
+            img
+                @include lg1200Screen
+                    width: 90%
+                @include md768Screen
+                    width: 70%
+                
+    .hvr-trim
+        &::before
+            border: white solid 2px
+            border-radius: 25px
+// Slider
+.activity_photo
+    @include md768Screen
+        // margin-top: 30%
+    @include md767Screen
+        margin-top: 5%
+    .nav-link
+        padding:0
+    img
+        width: 100%
+    .owl-theme 
+        .owl-controls 
+            .owl-pagination
+                top: 2%
+                right: 0%
+                bottom: inherit
+                text-align: right
+
+
+
+
+
